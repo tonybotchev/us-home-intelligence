@@ -23,6 +23,95 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
+    id: "credit-score-tips-dfw-homebuyers-2026",
+    slug: "credit-score-tips-dfw-homebuyers-2026",
+    title: "Credit Score Tips for Buying a Home in North DFW (2026 Guide)",
+    excerpt:
+      "Your credit score can make or break your mortgage rate in North DFW. Tony Botchev shares the top 2026 tips to boost your score, avoid common mistakes, and qualify for the best loan programs.",
+    category: "Credit & Finance",
+    date: "May 8, 2026",
+    dateISO: "2026-05-08",
+    readTime: "7 min read",
+    image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=1200&q=80",
+    featured: true,
+    seoTitle: "Credit Score Tips for Buying a Home in North DFW (2026 Guide) | Tony Botchev NMLS #114198",
+    seoDescription:
+      "Discover the top credit score tips for North DFW homebuyers in 2026. Learn what scores you need for FHA, VA, conventional, and jumbo loans, and how to improve your credit fast.",
+    faq: [
+      {
+        q: "How long does it take to improve my credit score?",
+        a: "It depends on the negative factors. Paying down high balances can improve your score in 30-45 days. Recovering from a missed payment or collection can take several months to a year.",
+      },
+      {
+        q: "Will checking my own credit score lower it?",
+        a: "No. Checking your own score is considered a soft inquiry and does not impact your credit score.",
+      },
+      {
+        q: "Should I use a credit repair company?",
+        a: "Be cautious. Many reputable lenders can provide guidance on improving your score for free. Often, the steps a credit repair company takes are things you can do yourself.",
+      },
+      {
+        q: "Can I buy a house in DFW with a 600 credit score?",
+        a: "Yes, it's possible, primarily through FHA loans. However, your interest rate will likely be higher than if you had a score of 700 or above.",
+      },
+      {
+        q: "Does my spouse's credit score matter if we apply together?",
+        a: "Yes. Lenders will pull credit scores for both applicants and typically use the lower of the two middle scores to determine your rate and eligibility.",
+      },
+    ],
+    content: `
+<p>If you're planning to buy a home in North Dallas-Fort Worth in 2026, your credit score is one of the most critical factors in securing the best mortgage rates and terms. Whether you're eyeing a luxury property in Southlake, a new build in Celina, or a family home in Frisco, understanding how lenders view your credit can save you thousands of dollars over the life of your loan. In this comprehensive guide, we'll explore actionable credit score tips specifically tailored for North DFW homebuyers.</p>
+
+<h2>1. Understand the Credit Score Requirements for Different Loans</h2>
+
+<p>The credit score you need depends heavily on the type of mortgage you're applying for. Conventional loans generally require a minimum score of 620, though to get the most competitive interest rates, you'll want a score of 740 or higher. FHA loans can be secured with a score as low as 580 with a 3.5% down payment. VA loans typically require at least 620 from most lenders, while jumbo loans for high-value properties in areas like Westlake or Prosper generally require 700 or higher. Knowing where you stand helps you target the right <a href="/loans/">loan programs</a> and set realistic expectations for your homebuying journey.</p>
+
+<p>It's worth noting that lenders don't just look at your score in isolation — they evaluate your full credit profile, including payment history, length of credit history, and the types of credit you carry. A strong overall profile can sometimes compensate for a score that falls slightly below a lender's preferred threshold, so it pays to understand every dimension of your credit report before you apply.</p>
+
+<h2>2. Check Your Credit Reports for Errors</h2>
+
+<p>Before you even start looking at homes in <a href="/cities/">our local cities</a>, pull your credit reports from all three major bureaus: Equifax, Experian, and TransUnion. You are entitled to a free report from each bureau annually at AnnualCreditReport.com. Review these reports meticulously, looking for accounts that don't belong to you, incorrect late payments, and outdated negative information — most negative marks should fall off after seven years.</p>
+
+<p>If you spot an error, dispute it immediately with the credit bureau. Removing a single erroneous late payment can significantly boost your score. The dispute process can take 30 to 45 days, so it's important to start well before you plan to apply for a mortgage. Keep records of all correspondence and follow up if you don't receive a timely response.</p>
+
+<h2>3. Pay Down Credit Card Balances (Optimize Credit Utilization)</h2>
+
+<p>Your credit utilization ratio — the amount of credit you're using compared to your total available credit — accounts for about 30% of your FICO score. Lenders prefer to see this ratio below 30%, but keeping it under 10% is ideal for maximizing your score. If you have high balances, focus on paying them down before applying for a mortgage. A quick strategy is to pay down the cards that are closest to their limits first, which can result in a rapid score improvement, sometimes within a single billing cycle.</p>
+
+<p>Another effective tactic is to ask your credit card issuers for a credit limit increase without increasing your spending. This instantly lowers your utilization ratio. However, be aware that some issuers may perform a hard inquiry when processing this request, so ask whether it will be a soft or hard pull before proceeding.</p>
+
+<h2>4. Avoid Opening New Credit Accounts Before Closing</h2>
+
+<p>When you apply for new credit, it triggers a hard inquiry on your report, which can temporarily lower your score by a few points. More importantly, opening new accounts changes your average age of credit and increases your potential debt load — both factors that can raise red flags for mortgage underwriters. From the moment you decide to buy a home until the day you close, avoid opening new credit cards, financing a car, or taking out personal loans. Keep your financial profile as stable as possible.</p>
+
+<p>This rule also applies to co-signing for someone else's loan. Even if you don't make the payments yourself, the debt appears on your credit report and affects your debt-to-income ratio. Lenders in North DFW will scrutinize any new obligations that appear between your pre-approval and closing, so it's best to hold off on any major financial decisions until after you have the keys in hand.</p>
+
+<h2>5. Don't Close Old Credit Accounts</h2>
+
+<p>It might seem logical to close a credit card you no longer use, but doing so can actually hurt your score. Closing an account reduces your total available credit, which can inadvertently increase your credit utilization ratio. It also impacts the average age of your credit history, which makes up 15% of your FICO score. Instead of closing old accounts, keep them open and active by making a small purchase every few months and paying it off immediately. This keeps the account in good standing and preserves your credit history length.</p>
+
+<p>If you're concerned about annual fees on an old card, contact the issuer to see if you can downgrade to a no-fee version of the same card. This preserves the account history without the ongoing cost, giving you the best of both worlds as you prepare to purchase your North DFW home. Ready to take the next step? <a href="/">Contact us today</a> for a personalized mortgage consultation.</p>
+    `,
+    schema: {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      headline: "Credit Score Tips for Buying a Home in North DFW (2026 Guide)",
+      datePublished: "2026-05-08",
+      dateModified: "2026-05-08",
+      author: { "@type": "Person", name: "Tony Botchev", identifier: "NMLS #114198" },
+      publisher: {
+        "@type": "Organization",
+        name: "DFW Homes & Loans",
+        logo: { "@type": "ImageObject", url: "https://www.dfwhome.loans/logo.png" },
+      },
+      description:
+        "Discover the top credit score tips for North DFW homebuyers in 2026. Learn what scores you need for FHA, VA, conventional, and jumbo loans, and how to improve your credit fast.",
+      url: "https://www.dfwhome.loans/blog/credit-score-tips-dfw-homebuyers-2026",
+      mainEntityOfPage: "https://www.dfwhome.loans/blog/credit-score-tips-dfw-homebuyers-2026",
+      image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=1200&q=80",
+    },
+  },
+  {
     id: "jumbo-loans-north-dfw-2026",
     slug: "jumbo-loans-north-dfw-2026",
     title: "Jumbo Loans in North DFW: The 2026 Complete Guide",
