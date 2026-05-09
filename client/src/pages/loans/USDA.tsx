@@ -103,8 +103,8 @@ export default function USDAPage() {
             <Link href="/apply" className="bg-[#C4521A] text-white px-8 py-4 font-semibold hover:bg-[#A8431A] transition-colors">
               Check Your Eligibility →
             </Link>
-            <a href="tel:+19453708656" className="flex items-center gap-2 text-white/80 hover:text-white transition-colors">
-              <Phone size={18} /> (945) 370-8656
+            <a href="tel:+19452945020" className="flex items-center gap-2 text-white/80 hover:text-white transition-colors">
+              <Phone size={18} /> (945) 294-5020
             </a>
           </div>
         </div>

@@ -43,7 +43,7 @@ const schema = [
     description: "Home loans in Prosper TX. Conventional, jumbo, VA, FHA. Tony Botchev NMLS #114198.",
     url: "https://www.dfwhome.loans/cities/prosper",
     areaServed: { "@type": "City", name: "Prosper", containedInPlace: { "@type": "State", name: "Texas" } },
-    telephone: "+19453708656",
+    telephone: "+19452945020",
     "@id": "https://www.dfwhome.loans/cities/prosper",
   },
   {

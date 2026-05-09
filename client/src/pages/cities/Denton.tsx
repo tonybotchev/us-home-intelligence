@@ -39,7 +39,7 @@ const schema = [{
   description: "Home loans in Denton TX. Tony Botchev NMLS #114198.",
   url: "https://www.dfwhome.loans/cities/denton",
   areaServed: { "@type": "City", name: "Denton", containedInPlace: { "@type": "State", name: "Texas" } },
-  telephone: "+19453708656",
+  telephone: "+19452945020",
 }];
 export default function DentonPage() {
   useSEO({
