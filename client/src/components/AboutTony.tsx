@@ -195,7 +195,7 @@ export default function AboutTony() {
 
             <div className="flex flex-wrap gap-4">
               <button
-                onClick={() => document.querySelector("#prequal")?.scrollIntoView({ behavior: "smooth" })}
+                onClick={() => window.location.href = '/apply'}
                 className="btn-primary-kt text-sm px-8 py-3"
               >
                 <span className="flex items-center gap-2">

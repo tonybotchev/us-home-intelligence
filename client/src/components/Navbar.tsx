@@ -43,12 +43,7 @@ export default function Navbar() {
 
   const handleGetPreQualified = () => {
     setMenuOpen(false);
-    if (isHomepage) {
-      const el = document.querySelector("#prequal");
-      if (el) el.scrollIntoView({ behavior: "smooth" });
-    } else {
-      window.location.href = "/#prequal";
-    }
+    window.location.href = "/apply";
   };
 
   return (

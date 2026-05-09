@@ -162,16 +162,18 @@ export default function Footer() {
             </div>
 
             <div className="mt-6 space-y-3">
-              <Link href="/#book-call">
+              <Link href="/apply">
                 <span className="btn-primary-kt text-xs px-5 py-2.5 w-full inline-block text-center cursor-pointer">
-                  Book a Free Consultation →
+                  Get Pre-Qualified Free →
                 </span>
               </Link>
-              <Link href="/#prequal">
-                <span className="font-['Outfit'] text-xs text-center block transition-colors hover:text-[oklch(0.62_0.16_42)] cursor-pointer" style={{ color: "oklch(0.65 0.02 85)" }}>
-                  Or Get Pre-Qualified Free →
-                </span>
-              </Link>
+              <a
+                href="tel:+19452945020"
+                className="font-['Outfit'] text-xs text-center block transition-colors hover:text-[oklch(0.62_0.16_42)] cursor-pointer"
+                style={{ color: "oklch(0.65 0.02 85)" }}
+              >
+                Or Call NOVA: 945-294-5020 →
+              </a>
             </div>
           </div>
         </div>
@@ -182,35 +184,71 @@ export default function Footer() {
         <NMLSDisclosure variant="footer" dark={true} />
       </div>
 
-      {/* Bottom bar */}
+      {/* Bottom bar — W3: Trust signals */}
       <div
         className="border-t py-6"
         style={{ borderColor: "oklch(0.975 0.008 85 / 0.08)" }}
       >
-        <div className="container flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="font-['Outfit'] text-xs text-center md:text-left" style={{ color: "oklch(0.5 0.02 85)" }}>
-            © {new Date().getFullYear()} DFW Homes & Loans · Tony Botchev, NMLS #114198 | Sponsored by Loan Factory, Inc. NMLS #320841 · Texas DSML Licensed · Equal Housing Lender · All loans subject to credit approval.
-          </p>
-          <div className="flex items-center gap-6">
-            <Link href="/privacy">
-              <span className="font-['Outfit'] text-xs hover:text-[oklch(0.62_0.16_42)] transition-colors cursor-pointer" style={{ color: "oklch(0.5 0.02 85)" }}>
-                Privacy Policy
-              </span>
-            </Link>
-            <Link href="/terms">
-              <span className="font-['Outfit'] text-xs hover:text-[oklch(0.62_0.16_42)] transition-colors cursor-pointer" style={{ color: "oklch(0.5 0.02 85)" }}>
-                Terms of Service
-              </span>
-            </Link>
+        <div className="container flex flex-col gap-4">
+          {/* Trust badge row */}
+          <div className="flex flex-wrap items-center justify-center md:justify-start gap-5">
+            {/* NMLS Consumer Access verified badge */}
             <a
-              href="https://www.nmlsconsumeraccess.org"
+              href="https://www.nmlsconsumeraccess.org/EntityDetails.aspx/INDIVIDUAL/114198"
               target="_blank"
               rel="noopener noreferrer"
-              className="font-['Outfit'] text-xs hover:text-[oklch(0.62_0.16_42)] transition-colors"
-              style={{ color: "oklch(0.5 0.02 85)" }}
+              className="flex items-center gap-2 px-3 py-1.5 border border-white/15 hover:border-[oklch(0.62_0.16_42)] transition-colors group"
+              title="Verify NMLS License #114198"
             >
-              NMLS Consumer Access
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 2L3 7v5c0 5.25 3.75 10.15 9 11.25C17.25 22.15 21 17.25 21 12V7L12 2z" fill="oklch(0.62 0.16 42)" />
+                <path d="M9 12l2 2 4-4" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+              <span className="font-['Outfit'] text-xs group-hover:text-[oklch(0.62_0.16_42)] transition-colors" style={{ color: "oklch(0.65 0.02 85)" }}>
+                NMLS #114198 — Verified
+              </span>
             </a>
+            {/* Equal Housing Lender icon */}
+            <div className="flex items-center gap-2" title="Equal Housing Lender">
+              <svg viewBox="0 0 40 40" width="22" height="22" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Equal Housing Lender">
+                <path d="M20 4L4 16h4v20h24V16h4L20 4z" fill="oklch(0.65 0.02 85)"/>
+                <rect x="14" y="22" width="5" height="14" fill="oklch(0.15 0.04 155)"/>
+                <rect x="21" y="22" width="5" height="14" fill="oklch(0.15 0.04 155)"/>
+                <rect x="12" y="18" width="16" height="3" fill="oklch(0.15 0.04 155)"/>
+              </svg>
+              <span className="font-['Outfit'] text-xs" style={{ color: "oklch(0.65 0.02 85)" }}>Equal Housing Lender</span>
+            </div>
+            {/* Loan Factory badge */}
+            <span className="font-['Outfit'] text-xs" style={{ color: "oklch(0.5 0.02 85)" }}>
+              Sponsored by Loan Factory, Inc. NMLS #320841
+            </span>
+          </div>
+          {/* Copyright + links row */}
+          <div className="flex flex-col md:flex-row items-center justify-between gap-3">
+            <p className="font-['Outfit'] text-xs text-center md:text-left" style={{ color: "oklch(0.5 0.02 85)" }}>
+              © {new Date().getFullYear()} DFW Homes &amp; Loans — Tony Botchev, NMLS #114198 — Sponsored by Loan Factory Inc NMLS #320841 · Texas DSML Licensed · All loans subject to credit approval.
+            </p>
+            <div className="flex items-center gap-6">
+              <Link href="/privacy">
+                <span className="font-['Outfit'] text-xs hover:text-[oklch(0.62_0.16_42)] transition-colors cursor-pointer" style={{ color: "oklch(0.5 0.02 85)" }}>
+                  Privacy Policy
+                </span>
+              </Link>
+              <Link href="/terms">
+                <span className="font-['Outfit'] text-xs hover:text-[oklch(0.62_0.16_42)] transition-colors cursor-pointer" style={{ color: "oklch(0.5 0.02 85)" }}>
+                  Terms of Service
+                </span>
+              </Link>
+              <a
+                href="https://www.nmlsconsumeraccess.org/EntityDetails.aspx/INDIVIDUAL/114198"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-['Outfit'] text-xs hover:text-[oklch(0.62_0.16_42)] transition-colors"
+                style={{ color: "oklch(0.5 0.02 85)" }}
+              >
+                NMLS Consumer Access →
+              </a>
+            </div>
           </div>
         </div>
       </div>

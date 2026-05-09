@@ -118,7 +118,7 @@ export default function CitiesPage() {
           <p className="text-white/70 text-lg max-w-2xl mx-auto mb-8">
             Tony Botchev (NMLS #114198) provides home loans across 15 cities in North DFW — Collin County, Denton County, and beyond. Pre-approval in 24 hours, no hard credit pull to start.
           </p>
-          <Link href="/#prequal">
+          <Link href="/apply">
             <span className="inline-block bg-[#C4521A] text-white px-8 py-4 font-semibold text-lg hover:bg-[#A8431A] transition-colors cursor-pointer">
               Get Pre-Qualified Free →
             </span>
@@ -185,7 +185,7 @@ export default function CitiesPage() {
           <p className="text-white/70 mb-6">
             No hard credit pull to start. Pre-approval in 24 hours. Tony Botchev knows North DFW.
           </p>
-          <Link href="/#prequal">
+          <Link href="/apply">
             <span className="inline-block bg-[#C4521A] text-white px-10 py-4 font-semibold text-lg hover:bg-[#A8431A] transition-colors cursor-pointer">
               Get Pre-Qualified Free →
             </span>

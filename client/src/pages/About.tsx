@@ -13,19 +13,26 @@ const schema = [
   {
     "@context": "https://schema.org",
     "@type": "Person",
+    "@id": "https://www.dfwhome.loans/#tony",
     name: "Tony Botchev",
-    jobTitle: "Mortgage Loan Originator",
-    description: "Tony Botchev (NMLS #114198) is a Texas-licensed mortgage loan originator serving North DFW since 2006. Specializing in conventional, FHA, VA, jumbo, and DSCR loans.",
+    alternateName: "Tony Botchev",
+    jobTitle: "Licensed Mortgage Loan Originator",
+    description: "Tony Botchev (NMLS #114198) is a Texas-licensed mortgage loan originator serving North DFW since 2006. Specializing in conventional, FHA, VA, jumbo, and DSCR loans. Sponsored by Loan Factory, Inc. NMLS #320841.",
     url: "https://www.dfwhome.loans/about",
-    telephone: "+19453708656",
+    telephone: "+19452945020",
     email: "tony@dfwhome.loans",
-    areaServed: ["Celina TX", "Prosper TX", "Frisco TX", "McKinney TX", "Anna TX", "Melissa TX"],
-    knowsAbout: ["Conventional Loans", "FHA Loans", "VA Loans", "Jumbo Loans", "DSCR Loans", "First-Time Homebuyer Programs"],
+    identifier: { "@type": "PropertyValue", name: "NMLS", value: "114198" },
+    areaServed: ["Celina TX", "Prosper TX", "Frisco TX", "McKinney TX", "Anna TX", "Melissa TX", "Aubrey TX", "Gunter TX", "Little Elm TX", "Plano TX", "Allen TX", "Denton TX"],
+    knowsAbout: ["Conventional Loans", "FHA Loans", "VA Loans", "Jumbo Loans", "DSCR Loans", "USDA Loans", "First-Time Homebuyer Programs", "Down Payment Assistance"],
+    sameAs: [
+      "https://www.nmlsconsumeraccess.org/EntityDetails.aspx/INDIVIDUAL/114198",
+      "https://twitter.com/tonybotchev",
+    ],
     worksFor: {
       "@type": "Organization",
       name: "Loan Factory, Inc.",
       legalName: "Loan Factory, Inc.",
-      "@id": "https://www.loanfactory.com",
+      identifier: { "@type": "PropertyValue", name: "NMLS", value: "320841" },
     },
   },
 ];
@@ -76,7 +83,7 @@ export default function AboutPage() {
               Tony Botchev has helped over 500 North DFW families navigate the mortgage process — from first-time buyers in Anna to luxury buyers in Prosper. He specializes in the communities where he works: Celina, Prosper, Frisco, McKinney, and the surrounding North DFW corridor.
             </p>
             <div className="flex flex-col sm:flex-row gap-3">
-              <Link href="/#prequal" className="bg-[#C4521A] text-white px-6 py-3 font-semibold hover:bg-[#A8431A] transition-colors text-center">
+              <Link href="/apply" className="bg-[#C4521A] text-white px-6 py-3 font-semibold hover:bg-[#A8431A] transition-colors text-center">
                 Get Pre-Qualified Free →
               </Link>
               <a href="tel:+19453708656" className="flex items-center justify-center gap-2 border border-white/30 text-white px-6 py-3 font-semibold hover:bg-white/10 transition-colors">
@@ -169,7 +176,7 @@ export default function AboutPage() {
         <div className="max-w-3xl mx-auto px-4 md:px-6 text-center">
           <h2 className="font-bebas text-4xl text-white mb-3">READY TO GET STARTED?</h2>
           <p className="text-white/70 mb-6">No hard credit pull to start. Pre-approval in 24 hours. Tony answers the phone.</p>
-          <Link href="/#prequal" className="inline-block bg-[#C4521A] text-white px-10 py-4 font-semibold text-lg hover:bg-[#A8431A] transition-colors">
+          <Link href="/apply" className="inline-block bg-[#C4521A] text-white px-10 py-4 font-semibold text-lg hover:bg-[#A8431A] transition-colors">
             Get Pre-Qualified Free →
           </Link>
           <p className="text-white/40 text-xs mt-4">Tony Botchev · NMLS #114198 · Loan Factory, Inc. NMLS #320841 · Equal Housing Lender</p>

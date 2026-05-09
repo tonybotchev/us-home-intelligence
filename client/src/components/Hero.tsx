@@ -32,7 +32,7 @@ export default function Hero() {
   }, []);
 
   const scrollToContact = () => {
-    document.querySelector("#prequal")?.scrollIntoView({ behavior: "smooth" });
+    window.location.href = '/apply';
   };
 
   const scrollToBooking = () => {
@@ -155,11 +155,11 @@ export default function Hero() {
               transition: "opacity 0.6s ease 0.9s, transform 0.6s ease 0.9s",
             }}
           >
-            <button onClick={scrollToBooking} className="btn-primary-kt text-base px-8 py-4">
+            <a href="/apply" className="btn-primary-kt text-base px-8 py-4">
               <span className="flex items-center gap-2">
-                Book a Free Consultation <ArrowRight size={16} />
+                Get Pre-Qualified Free <ArrowRight size={16} />
               </span>
-            </button>
+            </a>
             <a
               href="tel:+19453708656"
               className="btn-outline-kt text-base px-8 py-4"
@@ -178,8 +178,8 @@ export default function Hero() {
             }}
           >
             {[
-              { icon: <Shield size={14} />, text: "Licensed in Texas" },
-              { icon: <Zap size={14} />, text: "Under 1hr Response" },
+              { icon: <Shield size={14} />, text: "Texas Licensed Mortgage Advisor" },
+              { icon: <Zap size={14} />, text: "NMLS #114198" },
               { icon: <Clock size={14} />, text: "24h Pre-Approval" },
             ].map((badge) => (
               <div

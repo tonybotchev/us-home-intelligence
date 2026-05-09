@@ -39,7 +39,7 @@ export default function JumboPage() {
       name: "Jumbo Home Loans — DFW Homes & Loans",
       description: "Jumbo mortgage loans up to $3M+ in North DFW. Tony Botchev, NMLS #114198.",
       url: "https://www.dfwhome.loans/loans/jumbo",
-      provider: { "@type": "FinancialService", name: "DFW Homes & Loans", telephone: "+19453708656" },
+      provider: { "@type": "FinancialService", "@id": "https://www.dfwhome.loans/#business", name: "DFW Homes & Loans", telephone: "+19452945020", areaServed: "North Dallas-Fort Worth, Texas" }, broker: { "@type": "Person", "@id": "https://www.dfwhome.loans/#tony", name: "Tony Botchev", identifier: { "@type": "PropertyValue", name: "NMLS", value: "114198" } },
     },
     {
       "@context": "https://schema.org",
@@ -78,7 +78,7 @@ export default function JumboPage() {
               Loan amounts up to $3M+. Competitive rates. No compromises on the home you want.
             </p>
             <div className="flex flex-col sm:flex-row gap-3">
-              <Link href="/#prequal" className="bg-[#C4521A] text-white px-6 py-3 font-semibold hover:bg-[#A8431A] transition-colors text-center">
+              <Link href="/apply" className="bg-[#C4521A] text-white px-6 py-3 font-semibold hover:bg-[#A8431A] transition-colors text-center">
                 Get Pre-Qualified Free →
               </Link>
               <a href="tel:+19453708656" className="flex items-center justify-center gap-2 border border-white/30 text-white px-6 py-3 font-semibold hover:bg-white/10 transition-colors">
@@ -133,7 +133,7 @@ export default function JumboPage() {
         <div className="max-w-3xl mx-auto px-4 md:px-6 text-center">
           <h2 className="font-bebas text-4xl text-white mb-3">FINANCE YOUR LUXURY HOME</h2>
           <p className="text-white/70 mb-6">No hard credit pull to start. Pre-approval in 24 hours.</p>
-          <Link href="/#prequal" className="inline-block bg-[#C4521A] text-white px-10 py-4 font-semibold text-lg hover:bg-[#A8431A] transition-colors">
+          <Link href="/apply" className="inline-block bg-[#C4521A] text-white px-10 py-4 font-semibold text-lg hover:bg-[#A8431A] transition-colors">
             Get Pre-Qualified Free →
           </Link>
           <p className="text-white/40 text-xs mt-4">Tony Botchev · NMLS #114198 · Loan Factory, Inc. NMLS #320841 · Equal Housing Lender</p>

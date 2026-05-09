@@ -17,6 +17,7 @@ const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy"));
 const Terms = lazy(() => import("./pages/Terms"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 const ThankYou = lazy(() => import("./pages/ThankYou"));
+const Apply = lazy(() => import("./pages/Apply"));
 
 // Loan pages
 const FHA = lazy(() => import("./pages/loans/FHA"));
@@ -58,6 +59,7 @@ function Router() {
         <Route path="/privacy" component={PrivacyPolicy} />
         <Route path="/terms" component={Terms} />
         <Route path="/thank-you" component={ThankYou} />
+        <Route path="/apply" component={Apply} />
 
         {/* Loan pages */}
         <Route path="/loans/fha" component={FHA} />

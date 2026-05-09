@@ -123,7 +123,7 @@ export default function PreApproval() {
             </div>
 
             <button
-              onClick={() => document.querySelector("#prequal")?.scrollIntoView({ behavior: "smooth" })}
+              onClick={() => window.location.href = '/apply'}
               className="btn-primary-kt text-sm px-8 py-3 mt-8"
             >
               <span className="flex items-center gap-2">

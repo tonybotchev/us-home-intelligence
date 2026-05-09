@@ -167,7 +167,7 @@ export default function Process() {
         {/* CTA */}
         <div className="mt-16 text-center">
           <button
-            onClick={() => document.querySelector("#prequal")?.scrollIntoView({ behavior: "smooth" })}
+            onClick={() => window.location.href = '/apply'}
             className="btn-primary-kt text-base px-10 py-4"
           >
             <span className="flex items-center gap-2">

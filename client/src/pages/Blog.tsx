@@ -250,7 +250,7 @@ export default function Blog() {
             >
               Stop reading about mortgages and start getting one. Takes 5 minutes.
             </p>
-            <Link href="/#prequal">
+            <Link href="/apply">
               <button
                 className="font-['Outfit'] font-bold text-sm tracking-widest uppercase px-8 py-4 transition-all hover:opacity-90"
                 style={{

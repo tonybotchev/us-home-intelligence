@@ -122,7 +122,7 @@ export default function AEOContent() {
                 {item.answer}
               </p>
               <button
-                onClick={() => document.querySelector("#prequal")?.scrollIntoView({ behavior: "smooth" })}
+                onClick={() => window.location.href = '/apply'}
                 className="flex items-center gap-1 font-['Outfit'] text-xs font-600 uppercase tracking-wider group"
                 style={{ color: "oklch(0.62 0.16 42)" }}
               >
