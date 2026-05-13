@@ -39,7 +39,7 @@ const schema = [{
   description: "Home loans in Wylie TX. Tony Botchev NMLS #114198.",
   url: "https://www.dfwhome.loans/cities/wylie",
   areaServed: { "@type": "City", name: "Wylie", containedInPlace: { "@type": "State", name: "Texas" } },
-  telephone: "+19453708656",
+  telephone: "+19452945020",
 }];
 export default function WyliePage() {
   useSEO({

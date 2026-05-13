@@ -17,6 +17,32 @@ export default function BlogPost() {
   const post = blogPosts.find((p) => p.slug === slug);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
+  // Build enhanced Article schema (W4)
+  const articleSchema = post
+    ? {
+        ...post.schema,
+        "@type": "BlogPosting",
+        author: {
+          "@type": "Person",
+          "@id": "https://www.dfwhome.loans/#tony",
+          name: "Tony Botchev",
+          identifier: { "@type": "PropertyValue", name: "NMLS", value: "114198" },
+          sameAs: "https://www.nmlsconsumeraccess.org/EntityDetails.aspx/INDIVIDUAL/114198",
+        },
+        publisher: {
+          "@type": "Organization",
+          "@id": "https://www.dfwhome.loans/#business",
+          name: "DFW Homes & Loans",
+          logo: { "@type": "ImageObject", url: "https://www.dfwhome.loans/logo.png" },
+        },
+        image: post.image,
+        datePublished: post.schema.datePublished,
+        dateModified: post.schema.dateModified || post.schema.datePublished,
+        headline: post.title,
+        mainEntityOfPage: `https://www.dfwhome.loans/blog/${post.slug}`,
+      }
+    : undefined;
+
   // Build FAQ schema
   const faqSchema = post?.faq?.length
     ? {
@@ -32,8 +58,8 @@ export default function BlogPost() {
 
   const combinedSchema = post
     ? faqSchema
-      ? [post.schema, faqSchema]
-      : [post.schema]
+      ? [articleSchema, faqSchema]
+      : [articleSchema]
     : undefined;
 
   useSEO({
@@ -140,6 +166,22 @@ export default function BlogPost() {
           dangerouslySetInnerHTML={{ __html: post.content }}
         />
 
+        {/* Inline mid-article CTA — W2 */}
+        <div className="my-10 p-6 bg-[#1B2B1A] flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div>
+            <p className="font-bebas text-xl text-white">Ready to See What You Qualify For?</p>
+            <p className="font-['Outfit'] text-sm text-white/70">No hard credit pull. Under 3 minutes.</p>
+          </div>
+          <div className="flex flex-col sm:flex-row gap-3 shrink-0">
+            <a href="/apply" className="bg-[#C4521A] text-white px-6 py-2.5 font-semibold font-['Outfit'] text-sm hover:bg-[#A8431A] transition-colors text-center whitespace-nowrap">
+              Get Pre-Qualified Free →
+            </a>
+            <a href="tel:+19452945020" className="border border-white/30 text-white px-6 py-2.5 font-semibold font-['Outfit'] text-sm hover:bg-white/10 transition-colors text-center whitespace-nowrap">
+              Call NOVA: 945-294-5020
+            </a>
+          </div>
+        </div>
+
         {/* Compliance footer */}
         <div className="mt-12 p-4 bg-[#1B2B1A]/5 border border-[#1B2B1A]/10 text-xs text-[#6B7280] leading-relaxed">
           <strong>Disclosure:</strong> Tony Botchev, NMLS #114198, is a licensed mortgage loan
@@ -187,16 +229,16 @@ export default function BlogPost() {
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <Link
-              href="/#prequal"
+              href="/apply"
               className="bg-[#C4521A] text-white px-8 py-3 font-semibold hover:bg-[#A8431A] transition-colors"
             >
               Get Pre-Qualified Free →
             </Link>
             <a
-              href="tel:+19453708656"
+              href="tel:+19452945020"
               className="border border-white/30 text-white px-8 py-3 font-semibold hover:bg-white/10 transition-colors"
             >
-              Call (945) 370-8656
+              Call NOVA: 945-294-5020
             </a>
           </div>
           <p className="text-white/40 text-xs mt-4">

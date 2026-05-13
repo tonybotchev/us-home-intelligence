@@ -103,7 +103,7 @@ export default function CelinaPage() {
             </p>
             <div className="flex flex-col sm:flex-row gap-3">
               <Link
-                href="/#prequal"
+                href="/apply"
                 className="bg-[#C4521A] text-white px-6 py-3 font-semibold hover:bg-[#A8431A] transition-colors text-center"
               >
                 Get Pre-Qualified Free →
@@ -317,7 +317,7 @@ export default function CelinaPage() {
             Tony Botchev knows Celina — and he'll get you to the closing table.
           </p>
           <Link
-            href="/#prequal"
+            href="/apply"
             className="inline-block bg-[#C4521A] text-white px-10 py-4 font-semibold text-lg hover:bg-[#A8431A] transition-colors"
           >
             Get Pre-Qualified Free →

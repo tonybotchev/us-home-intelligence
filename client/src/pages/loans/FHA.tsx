@@ -43,17 +43,25 @@ export default function FHAPage() {
   const schema = [
     {
       "@context": "https://schema.org",
-      "@type": "FinancialProduct",
+      "@type": ["FinancialProduct", "Service"],
       "@id": "https://www.dfwhome.loans/loans/fha#product",
       name: "FHA Home Loan — DFW Homes & Loans",
       description:
         "FHA mortgage loans for home buyers in North DFW. 3.5% down, 580+ credit score. Tony Botchev, NMLS #114198, sponsored by Loan Factory, Inc. NMLS #320841.",
       url: "https://www.dfwhome.loans/loans/fha",
+      areaServed: "North Dallas-Fort Worth, Texas",
       provider: {
         "@type": "FinancialService",
+        "@id": "https://www.dfwhome.loans/#business",
         name: "DFW Homes & Loans",
-        telephone: "+19453708656",
+        telephone: "+19452945020",
         areaServed: "North Dallas-Fort Worth, Texas",
+      },
+      broker: {
+        "@type": "Person",
+        "@id": "https://www.dfwhome.loans/#tony",
+        name: "Tony Botchev",
+        identifier: { "@type": "PropertyValue", name: "NMLS", value: "114198" },
       },
     },
     {
@@ -97,16 +105,16 @@ export default function FHAPage() {
             </p>
             <div className="flex flex-col sm:flex-row gap-3">
               <Link
-                href="/#prequal"
+                href="/apply"
                 className="bg-[#C4521A] text-white px-6 py-3 font-semibold hover:bg-[#A8431A] transition-colors text-center"
               >
                 Get Pre-Qualified Free →
               </Link>
               <a
-                href="tel:+19453708656"
+                href="tel:+19452945020"
                 className="flex items-center justify-center gap-2 border border-white/30 text-white px-6 py-3 font-semibold hover:bg-white/10 transition-colors"
               >
-                <Phone size={16} /> (945) 370-8656
+                <Phone size={16} /> (945) 294-5020
               </a>
             </div>
           </div>
@@ -183,7 +191,7 @@ export default function FHAPage() {
         <div className="mt-6 p-4 bg-[#1B2B1A]/5 border border-[#1B2B1A]/10 text-sm text-[#4A5568]">
           Not sure which is right for you? Tony Botchev will run both scenarios with real numbers
           in your free pre-approval consultation — no obligation, no hard credit pull.{" "}
-          <Link href="/#prequal" className="text-[#C4521A] font-semibold">
+          <Link href="/apply" className="text-[#C4521A] font-semibold">
             Schedule a call →
           </Link>
         </div>
@@ -272,7 +280,7 @@ export default function FHAPage() {
             No hard credit pull to start. Pre-approval in as little as 24 hours.
           </p>
           <Link
-            href="/#prequal"
+            href="/apply"
             className="inline-block bg-[#C4521A] text-white px-10 py-4 font-semibold text-lg hover:bg-[#A8431A] transition-colors"
           >
             Get Pre-Qualified Free →

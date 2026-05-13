@@ -160,7 +160,7 @@ export default function Calculator() {
             </div>
 
             <button
-              onClick={() => document.querySelector("#prequal")?.scrollIntoView({ behavior: "smooth" })}
+              onClick={() => window.location.href = '/apply'}
               className="btn-primary-kt w-full text-base py-4 mt-4"
             >
               <span className="flex items-center justify-center gap-2">

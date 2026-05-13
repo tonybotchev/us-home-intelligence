@@ -40,7 +40,7 @@ const schema = [{
   description: "Home loans in Gunter TX. Tony Botchev NMLS #114198.",
   url: "https://www.dfwhome.loans/cities/gunter",
   areaServed: { "@type": "City", name: "Gunter", containedInPlace: { "@type": "State", name: "Texas" } },
-  telephone: "+19453708656",
+  telephone: "+19452945020",
 }];
 
 export default function GunterPage() {

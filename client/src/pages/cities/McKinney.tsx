@@ -1,55 +1,130 @@
+/**
+ * DESIGN SYSTEM: Kinetic Texas
+ * City Page: McKinney TX — Local SEO page
+ */
 import CityPageTemplate, { CityPageData } from "@/components/CityPageTemplate";
 import { useSEO } from "@/hooks/useSEO";
 
 const data: CityPageData = {
-  city: "McKinney", state: "TX", county: "Collin", slug: "mckinney",
-  tagline: "Collin County's largest city — historic downtown, top schools, and strong home values.",
-  intro: "McKinney TX is one of the fastest-growing cities in the US, with a charming historic downtown, excellent Collin County schools, and a diverse housing market ranging from starter homes to luxury estates.",
+  city: "McKinney",
+  state: "TX",
+  county: "Collin County",
+  slug: "mckinney-tx",
+  tagline: "Discover your dream home in McKinney, where historic charm meets modern amenities and a thriving community awaits.",
+  intro:
+    "McKinney, located in Collin County, offers homebuyers a unique blend of historic elegance and contemporary living. With its top-rated schools, vibrant downtown, and family-friendly atmosphere, it's an ideal place to settle down. Explore diverse housing options from charming historic homes to master-planned communities like Craig Ranch and Adriatica Village.",
   highlights: [
-    { label: "County", value: "Collin" },
-    { label: "Median Home Price", value: "~$480,000" },
-    { label: "School District", value: "McKinney ISD, Frisco ISD (parts)" },
+    { label: "County", value: "Collin County" },
+    { label: "Median Home Price 2026", value: "~$470,000" },
+    { label: "School District", value: "McKinney ISD" },
     { label: "Conforming Loan Limit", value: "$766,550" },
-    { label: "Notable Areas", value: "Craig Ranch, Stonebridge Ranch, Adriatica" },
-    { label: "New Construction", value: "Yes — active communities" },
+    { label: "Highway Access", value: "US-75/SH-121" },
+    { label: "Notable landmark/feature", value: "Historic Downtown McKinney, Craig Ranch, Adriatica Village" },
   ],
   loanTypes: [
-    { name: "Conventional", desc: "Most common loan type for McKinney buyers.", href: "/loans/conventional" },
-    { name: "FHA Loans", desc: "3.5% down for McKinney buyers with 580+ credit.", href: "/loans/fha" },
-    { name: "VA Loans", desc: "0% down for veterans buying in McKinney.", href: "/loans/va" },
-    { name: "Jumbo", desc: "Loans above $766,550 for McKinney luxury homes.", href: "/loans/jumbo" },
-    { name: "First-Time Buyer", desc: "Down payment assistance for McKinney first-time buyers.", href: "/loans/first-time-buyer" },
-    { name: "DSCR Investor", desc: "Investment loans in McKinney — no tax returns.", href: "/loans/dscr" },
+    {
+      name: "Conventional Loans",
+      desc: "Flexible financing for well-qualified buyers in McKinney, often with competitive rates and terms for primary residences or investment properties.",
+      href: "/apply",
+    },
+    {
+      name: "FHA Loans",
+      desc: "Ideal for first-time homebuyers in McKinney with lower down payment requirements and more lenient credit guidelines, making homeownership accessible.",
+      href: "/apply",
+    },
+    {
+      name: "VA Loans",
+      desc: "Exclusive benefits for eligible veterans and active-duty service members in McKinney, featuring no down payment and no private mortgage insurance.",
+      href: "/apply",
+    },
+    {
+      name: "Jumbo Loans",
+      desc: "For those looking at higher-priced homes in McKinney's luxury market, exceeding conforming loan limits, offering financing for substantial properties.",
+      href: "/apply",
+    },
+    {
+      name: "First-Time Buyer Programs",
+      desc: "Explore various state and local programs available in Collin County that can assist McKinney first-time buyers with down payments and closing costs.",
+      href: "/apply",
+    },
+    {
+      name: "Refinance Options",
+      desc: "Optimize your current mortgage in McKinney to potentially lower your interest rate, reduce monthly payments, or access home equity for other financial goals.",
+      href: "/apply",
+    },
   ],
   faqs: [
-    { q: "What is the average home price in McKinney TX?", a: "As of 2026, the median home price in McKinney TX is approximately $480,000. Prices range from $280,000 for starter homes to $1.5M+ in communities like Stonebridge Ranch." },
-    { q: "Is McKinney a good place to invest in real estate?", a: "McKinney has consistently been one of the top cities in the US for population growth and job creation. Strong rental demand and rising home values make it a solid market for investors." },
-    { q: "What are the best neighborhoods in McKinney TX?", a: "Top neighborhoods include Stonebridge Ranch (master-planned, golf course), Craig Ranch (resort-style amenities), Adriatica (European-inspired), and the historic downtown area for walkability." },
+    {
+      q: "What is the average home price in McKinney, TX?",
+      a: "The median home price in McKinney, TX, is approximately $470,000 as of 2026. This can vary based on neighborhood, home size, and specific features.",
+    },
+    {
+      q: "How are the school districts in McKinney, TX?",
+      a: "McKinney is served by McKinney ISD, which is recognized for its strong academic programs and diverse extracurricular activities, making it a desirable district for families.",
+    },
+    {
+      q: "Is the housing market competitive in McKinney, TX?",
+      a: "McKinney's housing market is considered competitive due to its growth, amenities, and quality of life. Properties often receive multiple offers, especially in popular areas.",
+    },
+    {
+      q: "Are there first-time home buyer programs available in Collin County for McKinney residents?",
+      a: "Yes, first-time home buyer programs are often available through state and local initiatives in Collin County, which can provide assistance with down payments and closing costs for eligible McKinney residents. Contact us to learn more about current options.",
+    },
   ],
   nearbyLinks: [
+    { city: "Allen", href: "/cities/allen" },
+    { city: "Frisco", href: "/cities/frisco" },
     { city: "Celina", href: "/cities/celina" },
     { city: "Prosper", href: "/cities/prosper" },
-    { city: "Frisco", href: "/cities/frisco" },
-    { city: "Anna", href: "/cities/anna" },
-    { city: "Melissa", href: "/cities/melissa" },
   ],
 };
 
-const schema = [{
-  "@context": "https://schema.org", "@type": "FinancialService",
-  name: "DFW Homes & Loans — McKinney TX",
-  description: "Home loans in McKinney TX. Tony Botchev NMLS #114198.",
-  url: "https://www.dfwhome.loans/cities/mckinney",
-  areaServed: { "@type": "City", name: "McKinney", containedInPlace: { "@type": "State", name: "Texas" } },
-  telephone: "+19453708656",
-}];
+const schema = [
+  {
+    "@context": "https://schema.org",
+    "@type": "FinancialService",
+    "@id": "https://www.dfwhome.loans/#business",
+    name: "DFW Homes & Loans - McKinney",
+    description:
+      "Mortgage services in McKinney, TX. Tony Botchev, NMLS #114198, sponsored by Loan Factory Inc NMLS #320841.",
+    telephone: "+19452945020",
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "McKinney",
+      addressRegion: "TX",
+      addressCountry: "US",
+    },
+    url: "https://www.dfwhome.loans/cities/mckinney-tx",
+  },
+  {
+    "@context": "https://schema.org",
+    broker: {
+    "@type": "Person",
+    "@id": "https://www.dfwhome.loans/#tony",
+    name: "Tony Botchev",
+    identifier: { "@type": "PropertyValue", name: "NMLS", value: "114198" },
+  },
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: data.faqs.map((faq) => ({
+      "@type": "Question",
+      name: faq.q,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: faq.a,
+      },
+    })),
+  },
+];
 
 export default function McKinneyPage() {
   useSEO({
-    title: "Home Loans in McKinney, TX | Financing Your New Home",
-    description: "Explore your options for home loans in McKinney. DFW Homes & Loans provides easy mortgage tools and local advice to help you join this historic Texas community.",
-    canonical: "https://www.dfwhome.loans/cities/mckinney",
-    schema: schema as Record<string, unknown>[],
+    title: `McKinney TX Home Loans & Mortgages - DFW Homes & Loans`,
+    description: data.tagline,
+    canonical: `https://www.dfwhome.loans/cities/${data.slug}`,
+    schema: JSON.stringify(schema),
   });
   return <CityPageTemplate data={data} />;
 }
