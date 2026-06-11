@@ -25,9 +25,14 @@ export function BuyForm({referralSlug, realtorName, realtorBrokerage, realtorHea
   const set = (k: string) => (e: React.ChangeEvent<HTMLInputElement|HTMLSelectElement|HTMLTextAreaElement>) =>
     setForm(f => ({...f, [k]: e.target.value}));
 
-  const isAddressSpecific = form.address.trim().length > 5;
+  // Switch to address-specific tier as soon as the Street Address field has ANY non-whitespace content
+  const isAddressSpecific = form.address.trim().length > 0;
   const price = isAddressSpecific ? 147 : 97;
   const tier = isAddressSpecific ? "address-specific" : "zip-level";
+  const tierLabel = isAddressSpecific ? "Address-Specific Report" : "Zip-Level Report";
+  const tierDescription = isAddressSpecific
+    ? "Full 11-chapter deep-dive with property-specific data, parcel-level AVM, comparable sales, FEMA flood zone, school attendance zone"
+    : "Zip code market overview";
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -158,11 +163,12 @@ export function BuyForm({referralSlug, realtorName, realtorBrokerage, realtorHea
                 </div>
               </div>
 
+              {/* Price card — updates dynamically based on Street Address field */}
               <div className="bg-[#12121a] border border-[#1a56db]/30 rounded-2xl p-6">
                 <div className="flex items-center justify-between">
                   <div>
-                    <div className="text-[#f0f0f5] font-semibold">{tier === "address-specific" ? "Address-Specific Report" : "Zip-Level Report"}</div>
-                    <div className="text-[#6b7280] text-sm">{isAddressSpecific ? "Full 11-chapter deep-dive with parcel data" : "Zip code market overview"}</div>
+                    <div className="text-[#f0f0f5] font-semibold">{tierLabel}</div>
+                    <div className="text-[#6b7280] text-sm">{tierDescription}</div>
                   </div>
                   <div className="text-3xl font-bold text-[#f0f0f5]">${price}</div>
                 </div>
