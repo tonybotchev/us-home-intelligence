@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-
-const GHL_WEBHOOK = "https://services.leadconnectorhq.com/hooks/tRk2nBMoIkO6EhFzr7jp/webhook-trigger/realtor-partner";
+import { fireWF1RealtorSignup } from "@/lib/ghl-webhooks";
 
 function slugify(str: string): string {
   return str.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
@@ -45,29 +44,27 @@ export async function POST(req: NextRequest) {
       ? await verifyTREC(licenseNumber)
       : "pending";
 
-    const tags = [
-      "realtor-partner-free",
-      verificationStatus === "verified" ? "realtor-verified" : "realtor-pending-verification",
-    ];
-
-    // POST to GHL NFM webhook
-    fetch(GHL_WEBHOOK, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        firstName, lastName, email, phone, brokerage, title,
-        licenseNumber, licenseType, tagline, accentColor, slug,
-        verificationStatus, tags,
-        shareLink: `https://intel.nofluffmarketing.io/r/${slug}`,
-        source: "intel.nofluffmarketing.io/realtor",
-      }),
-    }).catch(() => {});
+    // WF1: POST to GHL NFM Realtor Partner Signup workflow (fire-and-forget)
+    fireWF1RealtorSignup({
+      first_name: firstName,
+      last_name: lastName,
+      email,
+      phone: phone || "",
+      brokerage: brokerage || "",
+      license_id: licenseNumber,
+      license_type: licenseType || "",
+      custom_slug: slug,
+    });
 
     return NextResponse.json({
       ok: true,
       slug,
       shareLink: `https://intel.nofluffmarketing.io/r/${slug}`,
       verificationStatus,
+      // Surface extra fields for dashboard / confirmation page
+      title: title || "",
+      tagline: tagline || "",
+      accentColor: accentColor || "",
     });
   } catch {
     return NextResponse.json({ error: "Internal server error" }, { status: 500 });

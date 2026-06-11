@@ -1,10 +1,14 @@
 import { NextRequest, NextResponse } from "next/server";
 import Stripe from "stripe";
+import {
+  fireWF2BuyerReportPurchase,
+  fireWF4DhlWarmLead,
+} from "@/lib/ghl-webhooks";
 
 function getStripe() {
   return new Stripe(process.env.STRIPE_SECRET_KEY || "sk_test_placeholder", { apiVersion: "2026-05-27.dahlia" });
 }
-const GHL_WEBHOOK = "https://services.leadconnectorhq.com/hooks/tRk2nBMoIkO6EhFzr7jp/webhook-trigger/buyer-report-purchased";
+
 const MANUS_API_BASE = "https://api.manus.ai";
 
 async function dispatchManusReportTask(metadata: Stripe.Metadata) {
@@ -82,20 +86,41 @@ export async function POST(req: NextRequest) {
     const session = event.data.object as Stripe.Checkout.Session;
     const meta = session.metadata || {};
 
-    // 1. POST to GHL NFM webhook
-    fetch(GHL_WEBHOOK, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        ...meta,
-        stripeSessionId: session.id,
-        amountPaid: session.amount_total ? session.amount_total / 100 : 0,
-        tags: ["buyer-report-purchased", `tier-${meta.tier}`, meta.referralSlug ? "referred" : "direct"],
-        source: "intel.nofluffmarketing.io/stripe-webhook",
-      }),
-    }).catch(() => {});
+    const amountPaidUsd = session.amount_total ? session.amount_total / 100 : 0;
+    const hasLenderAlready = meta.hasLender === "true" || meta.hasLender === "yes";
+    const propertyAddressFull = [meta.address, meta.city, meta.state, meta.zip]
+      .filter(Boolean)
+      .join(", ");
 
-    // 2. Dispatch Manus API task for report production
+    // WF2: POST to GHL NFM Buyer Report Purchase workflow (fire-and-forget)
+    fireWF2BuyerReportPurchase({
+      stripe_session_id: session.id,
+      buyer_first_name: meta.firstName || "",
+      buyer_last_name: meta.lastName || "",
+      buyer_email: meta.email || "",
+      buyer_phone: meta.phone || "",
+      property_address_full: propertyAddressFull,
+      property_city: meta.city || "",
+      property_state: meta.state || "",
+      property_zip: meta.zip || "",
+      purchase_price_band: meta.priceBand || "",
+      use_case: meta.useCase || "",
+      has_lender_already: hasLenderAlready,
+      referring_realtor_slug: meta.referralSlug || "",
+      amount_paid_usd: amountPaidUsd,
+      tier: meta.tier || "",
+    });
+
+    // WF4: If buyer has no lender, POST to DHL Warm Lead Touch workflow (fire-and-forget)
+    if (!hasLenderAlready) {
+      fireWF4DhlWarmLead({
+        buyer_email: meta.email || "",
+        buyer_first_name: meta.firstName || "",
+        property_address_full: propertyAddressFull,
+      });
+    }
+
+    // Dispatch Manus API task for report production
     const manusTask = await dispatchManusReportTask(meta);
     if (manusTask?.task_id) {
       console.log(`Manus task dispatched: ${manusTask.task_id} for buyer ${meta.email}`);
