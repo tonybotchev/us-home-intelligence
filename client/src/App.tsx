@@ -1,3 +1,4 @@
+// cache-bust: blog-routes-active 2026-06-11
 import { Suspense, lazy } from "react";
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
