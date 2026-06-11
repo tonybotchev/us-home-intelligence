@@ -87,7 +87,7 @@ const homeSchema = [
     url: "https://www.dfwhome.loans",
     potentialAction: {
       "@type": "SearchAction",
-      target: { "@type": "EntryPoint", urlTemplate: "https://www.dfwhome.loans/blog?q={search_term_string}" },
+      target: { "@type": "EntryPoint", urlTemplate: "https://www.dfwhome.loans/?q={search_term_string}" },
       "query-input": "required name=search_term_string",
     },
   },

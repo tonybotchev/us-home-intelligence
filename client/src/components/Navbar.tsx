@@ -25,7 +25,6 @@ export default function Navbar() {
     { label: "Cities", href: "/cities", type: "link" },
     { label: "Process", href: "#process", type: "scroll" },
     { label: "About Tony", href: "#about", type: "scroll" },
-    { label: "Blog", href: "/blog", type: "link" },
     { label: "Book a Call", href: "#book-call", type: "scroll" },
   ];
 

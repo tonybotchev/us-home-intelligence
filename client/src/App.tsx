@@ -10,8 +10,6 @@ import Home from "./pages/Home";
 
 // Lazy load everything else
 const Cities = lazy(() => import("./pages/Cities"));
-const Blog = lazy(() => import("./pages/Blog"));
-const BlogPost = lazy(() => import("./pages/BlogPost"));
 const About = lazy(() => import("./pages/About"));
 const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy"));
 const Terms = lazy(() => import("./pages/Terms"));
@@ -56,8 +54,6 @@ function Router() {
         <Route path="/" component={Home} />
         <Route path="/about" component={About} />
         <Route path="/cities" component={Cities} />
-        <Route path="/blog" component={Blog} />
-        <Route path="/blog/:slug" component={BlogPost} />
         <Route path="/privacy" component={PrivacyPolicy} />
         <Route path="/terms" component={Terms} />
         <Route path="/thank-you" component={ThankYou} />
