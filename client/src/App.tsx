@@ -29,6 +29,10 @@ const DSCR = lazy(() => import("./pages/loans/DSCR"));
 const Jumbo = lazy(() => import("./pages/loans/Jumbo"));
 const USDA = lazy(() => import("./pages/loans/USDA"));
 
+// Blog pages
+const Blog = lazy(() => import("./pages/Blog"));
+const BlogPost = lazy(() => import("./pages/BlogPost"));
+
 // City pages
 const Celina = lazy(() => import("./pages/cities/Celina"));
 const Prosper = lazy(() => import("./pages/cities/Prosper"));
@@ -60,6 +64,10 @@ function Router() {
         <Route path="/apply" component={Apply} />
         <Route path="/faq" component={FAQ} />
         <Route path="/calculator" component={Calculator} />
+
+        {/* Blog */}
+        <Route path="/blog" component={Blog} />
+        <Route path="/blog/:slug" component={BlogPost} />
 
         {/* Loan pages */}
         <Route path="/loans/fha" component={FHA} />
