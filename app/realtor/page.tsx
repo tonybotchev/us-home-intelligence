@@ -7,16 +7,20 @@ import { CheckCircle, ArrowRight } from "lucide-react";
 // ─── Realtor Partner Pricing Model ───────────────────────────────────────────
 // Locked: 2026-06-12 by Tony Botchev · Supersedes the old comp-credit model
 //
-// EXACT MODEL (no deviations):
+// EXACT MODEL v3 (no deviations):
 //   1. Free signup — no credit card, no subscription, no tier selector
-//   2. 1 free cobranded demo report (first order only, resets to 0 after use)
-//   3. Every report after that: realtor pays 50% of public price per order
-//        Zip-level:        $48.50  (public $97)
-//        Address-specific: $73.50  (public $147)
+//   2. 1 free cobranded welcome report (first order only — thank-you gift, not a demo)
+//   3. Every report after that: realtor CHOOSES per order:
+//        Option A — Cobranded (realtor brand + DHL): 20% off public price
+//          Zip-level:        $77.60  (public $97)
+//          Address-specific: $117.60 (public $147)
+//        Option B — Normal (DHL-only, no realtor brand): full public price
+//          Zip-level:        $97.00
+//          Address-specific: $147.00
 //   4. Active-buyer-prospect attestation required at each order
-//   5. All reports cobranded: realtor brand (lead) + DHL co-publisher
+//   5. Cobranded reports: realtor brand (lead) + DHL co-publisher
 //   6. NO subscriptions. NO Pro tier. NO Team tier. NO monthly fees. Ever.
-//   7. Volume/brokerage inquiries → email only (one line, bottom of page)
+//   7. NO team/volume/brokerage language anywhere on this page.
 // ─────────────────────────────────────────────────────────────────────────────
 
 type FormState = {
@@ -71,10 +75,11 @@ export default function RealtorSignup() {
           <div className="bg-[#1a56db]/10 border border-[#1a56db]/30 rounded-xl p-4 text-left text-sm text-[#9ca3af]">
             <p className="font-semibold text-[#f0f0f5] mb-2">How it works from here:</p>
             <ul className="space-y-1 text-xs">
-              <li>• Your first report is free — use it as a demo for a buyer prospect.</li>
-              <li>• Every report after that: you pay $48.50 (zip) or $73.50 (address) per order.</li>
-              <li>• Every report is cobranded with your name, photo, and brokerage — plus DFW Homes &amp; Loans as the preferred mortgage partner.</li>
-              <li>• RESPA-clean: no referral fees. Your buyer always decides who to use for their mortgage.</li>
+              <li>•               Your first report is on us — our thank-you for joining the USHI Realtor Network.</li>
+              <li>•               Every report after that: choose cobranded (20% off — $77.60 zip / $117.60 address) or full-price normal report — your call on every order.</li>
+              <li>•               Cobranded reports carry your name, photo, and brokerage — plus DFW Homes &amp; Loans as the preferred mortgage partner.</li>
+              <li>•               RESPA-clean: no referral fees. Your buyer always decides who to use for their mortgage.
+              <li>• Prefer no cobrand? Order a full-price normal report ($97/$147) — DHL-only template, your name stays off it.</li></li>
             </ul>
           </div>
         </div>
@@ -98,16 +103,16 @@ export default function RealtorSignup() {
               Your brand. Our intelligence. One link.
             </h1>
             <p className="text-[#9ca3af] text-lg max-w-2xl mx-auto mb-8">
-              Free to join. One free report to share. 50% off all future reports.<br />
-              Cobranded with your brand + DFW Homes &amp; Loans on every order.
+              Free to join. One free welcome report on us. 20% off every cobranded report after that.<br />
+              Your brand + DFW Homes &amp; Loans on every cobranded order — or go full-price normal, your choice each time.
             </p>
 
             {/* 4-point value prop — no tier comparison, no pricing cards */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-2xl mx-auto text-left mb-8">
               {[
                 { label: "Free to join", sub: "No credit card. No subscription. Ever." },
-                { label: "1 free demo report", sub: "Use it to show a buyer what they get." },
-                { label: "$48.50 / $73.50 per report", sub: "50% off public price. Pay only when you order." },
+                { label: "1 free welcome report", sub: "Our thank-you for joining — share it with your first buyer prospect." },
+                { label: "$77.60 / $117.60 cobranded", sub: "20% off public price. Pay only when you order. No subscription." },
                 { label: "Your brand on every report", sub: "Your name, photo & brokerage — plus DHL as mortgage partner." },
               ].map(item => (
                 <div key={item.label} className="bg-[#12121a] border border-[#2a2a3a] rounded-xl p-4 flex items-start gap-3">
@@ -133,7 +138,7 @@ export default function RealtorSignup() {
                   <p className="text-[#6b7280] text-xs">Neighborhood overview</p>
                 </div>
                 <p className="text-[#6b7280] text-sm text-center line-through">$97</p>
-                <p className="text-[#22c55e] text-lg font-bold text-right">$48.50</p>
+                <p className="text-[#22c55e] text-lg font-bold text-right">$77.60</p>
               </div>
               <div className="grid grid-cols-3 px-5 py-3 items-center">
                 <div>
@@ -141,11 +146,12 @@ export default function RealtorSignup() {
                   <p className="text-[#6b7280] text-xs">Full property deep-dive</p>
                 </div>
                 <p className="text-[#6b7280] text-sm text-center line-through">$147</p>
-                <p className="text-[#22c55e] text-lg font-bold text-right">$73.50</p>
+                <p className="text-[#22c55e] text-lg font-bold text-right">$117.60</p>
               </div>
             </div>
             <p className="text-[#6b7280] text-xs">
               Locked pricing as of June 12, 2026. Per order — no subscription, no monthly fee.
+              Cobranded orders only. Full-price option ($97/$147) available per order if you prefer no cobrand.
             </p>
           </div>
         </section>
@@ -175,7 +181,7 @@ export default function RealtorSignup() {
             <div className="mb-6">
               <h2 className="text-2xl font-bold text-[#f0f0f5]">Create Your Partner Account</h2>
               <p className="text-[#6b7280] text-sm mt-1">
-                Free to join. No credit card required. Your first report is on us.
+                Free to join. No credit card required. Your first report is our welcome gift to you.
               </p>
             </div>
 

@@ -6,7 +6,9 @@ import { Copy, CheckCircle, BarChart3, Users, Gift } from "lucide-react";
 
 // ─── Partner model locked 2026-06-12 ─────────────────────────────────────────
 // Supersedes old comp-credit model.
-// Free signup → 1 free demo report → $48.50 zip / $73.50 address per order
+// Free signup → 1 free welcome report (thank-you gift) → per-order choice:
+//   Option A: Cobranded (realtor brand + DHL) → 20% off: $77.60 zip / $117.60 address
+//   Option B: Normal (DHL-only, no realtor brand) → full price: $97 zip / $147 address
 // NO subscriptions. NO Pro tier. NO Team tier. NO upgrade prompts.
 // Active-buyer attestation required at each order.
 // ─────────────────────────────────────────────────────────────────────────────
@@ -33,6 +35,7 @@ export default function RealtorDashboard() {
   const [copied, setCopied] = useState(false);
   const [orderForm, setOrderForm] = useState({
     reportType: "zip",
+    cobranded: true, // Option A (cobranded, 20% off) is default; false = Option B (full price, DHL-only)
     address: "",
     buyerName: "",
     buyerEmail: "",
@@ -170,8 +173,8 @@ export default function RealtorDashboard() {
               <div className={`flex items-center gap-2 mb-4 px-3 py-2 rounded-lg text-xs font-medium ${freeReportRemaining > 0 ? "bg-[#22c55e]/10 border border-[#22c55e]/30 text-[#22c55e]" : "bg-[#2a2a3a] text-[#6b7280]"}`}>
                 <Gift size={13} />
                 {freeReportRemaining > 0
-                  ? "1 free demo report available — use it for your first buyer prospect."
-                  : "Free report used. All orders billed at partner pricing below."}
+                  ? "Welcome report available — your first report is on us, our thank-you for joining."
+                  : "Welcome report used. Choose cobranded (20% off) or normal (full price) on each order."}
               </div>
 
               {/* Partner pricing — no tier, no subscription */}
@@ -182,7 +185,7 @@ export default function RealtorDashboard() {
                     <p className="text-[#6b7280] text-xs">Neighborhood overview</p>
                   </div>
                   <p className="text-[#22c55e] text-base font-bold text-right">
-                    {freeReportRemaining > 0 ? <span className="text-[#22c55e]">FREE</span> : "$48.50"}
+                    {freeReportRemaining > 0 ? <span className="text-[#22c55e]">FREE</span> : <><span className="text-[#22c55e]">$77.60</span><span className="text-[#6b7280] text-xs ml-1">cobranded</span></>}
                   </p>
                 </div>
                 <div className="grid grid-cols-2 px-4 py-2.5 items-center">
@@ -191,7 +194,7 @@ export default function RealtorDashboard() {
                     <p className="text-[#6b7280] text-xs">Full property deep-dive</p>
                   </div>
                   <p className="text-[#22c55e] text-base font-bold text-right">
-                    {freeReportRemaining > 0 ? <span className="text-[#22c55e]">FREE</span> : "$73.50"}
+                    {freeReportRemaining > 0 ? <span className="text-[#22c55e]">FREE</span> : <><span className="text-[#22c55e]">$117.60</span><span className="text-[#6b7280] text-xs ml-1">cobranded</span></>}
                   </p>
                 </div>
               </div>
@@ -209,10 +212,46 @@ export default function RealtorDashboard() {
                       onChange={e => setOrderForm(f => ({ ...f, reportType: e.target.value }))}
                       className="w-full bg-[#0a0a0f] border border-[#2a2a3a] rounded-lg px-3 py-2.5 text-[#f0f0f5] text-sm focus:outline-none focus:border-[#1a56db]"
                     >
-                      <option value="zip">Zip-Level — {freeReportRemaining > 0 ? "FREE" : "$48.50"}</option>
-                      <option value="address">Address-Specific — {freeReportRemaining > 0 ? "FREE" : "$73.50"}</option>
+                      <option value="zip">Zip-Level — {freeReportRemaining > 0 ? "FREE" : (orderForm.cobranded ? "$77.60" : "$97.00")}</option>
+                      <option value="address">Address-Specific — {freeReportRemaining > 0 ? "FREE" : (orderForm.cobranded ? "$117.60" : "$147.00")}</option>
                     </select>
                   </div>
+                  {!data.freeReportUsed ? null : (
+                    <div>
+                      <label className="block text-[#9ca3af] text-xs mb-1">Report Style</label>
+                      <div className="grid grid-cols-2 gap-2">
+                        <button
+                          type="button"
+                          onClick={() => setOrderForm(f => ({ ...f, cobranded: true }))}
+                          className={`px-3 py-2.5 rounded-lg text-xs font-semibold border transition ${
+                            orderForm.cobranded
+                              ? "bg-[#22c55e]/10 border-[#22c55e]/50 text-[#22c55e]"
+                              : "bg-[#0a0a0f] border-[#2a2a3a] text-[#6b7280] hover:border-[#22c55e]/30"
+                          }`}
+                        >
+                          A — Cobranded (20% off)<br />
+                          <span className="font-normal opacity-75">Your brand + DHL</span>
+                        </button>
+                        <button
+                          type="button"
+                          onClick={() => setOrderForm(f => ({ ...f, cobranded: false }))}
+                          className={`px-3 py-2.5 rounded-lg text-xs font-semibold border transition ${
+                            !orderForm.cobranded
+                              ? "bg-[#1a56db]/10 border-[#1a56db]/50 text-[#1a56db]"
+                              : "bg-[#0a0a0f] border-[#2a2a3a] text-[#6b7280] hover:border-[#1a56db]/30"
+                          }`}
+                        >
+                          B — Normal (full price)<br />
+                          <span className="font-normal opacity-75">DHL-only, no realtor brand</span>
+                        </button>
+                      </div>
+                      <p className="text-[#6b7280] text-xs mt-1">
+                        {orderForm.cobranded
+                          ? "Your name + DFW Homes & Loans on cover, every page, and mortgage partner section."
+                          : "DHL-only template. Your name does not appear. Use for anonymous/behind-the-scenes referrals."}
+                      </p>
+                    </div>
+                  )}
                   <div>
                     <label className="block text-[#9ca3af] text-xs mb-1">
                       {orderForm.reportType === "zip" ? "ZIP Code" : "Property Address"} *

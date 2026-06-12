@@ -25,9 +25,11 @@ const DHL_BIO_DIRECT   =
   "Ready to get pre-qualified? Visit dfwhome.loans/apply or call (945) 300-4002.";
 
 // ─── Report prompt builder ────────────────────────────────────────────────────
-// Conditional on referring_realtor_slug:
-//   • Present  → LAYOUT 1: Realtor-Sponsored cobranded template
-//   • Absent   → LAYOUT 2: DHL-Only direct buyer template
+// v3 Locked 2026-06-12 — TWO layouts gated by cobranded flag + referralSlug:
+//   • cobranded=true AND referralSlug present → LAYOUT 1: Realtor-Sponsored cobranded
+//       Realtor brand (lead) + DHL co-publisher. 20% off: $77.60 zip / $117.60 address.
+//   • cobranded=false OR no referralSlug → LAYOUT 2: DHL-Only direct buyer
+//       DHL sole publisher. Full price: $97 zip / $147 address.
 // ─────────────────────────────────────────────────────────────────────────────
 async function dispatchManusReportTask(metadata: Stripe.Metadata) {
   const apiKey = process.env.MANUS_API_KEY;
@@ -40,9 +42,12 @@ async function dispatchManusReportTask(metadata: Stripe.Metadata) {
     firstName, lastName, email, address, city, state, zip,
     priceBand, useCase, concerns, referralSlug, tier,
     realtorName, realtorBrokerage, realtorLicense, realtorPhone, realtorEmail,
+    cobranded: cobrandedFlag,
   } = metadata;
 
-  const isCobranded = Boolean(referralSlug && referralSlug !== "direct" && referralSlug !== "");
+  // v3: cobranded = explicit flag from checkout (true/false) AND referralSlug must be present
+  // If realtor chose Option B (normal, full price) cobrandedFlag will be 'false' even with a slug
+  const isCobranded = cobrandedFlag !== "false" && Boolean(referralSlug && referralSlug !== "direct" && referralSlug !== "");
   const buyerFullName = `${firstName} ${lastName}`;
   const propertyLine = address ? `${address}, ${city}, ${state} ${zip}` : `${city}, ${state} ${zip}`;
 
@@ -51,7 +56,7 @@ async function dispatchManusReportTask(metadata: Stripe.Metadata) {
 
 BUYER: ${buyerFullName} <${email}>
 PROPERTY: ${propertyLine}
-TIER: ${tier} (${tier === "address-specific" ? "$73.50 realtor-partner address-specific" : "$48.50 realtor-partner zip-level"})
+TIER: ${tier} (${tier === "address-specific" ? "$117.60 realtor-partner cobranded address-specific (20% off $147)" : "$77.60 realtor-partner cobranded zip-level (20% off $97)"})
 PRICE BAND: ${priceBand}
 USE CASE: ${useCase}
 SPECIFIC CONCERNS: ${concerns || "None provided"}

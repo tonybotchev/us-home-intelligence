@@ -9,17 +9,19 @@ function getStripe() {
 // PUBLIC / DIRECT BUYER prices (unchanged — $97 zip / $147 address)
 // Set STRIPE_PRICE_ZIP and STRIPE_PRICE_ADDRESS in Vercel env vars
 //
-// REALTOR-PARTNER prices (50% off — $48.50 zip / $73.50 address)
-// Locked: 2026-06-12 · Supersedes old comp-credit model
+// REALTOR-PARTNER COBRANDED prices (20% off — $77.60 zip / $117.60 address)
+// Locked: 2026-06-12 v3 · Supersedes old comp-credit and 50%-off models
 // Set STRIPE_PRICE_REALTOR_ZIP and STRIPE_PRICE_REALTOR_ADDRESS in Vercel env vars
+// price_1ThbwhK8pV2xVrXzmrsvJ9tc = $77.60 zip
+// price_1ThbyiK8pV2xVrXzCbkd78RI = $117.60 address
 // ─────────────────────────────────────────────────────────────────────────────
 const PRICE_IDS: Record<string, string> = {
-  // Public / direct buyer
+  // Public / direct buyer (DHL-only template)
   "zip-level":         process.env.STRIPE_PRICE_ZIP             || "price_zip_placeholder",
   "address-specific":  process.env.STRIPE_PRICE_ADDRESS         || "price_address_placeholder",
-  // Realtor-partner (50% off)
-  "realtor-zip":       process.env.STRIPE_PRICE_REALTOR_ZIP     || "price_realtor_zip_placeholder",
-  "realtor-address":   process.env.STRIPE_PRICE_REALTOR_ADDRESS || "price_realtor_address_placeholder",
+  // Realtor-partner cobranded (20% off — Option A)
+  "realtor-zip":       process.env.STRIPE_PRICE_REALTOR_ZIP     || "price_1ThbwhK8pV2xVrXzmrsvJ9tc",
+  "realtor-address":   process.env.STRIPE_PRICE_REALTOR_ADDRESS || "price_1ThbyiK8pV2xVrXzCbkd78RI",
 };
 
 export async function POST(req: NextRequest) {
@@ -54,6 +56,8 @@ export async function POST(req: NextRequest) {
         referralSlug: referralSlug || "",
         tier, price: String(price),
         source: "intel.nofluffmarketing.io",
+        // cobranded flag: 'true' = realtor brand + DHL (20% off), 'false' = DHL-only (full price)
+        cobranded: body.cobranded === false ? "false" : (referralSlug ? "true" : "false"),
         // Realtor cobrand fields — passed through to report generator
         realtorName: realtorName || "",
         realtorBrokerage: realtorBrokerage || "",
@@ -69,7 +73,7 @@ export async function POST(req: NextRequest) {
           buyer: `${firstName} ${lastName}`,
           property: `${address || ""} ${city} ${state} ${zip}`.trim(),
           referralSlug: referralSlug || "direct",
-          layout: (referralSlug && referralSlug !== "direct") ? "cobranded" : "dhl-only",
+          layout: (body.cobranded !== false && referralSlug && referralSlug !== "direct") ? "cobranded" : "dhl-only",
         },
       },
     });
