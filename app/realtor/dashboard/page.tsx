@@ -2,19 +2,22 @@
 import { useEffect, useState } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { Copy, CheckCircle, ArrowRight, Gift, Users, BarChart3, Tag } from "lucide-react";
+import { Copy, CheckCircle, BarChart3, Users, Gift } from "lucide-react";
 
 // ─── Partner model locked 2026-06-12 ─────────────────────────────────────────
 // Supersedes old comp-credit model.
-// Free: share link + cobranded reports (buyer pays full price)
-// Pro ($97/mo): unlimited comp reports at 50% off ($48.50 zip / $73.50 address)
-// Team ($247/mo): up to 10 agents, shared pool, broker dashboard
+// Free signup → 1 free demo report → $48.50 zip / $73.50 address per order
+// NO subscriptions. NO Pro tier. NO Team tier. NO upgrade prompts.
+// Active-buyer attestation required at each order.
 // ─────────────────────────────────────────────────────────────────────────────
 
 interface DashboardData {
-  name: string; email: string; brokerage: string; slug: string;
-  partnerTier: "free" | "pro" | "team";
-  activityFeed: Array<{date:string;type:string;description:string}>;
+  name: string;
+  email: string;
+  brokerage: string;
+  slug: string;
+  freeReportUsed: boolean; // true after the first free report has been sent
+  activityFeed: Array<{ date: string; type: string; description: string }>;
   stats: {
     paidReports: number;
     realtorOrderedReports: number;
@@ -28,7 +31,18 @@ export default function RealtorDashboard() {
   const [data, setData] = useState<DashboardData | null>(null);
   const [loading, setLoading] = useState(true);
   const [copied, setCopied] = useState(false);
-  const [introForm, setIntroForm] = useState({buyerName:"",buyerEmail:"",buyerPhone:"",context:""});
+  const [orderForm, setOrderForm] = useState({
+    reportType: "zip",
+    address: "",
+    buyerName: "",
+    buyerEmail: "",
+    attestation: false,
+  });
+  const [orderSubmitting, setOrderSubmitting] = useState(false);
+  const [orderSuccess, setOrderSuccess] = useState(false);
+  const [orderError, setOrderError] = useState("");
+
+  const [introForm, setIntroForm] = useState({ buyerName: "", buyerEmail: "", buyerPhone: "", context: "" });
   const [introSubmitting, setIntroSubmitting] = useState(false);
   const [introSuccess, setIntroSuccess] = useState(false);
 
@@ -45,16 +59,32 @@ export default function RealtorDashboard() {
     setCopied(true); setTimeout(() => setCopied(false), 2000);
   }
 
+  async function submitOrder(e: React.FormEvent) {
+    e.preventDefault();
+    if (!orderForm.attestation) { setOrderError("Please confirm this is for an active buyer prospect."); return; }
+    setOrderSubmitting(true); setOrderError("");
+    try {
+      const res = await fetch("/api/realtor-order", {
+        method: "POST", headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ ...orderForm, realtorSlug: data?.slug }),
+      });
+      const result = await res.json();
+      if (result.ok) setOrderSuccess(true);
+      else setOrderError(result.error || "Something went wrong. Please try again.");
+    } catch { setOrderError("Network error. Please try again."); }
+    finally { setOrderSubmitting(false); }
+  }
+
   async function submitIntro(e: React.FormEvent) {
     e.preventDefault();
     setIntroSubmitting(true);
     try {
       await fetch("/api/intro-lead", {
-        method:"POST", headers:{"Content-Type":"application/json"},
-        body: JSON.stringify({...introForm, realtorSlug: data?.slug}),
+        method: "POST", headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ ...introForm, realtorSlug: data?.slug }),
       });
       setIntroSuccess(true);
-    } catch {} finally { setIntroSubmitting(false); }
+    } catch { } finally { setIntroSubmitting(false); }
   }
 
   if (loading) return (
@@ -69,8 +99,12 @@ export default function RealtorDashboard() {
       <main className="flex-1 pt-24 flex items-center justify-center px-6">
         <div className="text-center max-w-md">
           <h1 className="text-2xl font-bold text-[#f0f0f5] mb-3">Access Your Dashboard</h1>
-          <p className="text-[#9ca3af] mb-6">Your dashboard is accessed via the magic link sent to your email when you signed up. Check your inbox for your dashboard link.</p>
-          <a href="/realtor" className="inline-flex items-center gap-2 bg-[#22c55e]/10 border border-[#22c55e]/30 text-[#22c55e] font-semibold px-8 py-4 rounded-xl">Sign Up as Partner</a>
+          <p className="text-[#9ca3af] mb-6">
+            Your dashboard is accessed via the magic link sent to your email when you signed up. Check your inbox for your dashboard link.
+          </p>
+          <a href="/realtor" className="inline-flex items-center gap-2 bg-[#22c55e]/10 border border-[#22c55e]/30 text-[#22c55e] font-semibold px-8 py-4 rounded-xl">
+            Sign Up as Partner
+          </a>
         </div>
       </main>
       <Footer />
@@ -78,46 +112,33 @@ export default function RealtorDashboard() {
   );
 
   const shareLink = `https://intel.nofluffmarketing.io/r/${data.slug}`;
-
-  const tierLabel: Record<string, string> = {
-    free: "Free Partner",
-    pro: "Pro Partner — $97/mo",
-    team: "Team Partner — $247/mo",
-  };
-  const tierColor: Record<string, string> = {
-    free: "#22c55e",
-    pro: "#1a56db",
-    team: "#c9a227",
-  };
-  const currentTier = data.partnerTier || "free";
+  const freeReportRemaining = data.freeReportUsed ? 0 : 1;
 
   return (
     <div className="min-h-screen flex flex-col bg-[#0a0a0f]">
       <Navbar />
       <main className="flex-1 pt-24 px-6 py-12">
         <div className="max-w-5xl mx-auto">
+
+          {/* Header */}
           <div className="mb-8 flex items-start justify-between flex-wrap gap-4">
             <div>
               <h1 className="text-2xl font-bold text-[#f0f0f5]">Partner Dashboard</h1>
               <p className="text-[#6b7280]">{data.name} · {data.brokerage}</p>
             </div>
-            <div
-              className="flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold border"
-              style={{ color: tierColor[currentTier], borderColor: tierColor[currentTier] + "40", background: tierColor[currentTier] + "10" }}
-            >
-              <Tag size={14} />
-              {tierLabel[currentTier]}
+            <div className="flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold border border-[#22c55e]/40 bg-[#22c55e]/10 text-[#22c55e]">
+              USHI Partner
             </div>
           </div>
 
           {/* Stats */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
             {[
-              {label:"Buyer Reports (via link)",value:data.stats.paidReports,icon:<BarChart3 size={18} className="text-[#00c2ff]"/>},
-              {label:"Reports You Ordered",value:data.stats.realtorOrderedReports,icon:<Gift size={18} className="text-[#c9a227]"/>},
-              {label:"Mortgage Leads Intro'd",value:data.stats.mortgageLeads,icon:<Users size={18} className="text-[#22c55e]"/>},
-              {label:"Est. Buyer Value",value:`$${data.stats.totalBuyerValue.toLocaleString()}`,icon:<BarChart3 size={18} className="text-[#1a56db]"/>},
-            ].map(s=>(
+              { label: "Buyer Reports (via link)", value: data.stats.paidReports, icon: <BarChart3 size={18} className="text-[#00c2ff]" /> },
+              { label: "Reports You Ordered", value: data.stats.realtorOrderedReports, icon: <Gift size={18} className="text-[#c9a227]" /> },
+              { label: "Mortgage Leads Intro'd", value: data.stats.mortgageLeads, icon: <Users size={18} className="text-[#22c55e]" /> },
+              { label: "Est. Buyer Value", value: `$${data.stats.totalBuyerValue.toLocaleString()}`, icon: <BarChart3 size={18} className="text-[#1a56db]" /> },
+            ].map(s => (
               <div key={s.label} className="bg-[#12121a] border border-[#2a2a3a] rounded-xl p-4">
                 <div className="flex items-center gap-2 mb-2">{s.icon}<span className="text-[#6b7280] text-xs">{s.label}</span></div>
                 <div className="text-2xl font-bold text-[#f0f0f5]">{s.value}</div>
@@ -126,46 +147,127 @@ export default function RealtorDashboard() {
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+
             {/* Share link */}
             <div className="bg-[#12121a] border border-[#2a2a3a] rounded-2xl p-6">
               <h3 className="text-[#f0f0f5] font-semibold mb-4">Your Share Link</h3>
               <div className="flex items-center gap-2 bg-[#0a0a0f] border border-[#2a2a3a] rounded-xl px-4 py-3 mb-3">
                 <span className="text-[#00c2ff] text-sm font-mono flex-1 truncate">{shareLink}</span>
                 <button onClick={copyLink} className="text-[#6b7280] hover:text-[#f0f0f5] transition-colors shrink-0">
-                  {copied ? <CheckCircle size={16} className="text-[#22c55e]"/> : <Copy size={16}/>}
+                  {copied ? <CheckCircle size={16} className="text-[#22c55e]" /> : <Copy size={16} />}
                 </button>
               </div>
-              <p className="text-[#6b7280] text-xs">Share this link with buyers. Reports ordered through it are cobranded with your name and brokerage — and include DFW Homes &amp; Loans as the preferred mortgage partner.</p>
+              <p className="text-[#6b7280] text-xs">
+                Share this link with buyers. Reports ordered through it are cobranded with your name and brokerage — and include DFW Homes &amp; Loans as the preferred mortgage partner.
+              </p>
             </div>
 
-            {/* Partner tier / order at 50% off */}
+            {/* Order a report at partner pricing */}
             <div className="bg-[#12121a] border border-[#2a2a3a] rounded-2xl p-6">
-              <h3 className="text-[#f0f0f5] font-semibold mb-2">Order Reports at Partner Pricing</h3>
-              {currentTier === "free" ? (
-                <>
-                  <p className="text-[#6b7280] text-xs mb-4">Free partners share their link — buyers pay full price ($97/$147). Upgrade to Pro to order reports yourself at 50% off for your active buyer pipeline.</p>
-                  <div className="bg-[#1a56db]/10 border border-[#1a56db]/30 rounded-xl p-4 mb-4">
-                    <p className="text-[#f0f0f5] text-sm font-semibold mb-1">Pro Partner — $97/mo</p>
-                    <p className="text-[#9ca3af] text-xs">Unlimited reports at $48.50 (zip) / $73.50 (address). Priority turnaround. Dedicated success manager.</p>
+              <h3 className="text-[#f0f0f5] font-semibold mb-1">Order a Report for a Buyer</h3>
+
+              {/* Free report counter */}
+              <div className={`flex items-center gap-2 mb-4 px-3 py-2 rounded-lg text-xs font-medium ${freeReportRemaining > 0 ? "bg-[#22c55e]/10 border border-[#22c55e]/30 text-[#22c55e]" : "bg-[#2a2a3a] text-[#6b7280]"}`}>
+                <Gift size={13} />
+                {freeReportRemaining > 0
+                  ? "1 free demo report available — use it for your first buyer prospect."
+                  : "Free report used. All orders billed at partner pricing below."}
+              </div>
+
+              {/* Partner pricing — no tier, no subscription */}
+              <div className="bg-[#0a0a0f] border border-[#2a2a3a] rounded-xl overflow-hidden mb-4">
+                <div className="grid grid-cols-2 px-4 py-2.5 border-b border-[#2a2a3a] items-center">
+                  <div>
+                    <p className="text-[#f0f0f5] text-xs font-medium">Zip-Level Report</p>
+                    <p className="text-[#6b7280] text-xs">Neighborhood overview</p>
                   </div>
-                  <a href="/realtor" className="inline-flex items-center gap-2 bg-[#1a56db] hover:bg-[#1040b0] text-white font-semibold px-5 py-2.5 rounded-xl text-sm transition-colors">
-                    Upgrade to Pro <ArrowRight size={15}/>
-                  </a>
-                </>
+                  <p className="text-[#22c55e] text-base font-bold text-right">
+                    {freeReportRemaining > 0 ? <span className="text-[#22c55e]">FREE</span> : "$48.50"}
+                  </p>
+                </div>
+                <div className="grid grid-cols-2 px-4 py-2.5 items-center">
+                  <div>
+                    <p className="text-[#f0f0f5] text-xs font-medium">Address-Specific Report</p>
+                    <p className="text-[#6b7280] text-xs">Full property deep-dive</p>
+                  </div>
+                  <p className="text-[#22c55e] text-base font-bold text-right">
+                    {freeReportRemaining > 0 ? <span className="text-[#22c55e]">FREE</span> : "$73.50"}
+                  </p>
+                </div>
+              </div>
+
+              {orderSuccess ? (
+                <div className="flex items-center gap-2 text-[#22c55e] text-sm">
+                  <CheckCircle size={16} /><span>Order submitted. Report will be delivered within 1 hour.</span>
+                </div>
               ) : (
-                <>
-                  <p className="text-[#6b7280] text-xs mb-4">As a {tierLabel[currentTier].split(" —")[0]}, you order reports at 50% off for your active buyer pipeline. Reports are cobranded with your name and DFW Homes &amp; Loans.</p>
-                  <div className="grid grid-cols-2 gap-3">
-                    <div className="bg-[#0a0a0f] border border-[#2a2a3a] rounded-xl p-4 text-center">
-                      <div className="text-2xl font-bold text-[#22c55e]">$48.50</div>
-                      <div className="text-[#6b7280] text-xs mt-1">Zip-Level Report</div>
-                    </div>
-                    <div className="bg-[#0a0a0f] border border-[#2a2a3a] rounded-xl p-4 text-center">
-                      <div className="text-2xl font-bold text-[#22c55e]">$73.50</div>
-                      <div className="text-[#6b7280] text-xs mt-1">Address-Specific Report</div>
-                    </div>
+                <form onSubmit={submitOrder} className="space-y-3">
+                  <div>
+                    <label className="block text-[#9ca3af] text-xs mb-1">Report Type</label>
+                    <select
+                      value={orderForm.reportType}
+                      onChange={e => setOrderForm(f => ({ ...f, reportType: e.target.value }))}
+                      className="w-full bg-[#0a0a0f] border border-[#2a2a3a] rounded-lg px-3 py-2.5 text-[#f0f0f5] text-sm focus:outline-none focus:border-[#1a56db]"
+                    >
+                      <option value="zip">Zip-Level — {freeReportRemaining > 0 ? "FREE" : "$48.50"}</option>
+                      <option value="address">Address-Specific — {freeReportRemaining > 0 ? "FREE" : "$73.50"}</option>
+                    </select>
                   </div>
-                </>
+                  <div>
+                    <label className="block text-[#9ca3af] text-xs mb-1">
+                      {orderForm.reportType === "zip" ? "ZIP Code" : "Property Address"} *
+                    </label>
+                    <input
+                      required
+                      value={orderForm.address}
+                      onChange={e => setOrderForm(f => ({ ...f, address: e.target.value }))}
+                      className="w-full bg-[#0a0a0f] border border-[#2a2a3a] rounded-lg px-3 py-2.5 text-[#f0f0f5] text-sm focus:outline-none focus:border-[#1a56db]"
+                      placeholder={orderForm.reportType === "zip" ? "75034" : "123 Main St, Frisco TX 75034"}
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-[#9ca3af] text-xs mb-1">Buyer Name *</label>
+                    <input
+                      required
+                      value={orderForm.buyerName}
+                      onChange={e => setOrderForm(f => ({ ...f, buyerName: e.target.value }))}
+                      className="w-full bg-[#0a0a0f] border border-[#2a2a3a] rounded-lg px-3 py-2.5 text-[#f0f0f5] text-sm focus:outline-none focus:border-[#1a56db]"
+                      placeholder="Buyer full name"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-[#9ca3af] text-xs mb-1">Buyer Email *</label>
+                    <input
+                      required
+                      type="email"
+                      value={orderForm.buyerEmail}
+                      onChange={e => setOrderForm(f => ({ ...f, buyerEmail: e.target.value }))}
+                      className="w-full bg-[#0a0a0f] border border-[#2a2a3a] rounded-lg px-3 py-2.5 text-[#f0f0f5] text-sm focus:outline-none focus:border-[#1a56db]"
+                      placeholder="buyer@email.com"
+                    />
+                  </div>
+                  {/* Active-buyer attestation — required at every order */}
+                  <label className="flex items-start gap-2 cursor-pointer">
+                    <input
+                      type="checkbox"
+                      checked={orderForm.attestation}
+                      onChange={e => setOrderForm(f => ({ ...f, attestation: e.target.checked }))}
+                      className="mt-0.5 shrink-0"
+                    />
+                    <span className="text-[#6b7280] text-xs">
+                      I confirm this report is for an active buyer prospect I am currently working with.
+                    </span>
+                  </label>
+                  {orderError && <p className="text-red-400 text-xs">{orderError}</p>}
+                  <button
+                    type="submit"
+                    disabled={orderSubmitting}
+                    className="w-full py-3 rounded-xl font-semibold text-white text-sm transition-opacity disabled:opacity-60"
+                    style={{ background: "#22c55e" }}
+                  >
+                    {orderSubmitting ? "Submitting…" : "Order Report"}
+                  </button>
+                </form>
               )}
             </div>
           </div>
@@ -177,7 +279,7 @@ export default function RealtorDashboard() {
               <p className="text-[#6b7280] text-sm">No activity yet. Share your link to get started.</p>
             ) : (
               <div className="space-y-3">
-                {data.activityFeed.map((a,i)=>(
+                {data.activityFeed.map((a, i) => (
                   <div key={i} className="flex items-start gap-3 text-sm">
                     <div className="w-2 h-2 rounded-full bg-[#1a56db] mt-1.5 shrink-0" />
                     <div>
@@ -193,37 +295,50 @@ export default function RealtorDashboard() {
           {/* Intro a mortgage lead */}
           <div className="bg-[#12121a] border border-[#2a2a3a] rounded-2xl p-6">
             <h3 className="text-[#f0f0f5] font-semibold mb-2">Intro a Mortgage Lead to Tony Botchev</h3>
-            <p className="text-[#6b7280] text-xs mb-4">Always available. RESPA-clean: no fees flow between us. Buyer decides who to use for their mortgage.</p>
+            <p className="text-[#6b7280] text-xs mb-4">
+              Always available. RESPA-clean: no fees flow between us. Buyer decides who to use for their mortgage.
+            </p>
             {introSuccess ? (
               <div className="flex items-center gap-3 text-[#22c55e]">
-                <CheckCircle size={20}/><span className="text-sm">Lead intro sent to Tony&apos;s team. You&apos;ll receive a confirmation email shortly.</span>
+                <CheckCircle size={20} /><span className="text-sm">Lead intro sent to Tony&apos;s team. You&apos;ll receive a confirmation email shortly.</span>
               </div>
             ) : (
-              <form onSubmit={submitIntro} className="space-y-4">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div>
-                    <label className="block text-[#9ca3af] text-xs mb-1">Buyer Name *</label>
-                    <input required value={introForm.buyerName} onChange={e=>setIntroForm(f=>({...f,buyerName:e.target.value}))} className="w-full bg-[#0a0a0f] border border-[#2a2a3a] rounded-lg px-4 py-3 text-[#f0f0f5] text-sm focus:outline-none focus:border-[#1a56db]" placeholder="Alex Johnson" />
-                  </div>
-                  <div>
-                    <label className="block text-[#9ca3af] text-xs mb-1">Buyer Email *</label>
-                    <input required type="email" value={introForm.buyerEmail} onChange={e=>setIntroForm(f=>({...f,buyerEmail:e.target.value}))} className="w-full bg-[#0a0a0f] border border-[#2a2a3a] rounded-lg px-4 py-3 text-[#f0f0f5] text-sm focus:outline-none focus:border-[#1a56db]" placeholder="alex@email.com" />
-                  </div>
-                  <div>
-                    <label className="block text-[#9ca3af] text-xs mb-1">Buyer Phone <span className="text-[#4a4a5a]">(optional)</span></label>
-                    <input type="tel" value={introForm.buyerPhone} onChange={e=>setIntroForm(f=>({...f,buyerPhone:e.target.value}))} className="w-full bg-[#0a0a0f] border border-[#2a2a3a] rounded-lg px-4 py-3 text-[#f0f0f5] text-sm focus:outline-none focus:border-[#1a56db]" placeholder="(214) 555-0100" />
-                  </div>
-                  <div>
-                    <label className="block text-[#9ca3af] text-xs mb-1">Property / Scenario Context</label>
-                    <input value={introForm.context} onChange={e=>setIntroForm(f=>({...f,context:e.target.value}))} className="w-full bg-[#0a0a0f] border border-[#2a2a3a] rounded-lg px-4 py-3 text-[#f0f0f5] text-sm focus:outline-none focus:border-[#1a56db]" placeholder="Looking at $450K in Frisco, needs pre-approval" />
-                  </div>
+              <form onSubmit={submitIntro} className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-[#9ca3af] text-xs mb-1">Buyer Name *</label>
+                  <input required value={introForm.buyerName} onChange={e => setIntroForm(f => ({ ...f, buyerName: e.target.value }))}
+                    className="w-full bg-[#0a0a0f] border border-[#2a2a3a] rounded-lg px-4 py-3 text-[#f0f0f5] text-sm focus:outline-none focus:border-[#1a56db]"
+                    placeholder="Buyer full name" />
                 </div>
-                <button type="submit" disabled={introSubmitting} className="inline-flex items-center gap-2 bg-[#1a56db] hover:bg-[#1040b0] text-white font-semibold px-6 py-3 rounded-xl transition-colors disabled:opacity-50 text-sm">
-                  {introSubmitting ? "Sending..." : <><span>Send Lead Intro</span><ArrowRight size={16}/></>}
-                </button>
+                <div>
+                  <label className="block text-[#9ca3af] text-xs mb-1">Buyer Email *</label>
+                  <input required type="email" value={introForm.buyerEmail} onChange={e => setIntroForm(f => ({ ...f, buyerEmail: e.target.value }))}
+                    className="w-full bg-[#0a0a0f] border border-[#2a2a3a] rounded-lg px-4 py-3 text-[#f0f0f5] text-sm focus:outline-none focus:border-[#1a56db]"
+                    placeholder="buyer@email.com" />
+                </div>
+                <div>
+                  <label className="block text-[#9ca3af] text-xs mb-1">Buyer Phone</label>
+                  <input type="tel" value={introForm.buyerPhone} onChange={e => setIntroForm(f => ({ ...f, buyerPhone: e.target.value }))}
+                    className="w-full bg-[#0a0a0f] border border-[#2a2a3a] rounded-lg px-4 py-3 text-[#f0f0f5] text-sm focus:outline-none focus:border-[#1a56db]"
+                    placeholder="(214) 555-0100" />
+                </div>
+                <div>
+                  <label className="block text-[#9ca3af] text-xs mb-1">Context (optional)</label>
+                  <input value={introForm.context} onChange={e => setIntroForm(f => ({ ...f, context: e.target.value }))}
+                    className="w-full bg-[#0a0a0f] border border-[#2a2a3a] rounded-lg px-4 py-3 text-[#f0f0f5] text-sm focus:outline-none focus:border-[#1a56db]"
+                    placeholder="Pre-approval needed, purchase price ~$450k" />
+                </div>
+                <div className="sm:col-span-2">
+                  <button type="submit" disabled={introSubmitting}
+                    className="w-full py-3 rounded-xl font-semibold text-white text-sm transition-opacity disabled:opacity-60"
+                    style={{ background: "#1a56db" }}>
+                    {introSubmitting ? "Sending…" : "Send Intro to Tony"}
+                  </button>
+                </div>
               </form>
             )}
           </div>
+
         </div>
       </main>
       <Footer />
