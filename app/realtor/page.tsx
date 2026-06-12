@@ -300,14 +300,7 @@ export default function RealtorSignup() {
                 RESPA-clean: no referral fees between NoFluff Marketing LLC and realtor partners.
               </p>
 
-              {/* Volume contact line — verbatim per Tony */}
-              <p className="text-[#4a4a5a] text-xs text-center">
-                Brokerage or 5+ agents interested in volume pricing? Email{" "}
-                <a href="mailto:info@nofluffmarketing.io" className="underline hover:text-[#6b7280]">
-                  info@nofluffmarketing.io
-                </a>{" "}
-                to discuss.
-              </p>
+
             </form>
           </div>
         </section>

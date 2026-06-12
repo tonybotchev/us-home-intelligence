@@ -62,8 +62,7 @@ export default function BrokeragePage() {
               Individual agents sign up free at <a href="/realtor" className="text-[#22c55e] underline">/realtor</a> and order cobranded reports at 50% off the public price — no subscription needed.
             </p>
             <p className="text-[#9ca3af] mb-8">
-              If you&apos;re a brokerage or have 5 or more agents interested in volume pricing, reach out and we&apos;ll discuss options. Use the form below or email{" "}
-              <a href="mailto:info@nofluffmarketing.io" className="text-[#22c55e] underline">info@nofluffmarketing.io</a> directly.
+              Each agent signs up individually at <a href="/realtor" className="text-[#22c55e] underline">/realtor</a> — free signup, one free demo report, then 50% off all future reports per order. No subscription. No team account needed.
             </p>
 
             {/* What every agent gets */}
@@ -92,7 +91,7 @@ export default function BrokeragePage() {
 
             <form onSubmit={handleSubmit} className="space-y-4">
               <div className="bg-[#12121a] border border-[#2a2a3a] rounded-2xl p-6">
-                <h3 className="text-[#f0f0f5] font-semibold mb-4">Volume Inquiry</h3>
+                <h3 className="text-[#f0f0f5] font-semibold mb-4">Agent Signup</h3>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div className="sm:col-span-2">
                     <label className="block text-[#9ca3af] text-xs mb-1">Brokerage Name *</label>
