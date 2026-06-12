@@ -11,6 +11,24 @@ function getStripe() {
 
 const MANUS_API_BASE = "https://api.manus.ai";
 
+// ─── DHL / Tony Botchev constants ────────────────────────────────────────────
+const DHL_TONY_NAME    = "Tony Botchev";
+const DHL_TONY_NMLS    = "NMLS #114198";
+const DHL_COMPANY      = "DFW Homes & Loans";
+const DHL_SPONSOR      = "Loan Factory, NMLS #320841";
+const DHL_WEBSITE      = "dfwhome.loans";
+const DHL_APPLY        = "dfwhome.loans/apply";
+const DHL_PHONE        = "(945) 300-4002";
+const DHL_BIO_DIRECT   =
+  "Tony Botchev specializes in DFW mortgages — conventional, FHA, VA, jumbo, DSCR — " +
+  "with 20+ years in the market and a sponsor-backed 24-hour pre-qualification turnaround. " +
+  "Ready to get pre-qualified? Visit dfwhome.loans/apply or call (945) 300-4002.";
+
+// ─── Report prompt builder ────────────────────────────────────────────────────
+// Conditional on referring_realtor_slug:
+//   • Present  → LAYOUT 1: Realtor-Sponsored cobranded template
+//   • Absent   → LAYOUT 2: DHL-Only direct buyer template
+// ─────────────────────────────────────────────────────────────────────────────
 async function dispatchManusReportTask(metadata: Stripe.Metadata) {
   const apiKey = process.env.MANUS_API_KEY;
   if (!apiKey) {
@@ -21,28 +39,179 @@ async function dispatchManusReportTask(metadata: Stripe.Metadata) {
   const {
     firstName, lastName, email, address, city, state, zip,
     priceBand, useCase, concerns, referralSlug, tier,
+    realtorName, realtorBrokerage, realtorLicense, realtorPhone, realtorEmail,
   } = metadata;
 
-  const prompt = `Produce a US Home Intelligence (USHI) v5 report for the following property.
+  const isCobranded = Boolean(referralSlug && referralSlug !== "direct" && referralSlug !== "");
+  const buyerFullName = `${firstName} ${lastName}`;
+  const propertyLine = address ? `${address}, ${city}, ${state} ${zip}` : `${city}, ${state} ${zip}`;
 
-BUYER: ${firstName} ${lastName} <${email}>
-PROPERTY: ${address ? `${address}, ` : ""}${city}, ${state} ${zip}
-TIER: ${tier} (${tier === "address-specific" ? "$147 address-specific" : "$97 zip-level"})
+  // ── LAYOUT 1: Realtor-Sponsored Cobranded ──────────────────────────────────
+  const cobrandedPrompt = `Produce a US Home Intelligence (USHI) v5 report — REALTOR-SPONSORED COBRANDED LAYOUT.
+
+BUYER: ${buyerFullName} <${email}>
+PROPERTY: ${propertyLine}
+TIER: ${tier} (${tier === "address-specific" ? "$73.50 realtor-partner address-specific" : "$48.50 realtor-partner zip-level"})
 PRICE BAND: ${priceBand}
 USE CASE: ${useCase}
 SPECIFIC CONCERNS: ${concerns || "None provided"}
-REFERRAL SLUG: ${referralSlug || "direct"}
+REFERRING REALTOR SLUG: ${referralSlug}
 
-REPORT REQUIREMENTS:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+REPORT LAYOUT: COBRANDED (Realtor lead + DHL co-publisher)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+COVER PAGE LAYOUT:
+  ┌─────────────────────────────────────────────────────┐
+  │  [REALTOR PHOTO PLACEHOLDER]                        │
+  │  ${realtorName || "[Realtor Name]"}                 │
+  │  ${realtorBrokerage || "[Brokerage]"}               │
+  │  License: ${realtorLicense || "[License #]"}        │
+  │  ${realtorPhone || ""}  ${realtorEmail || ""}       │
+  │                                                     │
+  │  ─────────── Prepared with ───────────              │
+  │                                                     │
+  │  [TONY BOTCHEV PHOTO PLACEHOLDER]                   │
+  │  ${DHL_TONY_NAME} · ${DHL_TONY_NMLS}               │
+  │  ${DHL_COMPANY}                                     │
+  │  Sponsored by ${DHL_SPONSOR}                        │
+  │  ${DHL_WEBSITE} · ${DHL_PHONE}                      │
+  └─────────────────────────────────────────────────────┘
+  Report title: US Home Intelligence Report
+  Property: ${propertyLine}
+  Prepared for: ${buyerFullName}
+  Date: [CURRENT DATE]
+
+RUNNING HEADER (every page, small but visible):
+  Left: ${realtorName || "[Realtor Name]"} | ${DHL_COMPANY}
+  Right: intel.nofluffmarketing.io
+
+RUNNING FOOTER (every page):
+  Left: ${realtorName || "[Realtor Name]"} | ${DHL_COMPANY}
+  Center: Page [N] of [TOTAL]
+  Right: Produced exclusively by NoFluff Marketing LLC
+
+REPORT CONTENT REQUIREMENTS:
 - 9,000+ words, 11 chapters
-- Chapters: Executive Summary, School District Analysis, Crime Trend Analysis, Flood & Environmental Risk, Market Velocity & Pricing, Demographic Composition (Fair Housing compliant language required), Walkability & Amenities, HOA Landscape, Comparable Sales, Investment Thesis, Fair Housing Disclosure
+- Chapters in order:
+  1. Executive Summary
+  2. School District Analysis
+  3. Crime Trend Analysis
+  4. Flood & Environmental Risk
+  5. Market Velocity & Pricing
+  6. Demographic Composition (Fair Housing compliant language required)
+  7. Walkability & Amenities
+  8. HOA Landscape
+  9. Comparable Sales
+  10. Investment Thesis
+  11. Fair Housing Disclosure
+  12. YOUR MORTGAGE PARTNER (new section — see below)
+  13. References & Glossary
+
+CHAPTER 12 — YOUR MORTGAGE PARTNER (insert after Chapter 11, before References):
+  Section heading: "Your Mortgage Partner"
+  Layout:
+    [TONY BOTCHEV PHOTO PLACEHOLDER]
+    ${DHL_TONY_NAME}
+    ${DHL_TONY_NMLS} · Sponsored by ${DHL_SPONSOR}
+    ${DHL_COMPANY} · ${DHL_WEBSITE} · ${DHL_PHONE}
+
+  Bio paragraph (use this exact text, substituting realtor name):
+  "${DHL_TONY_NAME} specializes in DFW mortgages — conventional, FHA, VA, jumbo, DSCR — with 20+ years in the market and a sponsor-backed 24-hour pre-qualification turnaround. He works with ${realtorName || "[Realtor Name]"} to give your buyers the smoothest path from offer to keys."
+
+  CTA box:
+    "Ready to get pre-qualified? Visit ${DHL_APPLY} or call ${DHL_PHONE}."
+    "RESPA-clean: no fees flow between ${DHL_COMPANY} and your realtor for mortgage referrals. You always decide who to use."
+
+ADDITIONAL REQUIREMENTS:
 - Fair Housing compliant language on all demographic and schools chapters
-- "Produced exclusively by NoFluff Marketing LLC" on cover and footer
 - NO references to "Manus" anywhere in the report
 - Output as structured PDF-ready markdown
 
 Deliver the completed report to: ${email}
-${referralSlug ? `CC the referring realtor partner (slug: ${referralSlug})` : ""}`;
+CC the referring realtor partner (slug: ${referralSlug})`;
+
+  // ── LAYOUT 2: DHL-Only Direct Buyer ───────────────────────────────────────
+  const dhlOnlyPrompt = `Produce a US Home Intelligence (USHI) v5 report — DHL-ONLY DIRECT BUYER LAYOUT.
+
+BUYER: ${buyerFullName} <${email}>
+PROPERTY: ${propertyLine}
+TIER: ${tier} (${tier === "address-specific" ? "$147 address-specific" : "$97 zip-level"})
+PRICE BAND: ${priceBand}
+USE CASE: ${useCase}
+SPECIFIC CONCERNS: ${concerns || "None provided"}
+CHANNEL: direct (no referring realtor)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+REPORT LAYOUT: DHL-ONLY (Tony Botchev / DFW Homes & Loans sole publisher)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+COVER PAGE LAYOUT:
+  ┌─────────────────────────────────────────────────────┐
+  │  [TONY BOTCHEV PHOTO PLACEHOLDER]                   │
+  │  ${DHL_TONY_NAME}                                   │
+  │  ${DHL_COMPANY}                                     │
+  │  ${DHL_TONY_NMLS}                                   │
+  │  Sponsored by ${DHL_SPONSOR}                        │
+  │  ${DHL_WEBSITE} · ${DHL_PHONE}                      │
+  └─────────────────────────────────────────────────────┘
+  Report title: US Home Intelligence Report
+  Property: ${propertyLine}
+  Prepared for: ${buyerFullName}
+  Date: [CURRENT DATE]
+
+RUNNING HEADER (every page, small but visible):
+  Left: ${DHL_COMPANY}
+  Right: intel.nofluffmarketing.io
+
+RUNNING FOOTER (every page):
+  Left: ${DHL_COMPANY} · ${DHL_TONY_NMLS}
+  Center: Page [N] of [TOTAL]
+  Right: Produced exclusively by NoFluff Marketing LLC
+
+REPORT CONTENT REQUIREMENTS:
+- 9,000+ words, 11 chapters
+- Chapters in order:
+  1. Executive Summary
+  2. School District Analysis
+  3. Crime Trend Analysis
+  4. Flood & Environmental Risk
+  5. Market Velocity & Pricing
+  6. Demographic Composition (Fair Housing compliant language required)
+  7. Walkability & Amenities
+  8. HOA Landscape
+  9. Comparable Sales
+  10. Investment Thesis
+  11. Fair Housing Disclosure
+  12. YOUR MORTGAGE PARTNER (new section — see below)
+  13. References & Glossary
+
+CHAPTER 12 — YOUR MORTGAGE PARTNER (insert after Chapter 11, before References):
+  Section heading: "Your Mortgage Partner"
+  Layout:
+    [TONY BOTCHEV PHOTO PLACEHOLDER]
+    ${DHL_TONY_NAME}
+    ${DHL_TONY_NMLS} · Sponsored by ${DHL_SPONSOR}
+    ${DHL_COMPANY} · ${DHL_WEBSITE} · ${DHL_PHONE}
+
+  Bio paragraph (use this exact text):
+  "${DHL_BIO_DIRECT}"
+
+  CTA box (prominent, styled as a call-to-action):
+    Heading: "Get Pre-Qualified in 24 Hours"
+    Body: "Tony's team can have your pre-qualification letter ready in under 24 hours. No obligation — just clarity on what you can buy."
+    Button text: "Apply at ${DHL_APPLY}"
+    Phone: "Or call ${DHL_PHONE}"
+    Disclosure: "${DHL_TONY_NMLS} · Sponsored by ${DHL_SPONSOR} · Subject to credit approval."
+
+ADDITIONAL REQUIREMENTS:
+- Fair Housing compliant language on all demographic and schools chapters
+- NO references to "Manus" anywhere in the report
+- Output as structured PDF-ready markdown
+
+Deliver the completed report to: ${email}`;
+
+  const prompt = isCobranded ? cobrandedPrompt : dhlOnlyPrompt;
 
   const res = await fetch(`${MANUS_API_BASE}/v2/task/create`, {
     method: "POST",
@@ -120,10 +289,13 @@ export async function POST(req: NextRequest) {
       });
     }
 
-    // Dispatch Manus API task for report production
+    // Dispatch Manus API task — conditional template based on referralSlug
     const manusTask = await dispatchManusReportTask(meta);
     if (manusTask?.task_id) {
-      console.log(`Manus task dispatched: ${manusTask.task_id} for buyer ${meta.email}`);
+      const layout = (meta.referralSlug && meta.referralSlug !== "direct" && meta.referralSlug !== "")
+        ? "COBRANDED"
+        : "DHL-ONLY";
+      console.log(`Manus task dispatched: ${manusTask.task_id} [${layout}] for buyer ${meta.email}`);
     }
   }
 

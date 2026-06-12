@@ -5,10 +5,21 @@ function getStripe() {
   return new Stripe(process.env.STRIPE_SECRET_KEY || "sk_test_placeholder", { apiVersion: "2026-05-27.dahlia" });
 }
 
-// NFM Stripe price IDs — set these in Vercel env vars
+// ─── Stripe Price IDs ─────────────────────────────────────────────────────────
+// PUBLIC / DIRECT BUYER prices (unchanged — $97 zip / $147 address)
+// Set STRIPE_PRICE_ZIP and STRIPE_PRICE_ADDRESS in Vercel env vars
+//
+// REALTOR-PARTNER prices (50% off — $48.50 zip / $73.50 address)
+// Locked: 2026-06-12 · Supersedes old comp-credit model
+// Set STRIPE_PRICE_REALTOR_ZIP and STRIPE_PRICE_REALTOR_ADDRESS in Vercel env vars
+// ─────────────────────────────────────────────────────────────────────────────
 const PRICE_IDS: Record<string, string> = {
-  "zip-level": process.env.STRIPE_PRICE_ZIP || "price_zip_placeholder",
-  "address-specific": process.env.STRIPE_PRICE_ADDRESS || "price_address_placeholder",
+  // Public / direct buyer
+  "zip-level":         process.env.STRIPE_PRICE_ZIP             || "price_zip_placeholder",
+  "address-specific":  process.env.STRIPE_PRICE_ADDRESS         || "price_address_placeholder",
+  // Realtor-partner (50% off)
+  "realtor-zip":       process.env.STRIPE_PRICE_REALTOR_ZIP     || "price_realtor_zip_placeholder",
+  "realtor-address":   process.env.STRIPE_PRICE_REALTOR_ADDRESS || "price_realtor_address_placeholder",
 };
 
 export async function POST(req: NextRequest) {
@@ -19,6 +30,8 @@ export async function POST(req: NextRequest) {
       address, city, state, zip,
       priceBand, useCase, hasLender, concerns,
       referralSlug, tier, price,
+      // Realtor cobrand metadata (populated when ordering via /r/[slug] or dashboard)
+      realtorName, realtorBrokerage, realtorLicense, realtorPhone, realtorEmail,
     } = body;
 
     if (!email || !city || !zip || !tier) {
@@ -41,6 +54,12 @@ export async function POST(req: NextRequest) {
         referralSlug: referralSlug || "",
         tier, price: String(price),
         source: "intel.nofluffmarketing.io",
+        // Realtor cobrand fields — passed through to report generator
+        realtorName: realtorName || "",
+        realtorBrokerage: realtorBrokerage || "",
+        realtorLicense: realtorLicense || "",
+        realtorPhone: realtorPhone || "",
+        realtorEmail: realtorEmail || "",
       },
       success_url: `${baseUrl}/buy/success?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: referralSlug ? `${baseUrl}/r/${referralSlug}` : `${baseUrl}/buy`,
@@ -50,6 +69,7 @@ export async function POST(req: NextRequest) {
           buyer: `${firstName} ${lastName}`,
           property: `${address || ""} ${city} ${state} ${zip}`.trim(),
           referralSlug: referralSlug || "direct",
+          layout: (referralSlug && referralSlug !== "direct") ? "cobranded" : "dhl-only",
         },
       },
     });

@@ -14,7 +14,7 @@ export default function TermsPage() {
           <div className="max-w-4xl mx-auto text-[#9ca3af] leading-relaxed space-y-8">
             <div>
               <h1 className="text-3xl font-bold text-[#f0f0f5] mb-2">Terms of Service</h1>
-              <p className="text-[#6b7280] text-sm">Last updated: June 10, 2026 · US Home Intelligence Platform · NoFluff Marketing LLC</p>
+              <p className="text-[#6b7280] text-sm">Last updated: June 12, 2026 · US Home Intelligence Platform · NoFluff Marketing LLC</p>
             </div>
             <p>These Terms govern use of intel.nofluffmarketing.io, operated by NoFluff Marketing LLC, 3333 Preston Rd Ste 300 #1570, Frisco, TX 75034. Tony Botchev, NMLS #114198, sponsored by Loan Factory, NMLS #320841.</p>
             <div>
@@ -27,7 +27,11 @@ export default function TermsPage() {
             </div>
             <div>
               <h2 className="text-xl font-bold text-[#f0f0f5] mb-3">Realtor Partner Program</h2>
-              <p>Partners must hold a valid real estate license. Comp credits are non-transferable, have no cash value, and expire 12 months after issuance. Soft cap: 10 credits held. RESPA-clean: no fees flow between NoFluff Marketing LLC and realtor partners for mortgage referrals.</p>
+              <p>Partners must hold a valid real estate license. The Realtor Partner Program offers three tiers — Free, Pro ($97/mo), and Team ($247/mo) — as locked on June 12, 2026. This pricing supersedes any prior comp-credit model. Free partners receive a personal share link and cobranded reports when buyers order through that link at full public pricing ($97 zip-level / $147 address-specific). Pro and Team partners may order reports directly at partner pricing ($48.50 zip-level / $73.50 address-specific). All cobranded reports include DFW Homes &amp; Loans (Tony Botchev, NMLS #114198, sponsored by Loan Factory, NMLS #320841) as the preferred mortgage partner. RESPA-clean: no fees flow between NoFluff Marketing LLC and realtor partners for mortgage referrals. Buyers always decide who to use for their mortgage.</p>
+            </div>
+            <div>
+              <h2 className="text-xl font-bold text-[#f0f0f5] mb-3">Report Cobrand and DHL Placement</h2>
+              <p>All reports ordered through a realtor partner share link or partner dashboard use the Realtor-Sponsored cobranded layout: the realtor appears in the lead position and DFW Homes &amp; Loans appears as co-publisher. Reports ordered directly through the public /buy channel or any paid advertising channel use the DHL-Only layout with DFW Homes &amp; Loans as the sole publisher. Both layouts include a &quot;Your Mortgage Partner&quot; section featuring Tony Botchev, NMLS #114198.</p>
             </div>
             <div>
               <h2 className="text-xl font-bold text-[#f0f0f5] mb-3">Fair Housing</h2>

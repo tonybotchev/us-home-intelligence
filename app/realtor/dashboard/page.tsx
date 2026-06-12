@@ -2,13 +2,25 @@
 import { useEffect, useState } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { Copy, CheckCircle, ArrowRight, Gift, Users, BarChart3 } from "lucide-react";
+import { Copy, CheckCircle, ArrowRight, Gift, Users, BarChart3, Tag } from "lucide-react";
+
+// ─── Partner model locked 2026-06-12 ─────────────────────────────────────────
+// Supersedes old comp-credit model.
+// Free: share link + cobranded reports (buyer pays full price)
+// Pro ($97/mo): unlimited comp reports at 50% off ($48.50 zip / $73.50 address)
+// Team ($247/mo): up to 10 agents, shared pool, broker dashboard
+// ─────────────────────────────────────────────────────────────────────────────
 
 interface DashboardData {
   name: string; email: string; brokerage: string; slug: string;
-  compCredits: number; compHistory: Array<{date:string;buyer:string;address:string}>;
+  partnerTier: "free" | "pro" | "team";
   activityFeed: Array<{date:string;type:string;description:string}>;
-  stats: {paidReports:number;compReports:number;mortgageLeads:number;totalBuyerValue:number};
+  stats: {
+    paidReports: number;
+    realtorOrderedReports: number;
+    mortgageLeads: number;
+    totalBuyerValue: number;
+  };
   accentColor: string;
 }
 
@@ -67,21 +79,42 @@ export default function RealtorDashboard() {
 
   const shareLink = `https://intel.nofluffmarketing.io/r/${data.slug}`;
 
+  const tierLabel: Record<string, string> = {
+    free: "Free Partner",
+    pro: "Pro Partner — $97/mo",
+    team: "Team Partner — $247/mo",
+  };
+  const tierColor: Record<string, string> = {
+    free: "#22c55e",
+    pro: "#1a56db",
+    team: "#c9a227",
+  };
+  const currentTier = data.partnerTier || "free";
+
   return (
     <div className="min-h-screen flex flex-col bg-[#0a0a0f]">
       <Navbar />
       <main className="flex-1 pt-24 px-6 py-12">
         <div className="max-w-5xl mx-auto">
-          <div className="mb-8">
-            <h1 className="text-2xl font-bold text-[#f0f0f5]">Partner Dashboard</h1>
-            <p className="text-[#6b7280]">{data.name} · {data.brokerage}</p>
+          <div className="mb-8 flex items-start justify-between flex-wrap gap-4">
+            <div>
+              <h1 className="text-2xl font-bold text-[#f0f0f5]">Partner Dashboard</h1>
+              <p className="text-[#6b7280]">{data.name} · {data.brokerage}</p>
+            </div>
+            <div
+              className="flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold border"
+              style={{ color: tierColor[currentTier], borderColor: tierColor[currentTier] + "40", background: tierColor[currentTier] + "10" }}
+            >
+              <Tag size={14} />
+              {tierLabel[currentTier]}
+            </div>
           </div>
 
           {/* Stats */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
             {[
-              {label:"Paid Reports",value:data.stats.paidReports,icon:<BarChart3 size={18} className="text-[#00c2ff]"/>},
-              {label:"Comp Reports Used",value:data.stats.compReports,icon:<Gift size={18} className="text-[#c9a227]"/>},
+              {label:"Buyer Reports (via link)",value:data.stats.paidReports,icon:<BarChart3 size={18} className="text-[#00c2ff]"/>},
+              {label:"Reports You Ordered",value:data.stats.realtorOrderedReports,icon:<Gift size={18} className="text-[#c9a227]"/>},
               {label:"Mortgage Leads Intro'd",value:data.stats.mortgageLeads,icon:<Users size={18} className="text-[#22c55e]"/>},
               {label:"Est. Buyer Value",value:`$${data.stats.totalBuyerValue.toLocaleString()}`,icon:<BarChart3 size={18} className="text-[#1a56db]"/>},
             ].map(s=>(
@@ -102,26 +135,37 @@ export default function RealtorDashboard() {
                   {copied ? <CheckCircle size={16} className="text-[#22c55e]"/> : <Copy size={16}/>}
                 </button>
               </div>
-              <p className="text-[#6b7280] text-xs">Share this link with buyers. Reports ordered through it are cobranded with your info.</p>
+              <p className="text-[#6b7280] text-xs">Share this link with buyers. Reports ordered through it are cobranded with your name and brokerage — and include DFW Homes &amp; Loans as the preferred mortgage partner.</p>
             </div>
 
-            {/* Comp credits */}
+            {/* Partner tier / order at 50% off */}
             <div className="bg-[#12121a] border border-[#2a2a3a] rounded-2xl p-6">
-              <h3 className="text-[#f0f0f5] font-semibold mb-2">Comp Credits</h3>
-              <div className="flex items-baseline gap-2 mb-3">
-                <span className="text-4xl font-bold text-[#c9a227]">{data.compCredits}</span>
-                <span className="text-[#6b7280] text-sm">available</span>
-              </div>
-              <p className="text-[#6b7280] text-xs mb-4">Earn credits: 3 credits after your first paid deal, +1 per subsequent deal. Soft cap: 10.</p>
-              {data.compHistory.length > 0 && (
-                <div className="space-y-2">
-                  {data.compHistory.slice(0,3).map((h,i)=>(
-                    <div key={i} className="flex items-center justify-between text-xs text-[#6b7280]">
-                      <span>{h.buyer} — {h.address}</span>
-                      <span>{h.date}</span>
+              <h3 className="text-[#f0f0f5] font-semibold mb-2">Order Reports at Partner Pricing</h3>
+              {currentTier === "free" ? (
+                <>
+                  <p className="text-[#6b7280] text-xs mb-4">Free partners share their link — buyers pay full price ($97/$147). Upgrade to Pro to order reports yourself at 50% off for your active buyer pipeline.</p>
+                  <div className="bg-[#1a56db]/10 border border-[#1a56db]/30 rounded-xl p-4 mb-4">
+                    <p className="text-[#f0f0f5] text-sm font-semibold mb-1">Pro Partner — $97/mo</p>
+                    <p className="text-[#9ca3af] text-xs">Unlimited reports at $48.50 (zip) / $73.50 (address). Priority turnaround. Dedicated success manager.</p>
+                  </div>
+                  <a href="/realtor" className="inline-flex items-center gap-2 bg-[#1a56db] hover:bg-[#1040b0] text-white font-semibold px-5 py-2.5 rounded-xl text-sm transition-colors">
+                    Upgrade to Pro <ArrowRight size={15}/>
+                  </a>
+                </>
+              ) : (
+                <>
+                  <p className="text-[#6b7280] text-xs mb-4">As a {tierLabel[currentTier].split(" —")[0]}, you order reports at 50% off for your active buyer pipeline. Reports are cobranded with your name and DFW Homes &amp; Loans.</p>
+                  <div className="grid grid-cols-2 gap-3">
+                    <div className="bg-[#0a0a0f] border border-[#2a2a3a] rounded-xl p-4 text-center">
+                      <div className="text-2xl font-bold text-[#22c55e]">$48.50</div>
+                      <div className="text-[#6b7280] text-xs mt-1">Zip-Level Report</div>
                     </div>
-                  ))}
-                </div>
+                    <div className="bg-[#0a0a0f] border border-[#2a2a3a] rounded-xl p-4 text-center">
+                      <div className="text-2xl font-bold text-[#22c55e]">$73.50</div>
+                      <div className="text-[#6b7280] text-xs mt-1">Address-Specific Report</div>
+                    </div>
+                  </div>
+                </>
               )}
             </div>
           </div>
@@ -149,10 +193,10 @@ export default function RealtorDashboard() {
           {/* Intro a mortgage lead */}
           <div className="bg-[#12121a] border border-[#2a2a3a] rounded-2xl p-6">
             <h3 className="text-[#f0f0f5] font-semibold mb-2">Intro a Mortgage Lead to Tony Botchev</h3>
-            <p className="text-[#6b7280] text-xs mb-4">Always available — no comp credits required. Earns you +1 comp credit. RESPA-clean: no fees flow between us. Buyer decides who to use.</p>
+            <p className="text-[#6b7280] text-xs mb-4">Always available. RESPA-clean: no fees flow between us. Buyer decides who to use for their mortgage.</p>
             {introSuccess ? (
               <div className="flex items-center gap-3 text-[#22c55e]">
-                <CheckCircle size={20}/><span className="text-sm">Lead intro sent. +1 comp credit added to your account.</span>
+                <CheckCircle size={20}/><span className="text-sm">Lead intro sent to Tony&apos;s team. You&apos;ll receive a confirmation email shortly.</span>
               </div>
             ) : (
               <form onSubmit={submitIntro} className="space-y-4">

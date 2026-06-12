@@ -92,6 +92,7 @@ export default function Home() {
               <Link href="/buy" className="block w-full text-center bg-[#1a56db] hover:bg-[#1040b0] text-white font-semibold py-3 rounded-xl transition-colors">Order Address Report</Link>
             </div>
           </div>
+          <p className="text-[#4a4a5a] text-xs mt-6">Realtor partners order at 50% off through their partner dashboard. <Link href="/realtor" className="text-[#22c55e] hover:underline">Join the partner network free.</Link></p>
         </div>
       </section>
 
@@ -101,9 +102,15 @@ export default function Home() {
             <div>
               <span className="text-xs font-semibold text-[#22c55e] uppercase tracking-wider bg-[#22c55e]/10 px-3 py-1 rounded-full">For Realtors</span>
               <h2 className="text-3xl font-bold text-[#f0f0f5] mt-4 mb-4">Your brand. Our intelligence.</h2>
-              <p className="text-[#9ca3af] leading-relaxed mb-6">Become a USHI partner and get a personal share link. Every buyer who orders through your link gets a report co-branded with your name, headshot, and brokerage. Free to join. No credit card required.</p>
+              <p className="text-[#9ca3af] leading-relaxed mb-6">Become a USHI partner and get a personal share link. Every buyer who orders through your link gets a report cobranded with your name, headshot, and brokerage — plus DFW Homes &amp; Loans as the preferred mortgage partner. Free to join. Upgrade to Pro for unlimited comp reports at 50% off.</p>
               <div className="space-y-3 mb-8">
-                {["Free partner signup — no credit card","Personal share link: intel.nofluffmarketing.io/r/your-name","Cobranded reports with your headshot and brokerage","Earn comp credits for active buyer prospects","RESPA-clean — no referral fees, buyer chooses their lender"].map(f=>(
+                {[
+                  "Free partner signup — no credit card",
+                  "Personal share link: intel.nofluffmarketing.io/r/your-name",
+                  "Cobranded reports with your headshot and brokerage",
+                  "Pro tier: unlimited reports at $48.50 zip / $73.50 address",
+                  "RESPA-clean — no referral fees, buyer chooses their lender",
+                ].map(f=>(
                   <div key={f} className="flex items-start gap-2 text-sm text-[#9ca3af]"><CheckCircle size={14} className="text-[#22c55e] mt-0.5 shrink-0"/>{f}</div>
                 ))}
               </div>
