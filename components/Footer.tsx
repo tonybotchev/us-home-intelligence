@@ -7,7 +7,7 @@ export default function Footer() {
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 mb-6">
           <div className="text-[#6b7280] text-xs leading-relaxed">
             <p>NoFluff Marketing LLC &nbsp;&middot;&nbsp; 3333 Preston Rd Ste 300 #1570 &nbsp;&middot;&nbsp; Frisco, TX 75034 &nbsp;&middot;&nbsp; 940-394-5656</p>
-            <p className="mt-1">Tony Botchev, NMLS #114198 &nbsp;&middot;&nbsp; Sponsored by Loan Factory, NMLS #320841</p>
+            <p className="mt-1">DFW Homes and Loans LLC &nbsp;&middot;&nbsp; Tony Botchev, NMLS #114198 &nbsp;&middot;&nbsp; Sponsored by Loan Factory, NMLS #320841</p>
           </div>
           <div className="flex items-center gap-2 text-[#6b7280] text-xs">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" className="text-[#c9a227]">

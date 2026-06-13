@@ -13,9 +13,8 @@ export default function Navbar() {
           <span className="text-[#6b7280] text-sm ml-2">by NoFluff Marketing LLC</span>
         </Link>
         <div className="hidden md:flex items-center gap-6">
-          <Link href="/buy" className="text-[#9ca3af] hover:text-[#f0f0f5] text-sm transition-colors">Order Report</Link>
+          <Link href="/buy" className="text-[#9ca3af] hover:text-[#f0f0f5] text-sm transition-colors">Order Reports</Link>
           <Link href="/realtor" className="text-[#9ca3af] hover:text-[#f0f0f5] text-sm transition-colors">Realtor Partners</Link>
-          <Link href="/brokerage" className="text-[#9ca3af] hover:text-[#f0f0f5] text-sm transition-colors">Brokerage</Link>
           <Link href="/buy" className="bg-[#1a56db] hover:bg-[#1040b0] text-white text-sm px-4 py-2 rounded-lg transition-colors font-medium">
             Order Now
           </Link>
@@ -26,9 +25,8 @@ export default function Navbar() {
       </div>
       {open && (
         <div className="md:hidden bg-[#12121a] border-b border-[#2a2a3a] px-6 py-4 flex flex-col gap-4">
-          <Link href="/buy" className="text-[#9ca3af] text-sm" onClick={() => setOpen(false)}>Order Report</Link>
+          <Link href="/buy" className="text-[#9ca3af] text-sm" onClick={() => setOpen(false)}>Order Reports</Link>
           <Link href="/realtor" className="text-[#9ca3af] text-sm" onClick={() => setOpen(false)}>Realtor Partners</Link>
-          <Link href="/brokerage" className="text-[#9ca3af] text-sm" onClick={() => setOpen(false)}>Brokerage</Link>
           <Link href="/buy" className="bg-[#1a56db] text-white text-sm px-4 py-2 rounded-lg text-center" onClick={() => setOpen(false)}>Order Now</Link>
         </div>
       )}

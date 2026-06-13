@@ -7,6 +7,8 @@ export default function Home() {
   return (
     <div className="min-h-screen flex flex-col bg-[#0a0a0f]">
       <Navbar />
+
+      {/* Hero — public buyer flow */}
       <section className="relative pt-32 pb-24 px-6 overflow-hidden">
         <div className="absolute inset-0" style={{background:"radial-gradient(ellipse at 30% 50%, rgba(26,86,219,0.12) 0%, transparent 60%), radial-gradient(ellipse at 70% 20%, rgba(0,194,255,0.08) 0%, transparent 60%)"}} />
         <div className="relative max-w-5xl mx-auto text-center">
@@ -22,17 +24,15 @@ export default function Home() {
           <p className="text-[#9ca3af] text-xl max-w-2xl mx-auto mb-4">Delivered in under an hour.</p>
           <p className="text-[#6b7280] text-base max-w-3xl mx-auto mb-10">9,000-word deep-dive reports covering schools, crime trends, flood risk, market velocity, demographic composition, and a forward investment thesis — for any residential address in the United States.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/realtor" className="inline-flex items-center gap-2 bg-[#1c1c28] hover:bg-[#2a2a3a] border border-[#2a2a3a] text-[#f0f0f5] font-semibold px-8 py-4 rounded-xl transition-all">
-              I&apos;m a Realtor — Sign Up Free <ArrowRight size={18} />
-            </Link>
             <Link href="/buy" className="inline-flex items-center gap-2 bg-[#1a56db] hover:bg-[#1040b0] text-white font-semibold px-8 py-4 rounded-xl transition-all shadow-lg">
-              I&apos;m a Buyer — Order a Report <ArrowRight size={18} />
+              Order Your Report <ArrowRight size={18} />
             </Link>
           </div>
           <p className="text-[#4a4a5a] text-xs mt-6">Produced exclusively by NoFluff Marketing LLC · Frisco, TX · NMLS #114198</p>
         </div>
       </section>
 
+      {/* What's inside */}
       <section className="py-20 px-6 bg-[#12121a] border-y border-[#2a2a3a]">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-12">
@@ -65,6 +65,7 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Pricing — public buyer tiers only */}
       <section className="py-20 px-6">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-3xl font-bold text-[#f0f0f5] mb-4">Simple, Transparent Pricing</h2>
@@ -92,50 +93,31 @@ export default function Home() {
               <Link href="/buy" className="block w-full text-center bg-[#1a56db] hover:bg-[#1040b0] text-white font-semibold py-3 rounded-xl transition-colors">Order Address Report</Link>
             </div>
           </div>
-          <p className="text-[#4a4a5a] text-xs mt-6">Realtor partners order at 50% off through their partner dashboard. <Link href="/realtor" className="text-[#22c55e] hover:underline">Join the partner network free.</Link></p>
+          <p className="text-[#4a4a5a] text-xs mt-6">Are you a DFW realtor? <Link href="/realtor" className="text-[#22c55e] hover:underline">Join the Realtor Partner Program — free.</Link></p>
         </div>
       </section>
 
-      <section className="py-20 px-6 bg-[#12121a] border-y border-[#2a2a3a]">
+      {/* Trust signals */}
+      <section className="py-16 px-6 bg-[#12121a] border-y border-[#2a2a3a]">
         <div className="max-w-4xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            <div>
-              <span className="text-xs font-semibold text-[#22c55e] uppercase tracking-wider bg-[#22c55e]/10 px-3 py-1 rounded-full">For Realtors</span>
-              <h2 className="text-3xl font-bold text-[#f0f0f5] mt-4 mb-4">Your brand. Our intelligence.</h2>
-              <p className="text-[#9ca3af] leading-relaxed mb-6">Become a USHI partner and get a personal share link. Every report ordered through your link is cobranded with your name, headshot, and brokerage — plus DFW Homes &amp; Loans as the preferred mortgage partner. Free to join. One free demo report. 50% off all future reports — per order, no subscription.</p>
-              <div className="space-y-3 mb-8">
-                {[
-                  "Free to join — no credit card, no subscription, no tiers",
-                  "1 free demo report to share with a buyer prospect",
-                  "Cobranded reports: your name, photo & brokerage on every order",
-                  "$48.50 zip / $73.50 address — 50% off, pay per report only",
-                  "RESPA-clean — no referral fees, buyer chooses their lender",
-                ].map(f=>(
-                  <div key={f} className="flex items-start gap-2 text-sm text-[#9ca3af]"><CheckCircle size={14} className="text-[#22c55e] mt-0.5 shrink-0"/>{f}</div>
-                ))}
-              </div>
-              <Link href="/realtor" className="inline-flex items-center gap-2 bg-[#22c55e]/10 hover:bg-[#22c55e]/20 border border-[#22c55e]/30 text-[#22c55e] font-semibold px-8 py-4 rounded-xl transition-colors">
-                Sign Up Free <ArrowRight size={18} />
-              </Link>
-            </div>
-            <div className="space-y-4">
-              {[
-                {icon:<Clock size={20} className="text-[#00c2ff]"/>,title:"Under 1 Hour",desc:"Reports delivered fast — your buyer doesn't wait days."},
-                {icon:<Shield size={20} className="text-[#22c55e]"/>,title:"RESPA Clean",desc:"No fees between you and us for mortgage referrals. Buyer decides."},
-                {icon:<BarChart3 size={20} className="text-[#c9a227]"/>,title:"Investment Grade",desc:"The same data depth institutional buyers use — for every client."},
-              ].map(item=>(
-                <div key={item.title} className="bg-[#0a0a0f] border border-[#2a2a3a] rounded-xl p-5 flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-lg bg-[#12121a] border border-[#2a2a3a] flex items-center justify-center shrink-0">{item.icon}</div>
-                  <div>
-                    <div className="text-[#f0f0f5] font-semibold text-sm mb-1">{item.title}</div>
-                    <div className="text-[#6b7280] text-xs">{item.desc}</div>
-                  </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {[
+              {icon:<Clock size={20} className="text-[#00c2ff]"/>,title:"Under 1 Hour",desc:"Reports delivered fast — your buyer doesn't wait days."},
+              {icon:<Shield size={20} className="text-[#22c55e]"/>,title:"RESPA Clean",desc:"No fees between you and us for mortgage referrals. Buyer decides."},
+              {icon:<BarChart3 size={20} className="text-[#c9a227]"/>,title:"Investment Grade",desc:"The same data depth institutional buyers use — for every client."},
+            ].map(item=>(
+              <div key={item.title} className="bg-[#0a0a0f] border border-[#2a2a3a] rounded-xl p-5 flex items-start gap-4">
+                <div className="w-10 h-10 rounded-lg bg-[#12121a] border border-[#2a2a3a] flex items-center justify-center shrink-0">{item.icon}</div>
+                <div>
+                  <div className="text-[#f0f0f5] font-semibold text-sm mb-1">{item.title}</div>
+                  <div className="text-[#6b7280] text-xs">{item.desc}</div>
                 </div>
-              ))}
-            </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
+
       <Footer />
     </div>
   );
