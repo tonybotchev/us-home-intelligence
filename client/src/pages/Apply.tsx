@@ -208,6 +208,11 @@ export default function ApplyPage() {
           <div className="mt-6">
             <NMLSDisclosure variant="form" />
           </div>
+
+          {/* NMLS footer line — required disclosure, no street address */}
+          <p className="mt-4 text-center font-['Outfit'] text-xs" style={{ color: "oklch(0.55 0.02 80)" }}>
+            Tony Botchev, NMLS #114198 &middot; Sponsored by Loan Factory, NMLS #320841 &middot; DFW Homes and Loans LLC.
+          </p>
         </div>
       </section>
 
