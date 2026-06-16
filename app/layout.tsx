@@ -5,9 +5,16 @@ export const metadata: Metadata = {
   description: "Investment-grade neighborhood intelligence. Any US address. Delivered in under an hour. Produced exclusively by NoFluff Marketing LLC.",
   metadataBase: new URL("https://intel.nofluffmarketing.io"),
 };
+import { organizationSchema, productSchema, faqSchema } from "@/lib/schema";
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
+      <head>
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      </head>
       <body className="min-h-screen bg-[#0a0a0f] text-[#f0f0f5]">
         {children}
         <script
