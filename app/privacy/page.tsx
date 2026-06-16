@@ -25,6 +25,7 @@ export default function PrivacyPage() {
               <h2 className="text-xl font-bold text-[#f0f0f5] mb-3">How We Use Your Information</h2>
               <p>To produce and deliver USHI reports; to process payments via Stripe; to verify real estate licenses (TREC/NMLS); to generate cobrand partner share links; to send transactional emails about your order; and to comply with applicable law.</p>
               <p className="mt-3"><strong className="text-[#f0f0f5]">Phone numbers</strong> collected on this platform are used exclusively for report delivery and follow-up about your specific report order. They are not used for marketing SMS campaigns on this platform.</p>
+              <p className="mt-3">Mobile information will not be shared with third parties or affiliates for marketing or promotional purposes.</p>
             </div>
             <div>
               <h2 className="text-xl font-bold text-[#f0f0f5] mb-3">Third-Party Processors</h2>
