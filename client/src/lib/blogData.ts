@@ -23,6 +23,158 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
+    id: "down-payment-assistance-texas-2026",
+    slug: "down-payment-assistance-texas-2026",
+    title: "Down Payment Assistance Programs in Texas: What DFW Buyers Need to Know in 2026",
+    date: "2026-06-16",
+    category: "First-Time Buyers",
+    excerpt: "Discover the top Texas down payment assistance programs available to DFW homebuyers in 2026, including TSAHC, TDHCA, and My First Texas Home — and how to combine them with FHA or conventional loans.",
+    readTime: "7 min read",
+    content: `If you've been watching DFW home prices over the past few years, you already know the challenge. The median home price in the Dallas-Fort Worth metro has hovered around $380,000–$400,000, and even with prices softening slightly from their 2022 peaks, coming up with a down payment is still one of the biggest hurdles first-time buyers face. On a $380,000 home, a traditional 20% down payment means you'd need $76,000 in cash — before closing costs.
+
+The good news? You almost certainly don't need that much. And if you qualify for one of Texas's down payment assistance programs, you may need significantly less than you think.
+
+Here's everything DFW buyers need to know about down payment assistance in 2026.
+
+---
+
+## Why Down Payment Assistance Matters in the DFW Market
+
+The Dallas-Fort Worth area has been one of the fastest-growing metro regions in the country for over a decade. That growth has been great for the economy, but it's also pushed home values well above the national median. For a first-time buyer earning a solid income — say, $65,000 to $90,000 per year — saving for a down payment while paying rent in Plano, Frisco, or Fort Worth can feel like running on a treadmill.
+
+Down payment assistance programs (DPA) were designed specifically for this situation. They help bridge the gap between what you've saved and what you need to close on a home. In Texas, several state-level and local programs exist to make homeownership more accessible, and many buyers who assume they won't qualify are surprised to find they do.
+
+---
+
+## The Major Texas Down Payment Assistance Programs
+
+### 1. My First Texas Home (MFTH)
+
+Administered by the **Texas Department of Housing and Community Affairs (TDHCA)**, My First Texas Home is one of the most widely used DPA programs in the state. It offers a 30-year, fixed-rate mortgage combined with down payment and closing cost assistance of up to **5% of the loan amount**.
+
+**Key eligibility requirements:**
+- Must be a first-time homebuyer (or not have owned a home in the past three years)
+- Minimum credit score of 620
+- Must occupy the home as a primary residence
+- Income limits vary by county and household size — in most DFW counties, the limit ranges from approximately **$90,000 to $115,000** for a household of 1–2 people
+- Home purchase price limits also apply (typically up to $400,000–$450,000 depending on the area)
+- Buyers must complete a HUD-approved homebuyer education course
+
+The assistance comes in the form of a **0% interest, deferred second lien** — meaning you don't make payments on it unless you sell, refinance, or pay off the home before the term ends.
+
+---
+
+### 2. Texas Homebuyer Program (also through TDHCA)
+
+TDHCA also offers the **Texas Homebuyer Program**, which is similar in structure to MFTH but is available to both first-time and **repeat buyers**. If you've owned a home before but are looking to buy again in a target area (designated low-income census tracts), you may still qualify.
+
+This program also pairs a competitive fixed-rate mortgage with DPA of up to 5%, and income and purchase price limits apply similarly to MFTH.
+
+---
+
+### 3. TSAHC Home Sweet Texas and Homes for Texas Heroes
+
+The **Texas State Affordable Housing Corporation (TSAHC)** runs two flagship programs that DFW buyers should know about:
+
+**Home Sweet Texas** is designed for low- and moderate-income buyers who may not qualify under stricter federal guidelines. It offers down payment assistance of **up to 5% of the loan amount**, which can be structured as either a grant (no repayment required) or a deferred forgivable loan depending on the option you choose.
+
+**Homes for Texas Heroes** is specifically for professionals who serve the community, including:
+- Teachers and school employees
+- Police officers and firefighters
+- Emergency medical technicians
+- Corrections officers
+- Veterans and active-duty military
+
+Both programs offer the same 5% DPA structure and have similar income and purchase price limits. The key advantage of TSAHC programs is flexibility — they can be used with FHA, VA, USDA, or conventional loans.
+
+**TSAHC income limits for DFW counties (approximate 2026 figures):**
+- Dallas County: up to ~$97,000 for 1–2 person households
+- Tarrant County: up to ~$94,000
+- Collin County: up to ~$105,000
+- Denton County: up to ~$102,000
+
+These limits are updated periodically, so always verify current figures with a participating lender.
+
+---
+
+### 4. Local DFW Programs Worth Exploring
+
+Beyond state programs, several cities and counties in the Metroplex offer their own assistance:
+
+- **City of Dallas** — The Dallas Homebuyer Assistance Program (DHAP) offers up to $60,000 in assistance for eligible buyers purchasing within city limits, with priority given to low-income households
+- **City of Fort Worth** — Offers down payment assistance through its Homebuyer Assistance Program for buyers within Fort Worth city limits
+- **Tarrant County** — The Tarrant County Housing Assistance Office administers programs for buyers in unincorporated areas
+- **City of Garland, Irving, and others** — Many DFW suburbs have their own programs funded through federal Community Development Block Grants (CDBG)
+
+These local programs often have more restrictive income limits but can offer larger dollar amounts than state programs — and in some cases, they can be **layered on top of** state DPA for even greater benefit.
+
+---
+
+## Combining DPA with FHA and Conventional Loans
+
+One of the most powerful strategies for first-time buyers is pairing down payment assistance with the right loan type. Here's how it works in practice.
+
+### DPA + FHA Loans
+
+FHA loans require a minimum **3.5% down payment** with a 580+ credit score. If you're using a TSAHC or TDHCA program that provides 5% in assistance, that assistance can cover your entire down payment **and** contribute toward closing costs. In this scenario, you could potentially close on a home with very little out-of-pocket expense.
+
+FHA loans are also more forgiving of lower credit scores and higher debt-to-income ratios, making this combination a popular choice for buyers who are strong on income but still building their credit profile.
+
+### DPA + Conventional Loans
+
+Conventional loans with 3% down (like Fannie Mae's HomeReady or Freddie Mac's Home Possible programs) can also be paired with DPA. This combination works especially well for buyers with credit scores of 680 or higher, because conventional loans at that tier often come with lower mortgage insurance costs than FHA.
+
+When you layer a 5% DPA grant with a 3% conventional loan, you're not just covering the down payment — you're also building in a buffer for closing costs, which typically run **2–5% of the purchase price** in Texas.
+
+### DPA + VA Loans
+
+Veterans and active-duty service members using VA loans already benefit from zero down payment requirements. But TSAHC's Homes for Texas Heroes program can still be used alongside a VA loan to cover **closing costs** — a meaningful benefit in a market where closing costs on a $380,000 home can easily reach $8,000–$15,000.
+
+---
+
+## How to Apply for Down Payment Assistance in Texas
+
+The application process for DPA is handled through a **participating lender** — not directly through TDHCA or TSAHC. This means your first step is finding a lender who is approved to originate these programs.
+
+Here's a simplified overview of the process:
+
+1. **Get pre-qualified** with a participating lender who can assess which programs you're eligible for
+2. **Complete a homebuyer education course** — required for most DPA programs, and available online through HUD-approved providers
+3. **Submit your full mortgage application** with documentation of income, assets, employment, and credit
+4. **Select your program** — your lender will help you choose the combination that makes the most financial sense
+5. **Shop for your home** within the program's purchase price limits
+6. **Close on your home** — DPA funds are applied at closing
+
+The entire process typically runs alongside your regular mortgage timeline, so using DPA doesn't usually slow things down significantly.
+
+---
+
+## Common Myths About Down Payment Assistance
+
+**"I make too much money to qualify."** Many buyers are surprised. With income limits reaching $100,000+ in some DFW counties, a significant portion of first-time buyers in the Metroplex are eligible.
+
+**"DPA will hurt my interest rate."** Some programs do carry slightly higher rates to offset the assistance, but the net benefit — especially in the early years of homeownership — often still favors using the program. A good lender will run the numbers both ways.
+
+**"I have to repay the money immediately."** Most Texas DPA programs use deferred or forgivable structures. You're not writing a check the day you close.
+
+---
+
+## Let's Find the Right Program for You
+
+Navigating down payment assistance programs isn't something you should have to figure out alone — and the difference between choosing the right program and the wrong one could mean thousands of dollars at closing.
+
+At **DFW Home & Loans**, we work with first-time buyers across the Dallas-Fort Worth area every day. We're familiar with TSAHC, TDHCA, and local city programs, and we'll help you identify exactly which combinations make sense for your income, credit, and homeownership goals.
+
+**Ready to find out how much assistance you may qualify for?** Contact us today for a free, no-obligation consultation. We'll walk you through your options, run real numbers, and help you take the next step toward owning a home in DFW.
+
+Visit us at [dfwhome.loans](https://dfwhome.loans) or call to speak with one of our licensed mortgage advisors.
+
+---
+
+*NMLS #114198. Equal Housing Opportunity. Program terms, income limits, and purchase price limits are subject to change. Contact a licensed mortgage professional for current program details and eligibility requirements.*`,
+  },
+
+  {
     id: "fha-vs-conventional-loan-dfw-2026",
     slug: "fha-vs-conventional-loan-dfw-2026",
     title: "FHA vs. Conventional Loan: Which Is Right for DFW Buyers in 2026?",
