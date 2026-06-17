@@ -102,7 +102,7 @@ export default function ApplyPage() {
             style={{ minHeight: 680 }}
           >
             <iframe
-              src="https://link.dfwhome.loans/widget/booking/dhl-prequal"
+              src="https://link.msgsndr.com/widget/booking/dhl-prequal"
               title="Get Pre-Qualified — DFW Homes & Loans"
               width="100%"
               style={{ minHeight: 680, border: "none", display: "block" }}
