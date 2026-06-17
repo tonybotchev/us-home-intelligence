@@ -3,10 +3,11 @@ import type { VercelRequest, VercelResponse } from "@vercel/node";
 // ─── GHL Config ────────────────────────────────────────────────────────────────
 const GHL_BASE = "https://services.leadconnectorhq.com";
 const GHL_VERSION = "2021-07-28";
-const GHL_LOCATION = "4mO3eTmt4MzqY4CfnMGW";
-const PIPELINE_ID = "LDVnhpPD75zLj8I1Rfzs";
-const STAGE_NEW_LEAD = "de32f2b3-e94c-4956-8ef0-6a46f62ada3d";
-const ASSIGNED_TO = "9yoMueHU7bCj7LqEPEJX";
+const GHL_LOCATION = "Jatw8uCMjEcPeIHP2M2z";   // DHL sub-account ← FIXED (was NFM location)
+const PIPELINE_ID = "Tj4FMwFtV99kuioRHd9c";   // DHL Marketing Pipeline
+const STAGE_NEW_LEAD = "cc217326-139c-4694-8441-1f143075b209";  // DHL New Lead
+const STAGE_QUALIFIED = "71c30360-2130-47ea-b047-98422c59ca5b"; // DHL Qualified (hot leads)
+const ASSIGNED_TO = "o4PGzAuwLr76ctgW4uut";   // Tony Botchev in DHL sub-account
 
 // ─── Custom Field IDs ──────────────────────────────────────────────────────────
 const CF = {
@@ -109,7 +110,8 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     if (body.tags) contactPayload.tags = body.tags;
     if (body.customFields) contactPayload.customFields = body.customFields;
 
-    const contactRes = await fetch(`${GHL_BASE}/contacts/`, {
+    // Use upsert to avoid duplicate contact errors
+    const contactRes = await fetch(`${GHL_BASE}/contacts/upsert`, {
       method: "POST",
       headers,
       body: JSON.stringify(contactPayload),
@@ -132,7 +134,15 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
         locationId: GHL_LOCATION,
         contactId,
         status: "open",
-        pipelineStageId: STAGE_NEW_LEAD,
+        pipelineStageId: (() => {
+          // Map old NFM stage IDs to DHL stage IDs
+          const stageMap: Record<string, string> = {
+            "de32f2b3-e94c-4956-8ef0-6a46f62ada3d": STAGE_NEW_LEAD,
+            "cae260c7-ccc6-47cc-a6e5-8bcc9f7a7cc9": STAGE_QUALIFIED,
+          };
+          const incoming = body.pipelineStageId as string | undefined;
+          return (incoming && stageMap[incoming]) || STAGE_NEW_LEAD;
+        })(),
         assignedTo: ASSIGNED_TO,
         source: body.source || "dfwhome.loans website",
       };
