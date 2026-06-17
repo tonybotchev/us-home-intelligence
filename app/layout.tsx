@@ -47,7 +47,7 @@ export const metadata: Metadata = {
   },
 };
 
-import { organizationSchema, productSchema, faqSchema, howToSchema } from "@/lib/schema";
+import { organizationSchema, websiteSchema, productSchema, faqSchema, howToSchema } from "@/lib/schema";
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -57,6 +57,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
         />
         <script
           type="application/ld+json"
