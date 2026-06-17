@@ -1,7 +1,14 @@
+import type { Metadata } from "next";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { CheckCircle } from "lucide-react";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "Order Confirmed | US Home Intelligence",
+  description: "Your US Home Intelligence report order is confirmed. Delivery in under an hour.",
+  robots: { index: false, follow: false },
+};
 
 export default function SuccessPage() {
   return (

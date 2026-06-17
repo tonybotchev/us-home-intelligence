@@ -1,8 +1,30 @@
+import type { Metadata } from "next";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
-export const metadata = {
+const SITE_URL = "https://intel.nofluffmarketing.io";
+
+export const metadata: Metadata = {
   title: "Privacy Policy | US Home Intelligence — NoFluff Marketing LLC",
+  description: "Privacy Policy for US Home Intelligence, produced by NoFluff Marketing LLC, Frisco TX. Covers data collection, use, and your rights as a consumer under CCPA and applicable law.",
+  alternates: { canonical: `${SITE_URL}/privacy` },
+  robots: { index: true, follow: true },
+  openGraph: {
+    type: "website",
+    siteName: "US Home Intelligence",
+    locale: "en_US",
+    url: `${SITE_URL}/privacy`,
+    title: "Privacy Policy | US Home Intelligence",
+    description: "Privacy Policy for US Home Intelligence, produced by NoFluff Marketing LLC, Frisco TX.",
+    images: [{ url: `${SITE_URL}/og-image.jpg`, width: 1200, height: 630, alt: "US Home Intelligence Privacy Policy" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    site: "@nofluffmkt",
+    title: "Privacy Policy | US Home Intelligence",
+    description: "Privacy Policy for US Home Intelligence, produced by NoFluff Marketing LLC, Frisco TX.",
+    images: [`${SITE_URL}/og-image.jpg`],
+  },
 };
 
 export default function PrivacyPage() {

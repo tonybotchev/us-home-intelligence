@@ -1,8 +1,30 @@
+import type { Metadata } from "next";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
-export const metadata = {
+const SITE_URL = "https://intel.nofluffmarketing.io";
+
+export const metadata: Metadata = {
   title: "Terms of Service | US Home Intelligence — NoFluff Marketing LLC",
+  description: "Terms of Service for US Home Intelligence, produced by NoFluff Marketing LLC, Frisco TX. Governs purchase and use of neighborhood intelligence reports, including delivery, refunds, and acceptable use.",
+  alternates: { canonical: `${SITE_URL}/terms` },
+  robots: { index: true, follow: true },
+  openGraph: {
+    type: "website",
+    siteName: "US Home Intelligence",
+    locale: "en_US",
+    url: `${SITE_URL}/terms`,
+    title: "Terms of Service | US Home Intelligence",
+    description: "Terms of Service for US Home Intelligence, produced by NoFluff Marketing LLC, Frisco TX.",
+    images: [{ url: `${SITE_URL}/og-image.jpg`, width: 1200, height: 630, alt: "US Home Intelligence Terms of Service" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    site: "@nofluffmkt",
+    title: "Terms of Service | US Home Intelligence",
+    description: "Terms of Service for US Home Intelligence, produced by NoFluff Marketing LLC, Frisco TX.",
+    images: [`${SITE_URL}/og-image.jpg`],
+  },
 };
 
 export default function TermsPage() {
