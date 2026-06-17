@@ -43,7 +43,7 @@ export default function FirstTimeBuyerPage() {
       name: "First-Time Home Buyer Programs — DFW Homes & Loans",
       description: "First-time buyer programs with down payment assistance in North DFW. Tony Botchev, NMLS #114198.",
       url: "https://www.dfwhome.loans/loans/first-time-buyer",
-      provider: { "@type": "FinancialService", "@id": "https://www.dfwhome.loans/#business", name: "DFW Homes & Loans", telephone: "+19452945020", areaServed: "North Dallas-Fort Worth, Texas" }, broker: { "@type": "Person", "@id": "https://www.dfwhome.loans/#tony", name: "Tony Botchev", identifier: { "@type": "PropertyValue", name: "NMLS", value: "114198" } },
+      provider: { "@type": "FinancialService", "@id": "https://www.dfwhome.loans/#business", name: "DFW Homes & Loans", telephone: "+19453004002", areaServed: "North Dallas-Fort Worth, Texas" }, broker: { "@type": "Person", "@id": "https://www.dfwhome.loans/#tony", name: "Tony Botchev", identifier: { "@type": "PropertyValue", name: "NMLS", value: "114198" } },
     },
     {
       "@context": "https://schema.org",
@@ -86,8 +86,8 @@ export default function FirstTimeBuyerPage() {
               <Link href="/apply" className="bg-[#C4521A] text-white px-6 py-3 font-semibold hover:bg-[#A8431A] transition-colors text-center">
                 Check My Eligibility →
               </Link>
-              <a href="tel:+19452945020" className="flex items-center justify-center gap-2 border border-white/30 text-white px-6 py-3 font-semibold hover:bg-white/10 transition-colors">
-                <Phone size={16} /> (945) 294-5020
+              <a href="tel:+19453004002" className="flex items-center justify-center gap-2 border border-white/30 text-white px-6 py-3 font-semibold hover:bg-white/10 transition-colors">
+                <Phone size={16} /> (945) 300-4002
               </a>
             </div>
           </div>

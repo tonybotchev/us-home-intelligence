@@ -30,7 +30,7 @@ export default function FloatingCTA() {
         <div className="flex">
           {/* NOVA Call — left half */}
           <a
-            href="tel:+19452945020"
+            href="tel:+19453004002"
             className="flex-1 flex items-center justify-center gap-2 py-4 font-semibold font-['Outfit'] text-sm transition-colors"
             style={{ background: "oklch(0.15 0.04 155)", color: "oklch(0.975 0.008 85)" }}
             onClick={() => trackPhoneClick()}
@@ -62,7 +62,7 @@ export default function FloatingCTA() {
         }}
       >
         <a
-          href="https://wa.me/19453708656"
+          href="https://wa.me/19453004002"
           target="_blank"
           rel="noopener noreferrer"
           className="w-12 h-12 flex items-center justify-center shadow-lg transition-transform hover:scale-110"
@@ -73,7 +73,7 @@ export default function FloatingCTA() {
           <MessageCircle size={22} color="white" />
         </a>
         <a
-          href="tel:+19452945020"
+          href="tel:+19453004002"
           className="w-12 h-12 flex items-center justify-center shadow-lg transition-transform hover:scale-110"
           style={{ background: "oklch(0.62 0.16 42)" }}
           aria-label="Call NOVA"

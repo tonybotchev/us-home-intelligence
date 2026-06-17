@@ -27,7 +27,7 @@ const homeSchema = [
     description:
       "Tony Botchev, NMLS #114198, is a licensed Texas Mortgage Loan Originator serving North DFW. Conventional, FHA, VA, Jumbo, DSCR, and USDA loans. Sponsored by Loan Factory, Inc. NMLS #320841.",
     url: "https://www.dfwhome.loans",
-    telephone: "+19452945020",
+    telephone: "+19453004002",
     email: "tony@dfwhome.loans",
     areaServed: [
       "Celina, TX", "Prosper, TX", "Frisco, TX", "McKinney, TX",
@@ -66,7 +66,7 @@ const homeSchema = [
     description:
       "Tony Botchev (NMLS #114198) is a Texas-licensed Mortgage Loan Originator with 18+ years of experience serving North DFW home buyers. Sponsored by Loan Factory, Inc. NMLS #320841.",
     url: "https://www.dfwhome.loans/about",
-    telephone: "+19452945020",
+    telephone: "+19453004002",
     email: "tony@dfwhome.loans",
     identifier: { "@type": "PropertyValue", name: "NMLS", value: "114198" },
     sameAs: [

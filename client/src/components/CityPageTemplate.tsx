@@ -46,8 +46,8 @@ export default function CityPageTemplate({ data }: { data: CityPageData }) {
               <Link href="/apply" className="bg-[#C4521A] text-white px-6 py-3 font-semibold hover:bg-[#A8431A] transition-colors text-center">
                 Get Pre-Qualified Free →
               </Link>
-              <a href="tel:+19452945020" className="flex items-center justify-center gap-2 border border-white/30 text-white px-6 py-3 font-semibold hover:bg-white/10 transition-colors">
-                <Phone size={16} /> Call NOVA (945) 294-5020
+              <a href="tel:+19453004002" className="flex items-center justify-center gap-2 border border-white/30 text-white px-6 py-3 font-semibold hover:bg-white/10 transition-colors">
+                <Phone size={16} /> Call NOVA (945) 300-4002
               </a>
             </div>
           </div>

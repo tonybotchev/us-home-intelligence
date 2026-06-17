@@ -53,7 +53,7 @@ export default function USDAPage() {
         "@type": "FinancialService",
         "@id": "https://www.dfwhome.loans/#business",
         name: "DFW Homes & Loans",
-        telephone: "+19452945020",
+        telephone: "+19453004002",
         areaServed: "North Dallas-Fort Worth, Texas",
       },
       broker: {
@@ -103,8 +103,8 @@ export default function USDAPage() {
             <Link href="/apply" className="bg-[#C4521A] text-white px-8 py-4 font-semibold hover:bg-[#A8431A] transition-colors">
               Check Your Eligibility →
             </Link>
-            <a href="tel:+19452945020" className="flex items-center gap-2 text-white/80 hover:text-white transition-colors">
-              <Phone size={18} /> (945) 294-5020
+            <a href="tel:+19453004002" className="flex items-center gap-2 text-white/80 hover:text-white transition-colors">
+              <Phone size={18} /> (945) 300-4002
             </a>
           </div>
         </div>

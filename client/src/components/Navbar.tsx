@@ -103,13 +103,13 @@ export default function Navbar() {
           {/* Desktop CTAs */}
           <div className="hidden md:flex items-center gap-3">
             <a
-              href="tel:+19453708656"
+              href="tel:+19453004002"
               className="flex items-center gap-2 font-['Outfit'] font-600 text-sm tracking-wide transition-colors"
               style={{ color: "oklch(0.975 0.008 85)" }}
               onClick={() => trackPhoneClick()}
             >
               <Phone size={15} />
-              (945) 370-8656
+              (945) 300-4002
             </a>
             <button
               onClick={handleGetPreQualified}
@@ -166,13 +166,13 @@ export default function Navbar() {
           ))}
           <div className="flex flex-col items-center gap-4 mt-4">
             <a
-              href="tel:+19453708656"
+              href="tel:+19453004002"
               className="flex items-center gap-2 font-['Outfit'] font-600 text-lg"
               style={{ color: "oklch(0.62 0.16 42)" }}
               onClick={() => trackPhoneClick()}
             >
               <Phone size={18} />
-              (945) 370-8656
+              (945) 300-4002
             </a>
             <button
               onClick={handleGetPreQualified}

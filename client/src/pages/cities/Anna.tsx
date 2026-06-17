@@ -93,7 +93,7 @@ const schema = [
       addressRegion: "TX",
       addressCountry: "US",
     },
-    telephone: "+19452945020",
+    telephone: "+19453004002",
     description: "Mortgage content and home loan services in Anna, TX, provided by Tony Botchev, NMLS #114198.",
     url: "https://www.dfwhome.loans/cities/anna-tx",
   },

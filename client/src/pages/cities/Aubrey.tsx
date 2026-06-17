@@ -92,7 +92,7 @@ const schema = [
       postalCode: "", // Placeholder, fill if known
       addressCountry: "US",
     },
-    telephone: "+19452945020",
+    telephone: "+19453004002",
     url: "https://www.dfwhome.loans",
     description: "Mortgage content writer for DFW Homes & Loans (Tony Botchev, NMLS #114198, sponsored by Loan Factory Inc NMLS #320841).",
   },

@@ -163,9 +163,9 @@ export default function ContactForm() {
             {/* Contact methods */}
             <div className="space-y-5 mb-10">
               {[
-                { icon: <Phone size={18} />, label: "Call or Text", value: "(945) 370-8656", href: "tel:+19453708656" },
+                { icon: <Phone size={18} />, label: "Call or Text", value: "(945) 300-4002", href: "tel:+19453004002" },
                 { icon: <Mail size={18} />, label: "Email", value: "tony@dfwhome.loans", href: "mailto:tony@dfwhome.loans" },
-                { icon: <MessageCircle size={18} />, label: "WhatsApp", value: "Message Tony directly", href: "https://wa.me/19453708656" },
+                { icon: <MessageCircle size={18} />, label: "WhatsApp", value: "Message Tony directly", href: "https://wa.me/19453004002" },
               ].map((item) => (
                 <a
                   key={item.label}

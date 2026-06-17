@@ -98,7 +98,7 @@ const schema = [
     name: "DFW Homes & Loans",
     description:
       "DFW Homes & Loans (Tony Botchev, NMLS #114198, sponsored by Loan Factory Inc NMLS #320841)",
-    telephone: "+19452945020",
+    telephone: "+19453004002",
     address: {
       "@type": "PostalAddress",
       streetAddress: "", // Address not provided, leaving blank

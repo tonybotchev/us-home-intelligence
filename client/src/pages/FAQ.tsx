@@ -110,7 +110,7 @@ const faqCategories = [
       },
       {
         q: "How do I contact Tony Botchev for a mortgage consultation?",
-        a: "You can reach Tony through NOVA, his dedicated loan line, at (945) 294-5020. You can also start your pre-qualification online at dfwhome.loans/apply — the process takes about 3 minutes and does not require a hard credit pull to get started. Tony personally reviews every application.",
+        a: "You can reach Tony through NOVA, his dedicated loan line, at (945) 300-4002. You can also start your pre-qualification online at dfwhome.loans/apply — the process takes about 3 minutes and does not require a hard credit pull to get started. Tony personally reviews every application.",
       },
     ],
   },
@@ -182,8 +182,8 @@ export default function FAQPage() {
             <Link href="/apply" className="bg-[#C4521A] text-white px-8 py-3 font-semibold hover:bg-[#A8431A] transition-colors">
               Get Pre-Qualified Free →
             </Link>
-            <a href="tel:+19452945020" className="flex items-center justify-center gap-2 border border-white/30 text-white px-8 py-3 font-semibold hover:bg-white/10 transition-colors">
-              <Phone size={16} /> Call NOVA (945) 294-5020
+            <a href="tel:+19453004002" className="flex items-center justify-center gap-2 border border-white/30 text-white px-8 py-3 font-semibold hover:bg-white/10 transition-colors">
+              <Phone size={16} /> Call NOVA (945) 300-4002
             </a>
           </div>
         </div>

@@ -85,7 +85,7 @@ const schema = [
     "@id": "https://www.dfwhome.loans/#business",
     name: "DFW Homes & Loans",
     description: "Home loans in Frisco, TX. Tony Botchev NMLS #114198, sponsored by Loan Factory Inc NMLS #320841.",
-    telephone: "+19452945020",
+    telephone: "+19453004002",
     address: {
       "@type": "PostalAddress",
       addressLocality: "Frisco",

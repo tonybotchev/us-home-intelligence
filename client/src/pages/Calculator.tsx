@@ -290,8 +290,8 @@ export default function CalculatorPage() {
               <Link href="/apply" className="block text-center bg-white text-[#C4521A] font-semibold py-3 hover:bg-white/90 transition-colors mb-2">
                 Get Pre-Qualified Free →
               </Link>
-              <a href="tel:+19452945020" className="flex items-center justify-center gap-2 text-sm text-white/80 hover:text-white transition-colors">
-                <Phone size={14} /> Call NOVA: (945) 294-5020
+              <a href="tel:+19453004002" className="flex items-center justify-center gap-2 text-sm text-white/80 hover:text-white transition-colors">
+                <Phone size={14} /> Call NOVA: (945) 300-4002
               </a>
             </div>
           </div>

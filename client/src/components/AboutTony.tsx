@@ -203,7 +203,7 @@ export default function AboutTony() {
                 </span>
               </button>
               <a
-                href="https://wa.me/19453708656"
+                href="https://wa.me/19453004002"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-outline-kt text-sm px-8 py-3"

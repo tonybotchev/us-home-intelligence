@@ -122,7 +122,7 @@ export default function ThankYou() {
               Can't wait? Call Tony directly
             </p>
             <a
-              href="tel:+19453708656"
+              href="tel:+19453004002"
               className="inline-flex items-center gap-3 px-8 py-4 transition-colors"
               style={{
                 background: "oklch(0.62 0.16 42)",
@@ -130,7 +130,7 @@ export default function ThankYou() {
               }}
             >
               <Phone size={20} />
-              <span className="font-display text-2xl tracking-wider">(945) 370-8656</span>
+              <span className="font-display text-2xl tracking-wider">(945) 300-4002</span>
             </a>
           </div>
 

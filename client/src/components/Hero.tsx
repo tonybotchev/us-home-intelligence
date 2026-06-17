@@ -161,11 +161,11 @@ export default function Hero() {
               </span>
             </a>
             <a
-              href="tel:+19453708656"
+              href="tel:+19453004002"
               className="btn-outline-kt text-base px-8 py-4"
               onClick={() => trackPhoneClick()}
             >
-              ☎ (945) 370-8656
+              ☎ (945) 300-4002
             </a>
           </div>
 

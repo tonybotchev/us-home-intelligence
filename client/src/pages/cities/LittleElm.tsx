@@ -40,7 +40,7 @@ const schema = [{
   description: "Home loans in Little Elm TX. Tony Botchev NMLS #114198.",
   url: "https://www.dfwhome.loans/cities/little-elm",
   areaServed: { "@type": "City", name: "Little Elm", containedInPlace: { "@type": "State", name: "Texas" } },
-  telephone: "+19452945020",
+  telephone: "+19453004002",
 }];
 
 export default function LittleElmPage() {

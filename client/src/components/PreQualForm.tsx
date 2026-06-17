@@ -291,7 +291,7 @@ export default function PreQualForm() {
       // Redirect to thank-you page
       window.location.href = `/thank-you?name=${encodeURIComponent(data.firstName)}`;
     } catch {
-      setError("Something went wrong. Please call us at (945) 370-8656.");
+      setError("Something went wrong. Please call us at (945) 300-4002.");
     } finally {
       setLoading(false);
     }

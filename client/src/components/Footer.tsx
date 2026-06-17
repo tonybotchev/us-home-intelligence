@@ -141,10 +141,10 @@ export default function Footer() {
               Contact Tony
             </h4>
             <div className="space-y-4">
-              <a href="tel:+19453708656" className="flex items-center gap-3 group" onClick={() => trackPhoneClick()}>
+              <a href="tel:+19453004002" className="flex items-center gap-3 group" onClick={() => trackPhoneClick()}>
                 <Phone size={15} style={{ color: "oklch(0.62 0.16 42)" }} />
                 <span className="font-['Outfit'] text-sm group-hover:text-[oklch(0.62_0.16_42)] transition-colors" style={{ color: "oklch(0.65 0.02 85)" }}>
-                  (945) 370-8656
+                  (945) 300-4002
                 </span>
               </a>
               <a href="mailto:tony@dfwhome.loans" className="flex items-center gap-3 group">
@@ -153,7 +153,7 @@ export default function Footer() {
                   tony@dfwhome.loans
                 </span>
               </a>
-              <a href="https://wa.me/19453708656" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 group" onClick={() => trackWhatsAppClick()}>
+              <a href="https://wa.me/19453004002" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 group" onClick={() => trackWhatsAppClick()}>
                 <MessageCircle size={15} style={{ color: "oklch(0.62 0.16 42)" }} />
                 <span className="font-['Outfit'] text-sm group-hover:text-[oklch(0.62_0.16_42)] transition-colors" style={{ color: "oklch(0.65 0.02 85)" }}>
                   WhatsApp Tony
@@ -168,11 +168,11 @@ export default function Footer() {
                 </span>
               </Link>
               <a
-                href="tel:+19452945020"
+                href="tel:+19453004002"
                 className="font-['Outfit'] text-xs text-center block transition-colors hover:text-[oklch(0.62_0.16_42)] cursor-pointer"
                 style={{ color: "oklch(0.65 0.02 85)" }}
               >
-                Or Call NOVA: 945-294-5020 →
+                Or Call NOVA: 945-300-4002 →
               </a>
             </div>
           </div>

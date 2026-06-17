@@ -118,12 +118,12 @@ export default function BookingWidget() {
             style={{ color: "oklch(0.55 0.02 85)" }}
           >
             Can't find a time? Call{" "}
-            <a href="tel:+19453708656" style={{ color: "oklch(0.62 0.16 42)" }} className="underline" onClick={() => trackPhoneClick()}>
-              (945) 370-8656
+            <a href="tel:+19453004002" style={{ color: "oklch(0.62 0.16 42)" }} className="underline" onClick={() => trackPhoneClick()}>
+              (945) 300-4002
             </a>{" "}
             or{" "}
             <a
-              href="https://wa.me/19453708656"
+              href="https://wa.me/19453004002"
               target="_blank"
               rel="noopener noreferrer"
               style={{ color: "oklch(0.62 0.16 42)" }}

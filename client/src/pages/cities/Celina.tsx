@@ -49,7 +49,7 @@ export default function CelinaPage() {
       description:
         "Tony Botchev, NMLS #114198, provides mortgage loans for home buyers in Celina, TX. Conventional, FHA, VA, USDA, jumbo, and DSCR loans available.",
       url: "https://www.dfwhome.loans/cities/celina",
-      telephone: "+19453708656",
+      telephone: "+19453004002",
       areaServed: { "@type": "City", name: "Celina", containedIn: { "@type": "State", name: "Texas" } },
       address: { "@type": "PostalAddress", addressLocality: "Celina", addressRegion: "TX", addressCountry: "US" },
       provider: { "@type": "Person", name: "Tony Botchev", identifier: "NMLS #114198" },
@@ -109,10 +109,10 @@ export default function CelinaPage() {
                 Get Pre-Qualified Free →
               </Link>
               <a
-                href="tel:+19453708656"
+                href="tel:+19453004002"
                 className="flex items-center justify-center gap-2 border border-white/30 text-white px-6 py-3 font-semibold hover:bg-white/10 transition-colors"
               >
-                <Phone size={16} /> (945) 370-8656
+                <Phone size={16} /> (945) 300-4002
               </a>
             </div>
             <p className="text-white/40 text-xs mt-3">

@@ -93,7 +93,7 @@ export default function PrivacyPolicy() {
           <p>
             Tony Botchev · NMLS #114198<br />
             Sponsored by Loan Factory, Inc. · NMLS #320841<br />
-            Phone: <a href="tel:+19453708656">(945) 370-8656</a><br />
+            Phone: <a href="tel:+19453004002">(945) 300-4002</a><br />
             Email: <a href="mailto:tony@dfwhome.loans">tony@dfwhome.loans</a><br />
             Serving Celina, Prosper, Frisco, McKinney, and North DFW, Texas
           </p>

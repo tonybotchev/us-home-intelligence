@@ -19,7 +19,7 @@ const schema = [
     jobTitle: "Licensed Mortgage Loan Originator",
     description: "Tony Botchev (NMLS #114198) is a Texas-licensed mortgage loan originator serving North DFW since 2006. Specializing in conventional, FHA, VA, jumbo, and DSCR loans. Sponsored by Loan Factory, Inc. NMLS #320841.",
     url: "https://www.dfwhome.loans/about",
-    telephone: "+19452945020",
+    telephone: "+19453004002",
     email: "tony@dfwhome.loans",
     identifier: { "@type": "PropertyValue", name: "NMLS", value: "114198" },
     areaServed: ["Celina TX", "Prosper TX", "Frisco TX", "McKinney TX", "Anna TX", "Melissa TX", "Aubrey TX", "Gunter TX", "Little Elm TX", "Plano TX", "Allen TX", "Denton TX"],
@@ -86,8 +86,8 @@ export default function AboutPage() {
               <Link href="/apply" className="bg-[#C4521A] text-white px-6 py-3 font-semibold hover:bg-[#A8431A] transition-colors text-center">
                 Get Pre-Qualified Free →
               </Link>
-              <a href="tel:+19453708656" className="flex items-center justify-center gap-2 border border-white/30 text-white px-6 py-3 font-semibold hover:bg-white/10 transition-colors">
-                <Phone size={16} /> (945) 370-8656
+              <a href="tel:+19453004002" className="flex items-center justify-center gap-2 border border-white/30 text-white px-6 py-3 font-semibold hover:bg-white/10 transition-colors">
+                <Phone size={16} /> (945) 300-4002
               </a>
             </div>
           </div>
@@ -146,7 +146,7 @@ export default function AboutPage() {
             <div className="border border-gray-200 p-5">
               <h3 className="font-bebas text-lg text-[#1B2B1A] mb-3">CONTACT TONY</h3>
               <div className="space-y-2 text-sm text-[#4A5568]">
-                <div><a href="tel:+19453708656" className="text-[#C4521A] font-medium hover:underline">(945) 370-8656</a></div>
+                <div><a href="tel:+19453004002" className="text-[#C4521A] font-medium hover:underline">(945) 300-4002</a></div>
                 <div><a href="mailto:tony@dfwhome.loans" className="text-[#C4521A] font-medium hover:underline">tony@dfwhome.loans</a></div>
                 <div className="text-xs text-gray-400 pt-2">Serving Celina, Prosper, Frisco, McKinney, Anna, Melissa, Aubrey, Gunter, Little Elm, and all of North DFW.</div>
               </div>

@@ -43,7 +43,7 @@ const faqs = [
   },
   {
     q: "What are current mortgage rates in Celina, TX?",
-    a: "Mortgage rates in Celina, TX vary daily based on market conditions, loan type, credit score, down payment, and loan term. The best way to get an accurate rate is to speak directly with a local mortgage advisor. Tony Botchev at DFW Homes & Loans provides personalized rate quotes at no cost and with no obligation. Call (945) 370-8656 or submit a request at dfwhome.loans.",
+    a: "Mortgage rates in Celina, TX vary daily based on market conditions, loan type, credit score, down payment, and loan term. The best way to get an accurate rate is to speak directly with a local mortgage advisor. Tony Botchev at DFW Homes & Loans provides personalized rate quotes at no cost and with no obligation. Call (945) 300-4002 or submit a request at dfwhome.loans.",
   },
 ];
 

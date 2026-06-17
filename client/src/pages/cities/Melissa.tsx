@@ -48,7 +48,7 @@ const schema = [
     '@type': 'LocalBusiness',
     name: 'DFW Homes & Loans',
     description: 'Tony Botchev, NMLS #114198, sponsored by Loan Factory Inc NMLS #320841',
-    telephone: '+19452945020',
+    telephone: '+19453004002',
     url: 'https://www.dfwhome.loans',
   },
   {

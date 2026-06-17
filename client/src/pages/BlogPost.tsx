@@ -176,8 +176,8 @@ export default function BlogPost() {
             <a href="/apply" className="bg-[#C4521A] text-white px-6 py-2.5 font-semibold font-['Outfit'] text-sm hover:bg-[#A8431A] transition-colors text-center whitespace-nowrap">
               Get Pre-Qualified Free →
             </a>
-            <a href="tel:+19452945020" className="border border-white/30 text-white px-6 py-2.5 font-semibold font-['Outfit'] text-sm hover:bg-white/10 transition-colors text-center whitespace-nowrap">
-              Call NOVA: 945-294-5020
+            <a href="tel:+19453004002" className="border border-white/30 text-white px-6 py-2.5 font-semibold font-['Outfit'] text-sm hover:bg-white/10 transition-colors text-center whitespace-nowrap">
+              Call NOVA: 945-300-4002
             </a>
           </div>
         </div>
@@ -235,10 +235,10 @@ export default function BlogPost() {
               Get Pre-Qualified Free →
             </Link>
             <a
-              href="tel:+19452945020"
+              href="tel:+19453004002"
               className="border border-white/30 text-white px-8 py-3 font-semibold hover:bg-white/10 transition-colors"
             >
-              Call NOVA: 945-294-5020
+              Call NOVA: 945-300-4002
             </a>
           </div>
           <p className="text-white/40 text-xs mt-4">

@@ -91,7 +91,7 @@ const schema = [
       addressRegion: "TX",
       addressCountry: "US",
     },
-    telephone: "+19452945020",
+    telephone: "+19453004002",
     description: "Mortgage services in Plano, TX, provided by Tony Botchev, NMLS #114198, sponsored by Loan Factory Inc NMLS #320841.",
     url: "https://www.dfwhome.loans/cities/plano-tx",
   },
