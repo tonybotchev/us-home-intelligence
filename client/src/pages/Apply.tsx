@@ -95,36 +95,20 @@ export default function ApplyPage() {
       <section className="py-14 md:py-20">
         <div className="max-w-2xl mx-auto px-4 md:px-6">
 
-          {/* GHL Embed Placeholder */}
-          {/* ─────────────────────────────────────────────────────────────────────
-              TONY: Replace the block below with your GHL iframe / embed snippet.
-              Example:
-                <div dangerouslySetInnerHTML={{ __html: `<!-- GHL EMBED CODE HERE -->` }} />
-              Or paste the <iframe> / <script> tag directly.
-              ───────────────────────────────────────────────────────────────────── */}
+          {/* GHL Pre-Qualification Form Embed */}
           <div
             id="ghl-prequal-form"
             className="w-full rounded-sm overflow-hidden shadow-xl border border-[#1B2B1A]/10 bg-white"
             style={{ minHeight: 680 }}
           >
-            {/* ── PLACEHOLDER — remove once GHL embed is pasted in ── */}
-            <div className="flex flex-col items-center justify-center h-full py-20 px-8 text-center gap-4">
-              <div
-                className="w-16 h-16 flex items-center justify-center rounded-full"
-                style={{ background: "oklch(0.62 0.16 42 / 0.1)" }}
-              >
-                <CheckCircle size={32} style={{ color: "oklch(0.62 0.16 42)" }} />
-              </div>
-              <p className="font-bebas text-3xl text-[#1B2B1A]">GHL FORM COMING SOON</p>
-              <p className="font-['Outfit'] text-sm text-[#6B7280] max-w-sm">
-                Tony is finalizing the pre-qualification form in the new GHL Agency.
-                Once the embed code is ready, it will appear here automatically.
-              </p>
-              <p className="font-['Outfit'] text-xs text-[#9CA3AF]">
-                In the meantime, call NOVA below or book a consultation.
-              </p>
-            </div>
-            {/* ── END PLACEHOLDER ── */}
+            <iframe
+              src="https://link.dfwhome.loans/widget/booking/dhl-prequal"
+              title="Get Pre-Qualified — DFW Homes & Loans"
+              width="100%"
+              style={{ minHeight: 680, border: "none", display: "block" }}
+              loading="lazy"
+              allow="camera; microphone"
+            />
           </div>
 
           {/* TCPA Consent */}
@@ -152,11 +136,11 @@ export default function ApplyPage() {
               </p>
             </div>
             <a
-              href="tel:+19452945020"
+              href="tel:+19453004002"
               className="flex items-center gap-2 bg-[#1B2B1A] text-white px-6 py-3 font-semibold font-['Outfit'] text-sm hover:bg-[#2d4a2c] transition-colors whitespace-nowrap shrink-0"
             >
               <Phone size={16} />
-              Call NOVA Now (945-294-5020)
+              Call NOVA Now (945) 300-4002
             </a>
           </div>
 
