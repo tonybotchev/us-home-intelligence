@@ -8,15 +8,23 @@ function slugify(str: string): string {
 }
 
 async function verifyTREC(licenseNumber: string): Promise<"verified" | "pending"> {
+  // Reject obviously bogus numbers (all zeros, too short, etc.)
+  if (!licenseNumber || /^0+$/.test(licenseNumber.trim()) || licenseNumber.trim().length < 4) {
+    return "pending";
+  }
   try {
     // TREC public license lookup — async verification
     const res = await fetch(
-      `https://www.trec.texas.gov/apps/license-holder-search/index.php?action=search&license_number=${encodeURIComponent(licenseNumber)}`,
+      `https://www.trec.texas.gov/apps/license-holder-search/index.php?action=search&license_number=${encodeURIComponent(licenseNumber.trim())}`,
       { signal: AbortSignal.timeout(5000) }
     );
     const text = await res.text();
-    // If the page contains "Active" status indicator, mark verified
-    if (text.includes("Active") && text.includes(licenseNumber)) return "verified";
+    // Require the exact license number AND 'Active' to appear within 300 chars of each other
+    // (i.e., in the same table row). Prevents false positives from generic page text.
+    const licIdx = text.indexOf(licenseNumber.trim());
+    if (licIdx === -1) return "pending";
+    const window = text.slice(Math.max(0, licIdx - 300), licIdx + 300);
+    if (window.includes("Active")) return "verified";
     return "pending";
   } catch {
     return "pending";
