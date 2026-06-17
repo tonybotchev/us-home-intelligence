@@ -53,7 +53,7 @@
          AEO: Helps AI engines understand geographic authority
     ═══════════════════════════════════════════════ -->
     <meta name="geo.region" content="US-TX" />
-    <meta name="geo.placename" content="Celina, Texas" />
+    <meta name="geo.placename" content="Frisco, Texas" />
     <meta name="geo.position" content="33.1507;-96.8236" />
     <meta name="ICBM" content="33.1507, -96.8236" />
 
@@ -148,37 +148,44 @@
     </script>
 
     <!-- ═══════════════════════════════════════════════
-         SCHEMA 2: Person + FAQPage @graph
-         Preserved from ranked.ai — entity + FAQ answers
+         SCHEMA 2a: Person (Tony Botchev MLO)
+         AEO: Entity disambiguation for AI engines
+    ═══════════════════════════════════════════════ -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "@id": "https://www.dfwhome.loans/#person",
+      "name": "Tony Botchev",
+      "jobTitle": "Mortgage Loan Originator",
+      "url": "https://www.dfwhome.loans/about",
+      "telephone": "+19453004002",
+      "email": "tony@dfwhome.loans",
+      "identifier": { "@type": "PropertyValue", "name": "NMLS", "value": "114198" },
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "3333 Preston Rd Ste 300 #1570",
+        "addressLocality": "Frisco",
+        "addressRegion": "TX",
+        "postalCode": "75034",
+        "addressCountry": "US"
+      },
+      "worksFor": { "@id": "https://www.dfwhome.loans/#business" },
+      "areaServed": ["Celina TX","Prosper TX","Frisco TX","McKinney TX","Anna TX","Melissa TX","Aubrey TX","Allen TX"],
+      "knowsAbout": ["Mortgage Loans","FHA Loans","VA Loans","Conventional Loans","DSCR Loans","Jumbo Loans","Home Purchase Loans","Refinance","Pre-Approval","First-Time Homebuyer Programs"],
+      "sameAs": ["https://wa.me/19453708656"]
+    }
+    </script>
+
+    <!-- ═══════════════════════════════════════════════
+         SCHEMA 2b: FAQPage
          AEO: FAQ answers are pulled by Google SGE, ChatGPT, Perplexity
     ═══════════════════════════════════════════════ -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@graph": [
-        {
-          "@type": ["Person", "LocalBusiness"],
-          "@id": "https://dfwhome.loans/#person",
-          "name": "Tony Botchev",
-          "jobTitle": "Mortgage Loan Originator",
-          "identifier": "Loan Factory, Inc. NMLS #320841",
-          "url": "https://dfwhome.loans",
-          "telephone": "+19453708656",
-          "email": "tony@dfwhome.loans",
-          "address": {
-            "@type": "PostalAddress",
-            "addressLocality": "Celina",
-            "addressRegion": "TX",
-            "postalCode": "75009",
-            "addressCountry": "US"
-          },
-          "areaServed": ["Celina TX","Prosper TX","Frisco TX","McKinney TX","Anna TX","Melissa TX","Aubrey TX"],
-          "knowsAbout": ["Mortgage Loans","FHA Loans","VA Loans","Conventional Loans","DSCR Loans","Jumbo Loans","Home Purchase Loans","Refinance","Pre-Approval","First-Time Homebuyer Programs"],
-          "sameAs": ["https://wa.me/19453708656"]
-        },
-        {
-          "@type": "FAQPage",
-          "mainEntity": [
+      "@type": "FAQPage",
+      "mainEntity": [
             {
               "@type": "Question",
               "name": "Who is the best mortgage advisor in Celina, TX?",
@@ -260,8 +267,6 @@
               }
             }
           ]
-        }
-      ]
     }
     </script>
 
