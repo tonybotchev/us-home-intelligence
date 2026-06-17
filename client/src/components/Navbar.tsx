@@ -23,6 +23,7 @@ export default function Navbar() {
   const navLinks = [
     { label: "Loan Options", href: "#loans", type: "scroll" },
     { label: "Cities", href: "/cities", type: "link" },
+    { label: "Blog", href: "/blog", type: "link" },
     { label: "Process", href: "#process", type: "scroll" },
     { label: "About Tony", href: "#about", type: "scroll" },
     { label: "Book a Call", href: "#book-call", type: "scroll" },

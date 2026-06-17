@@ -13,6 +13,7 @@ import Calculator from "@/components/Calculator";
 import FAQ from "@/components/FAQ";
 import AEOContent from "@/components/AEOContent";
 import BookingWidget from "@/components/BookingWidget";
+import BlogTeaser from "@/components/BlogTeaser";
 import Footer from "@/components/Footer";
 import FloatingCTA from "@/components/FloatingCTA";
 import { useSEO } from "@/hooks/useSEO";
@@ -116,6 +117,7 @@ export default function Home() {
       <FAQ />
       <BookingWidget />
       <AEOContent />
+      <BlogTeaser />
       <Footer />
       <FloatingCTA />
     </div>

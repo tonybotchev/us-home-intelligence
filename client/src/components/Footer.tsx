@@ -174,6 +174,14 @@ export default function Footer() {
               >
                 Or Call NOVA: 945-300-4002 →
               </a>
+              <Link href="/blog">
+                <span
+                  className="font-['Outfit'] text-xs text-center block transition-colors hover:text-[oklch(0.62_0.16_42)] cursor-pointer"
+                  style={{ color: "oklch(0.65 0.02 85)" }}
+                >
+                  DFW Mortgage Blog →
+                </span>
+              </Link>
             </div>
           </div>
         </div>
@@ -229,6 +237,11 @@ export default function Footer() {
               © {new Date().getFullYear()} DFW Homes &amp; Loans — Tony Botchev, NMLS #114198 — Sponsored by Loan Factory Inc NMLS #320841 · Texas DSML Licensed · All loans subject to credit approval.
             </p>
             <div className="flex items-center gap-6">
+              <Link href="/blog">
+                <span className="font-['Outfit'] text-xs hover:text-[oklch(0.62_0.16_42)] transition-colors cursor-pointer" style={{ color: "oklch(0.5 0.02 85)" }}>
+                  Blog
+                </span>
+              </Link>
               <Link href="/privacy">
                 <span className="font-['Outfit'] text-xs hover:text-[oklch(0.62_0.16_42)] transition-colors cursor-pointer" style={{ color: "oklch(0.5 0.02 85)" }}>
                   Privacy Policy
