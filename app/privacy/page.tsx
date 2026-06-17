@@ -32,6 +32,12 @@ export default function PrivacyPage() {
               <p>Our secure payment processor (payments), our proprietary CRM and automation platform, our report generation engine, and our hosting infrastructure. Report content and buyer data used for production are subject to our data retention policies and are not retained beyond delivery.</p>
             </div>
             <div>
+              <h2 className="text-xl font-bold text-[#f0f0f5] mb-3">SMS and A2P Messaging</h2>
+              <p>By providing your phone number, you consent to receive transactional SMS messages from NoFluff Marketing LLC regarding your account, order status, US Home Intelligence report delivery, and service updates. You may also receive occasional marketing messages about new services and offers.</p>
+              <p className="mt-3">For privacy concerns regarding SMS communications, contact us at <a href="mailto:info@nofluffmarketing.io" className="text-[#00c2ff] hover:underline">info@nofluffmarketing.io</a>.</p>
+              <p className="mt-3"><strong className="text-[#f0f0f5]">Message frequency varies</strong> based on report status and account activity. <strong className="text-[#f0f0f5]">Message and data rates may apply.</strong> <strong className="text-[#f0f0f5]">Reply STOP to cancel</strong> at any time. <strong className="text-[#f0f0f5]">Reply HELP for help.</strong> No mobile information will be shared with third parties or affiliates for marketing or promotional purposes. All categories exclude text messaging originator opt-in data and consent; this information will not be shared with any third parties.</p>
+            </div>
+            <div>
               <h2 className="text-xl font-bold text-[#f0f0f5] mb-3">CCPA (California Residents)</h2>
               <p>You have the right to know, delete, and opt out of sale of personal information. We do not sell personal information. Contact privacy@nofluffmarketing.io to exercise your rights.</p>
             </div>
