@@ -1,5 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { fireWF1RealtorSignup } from "@/lib/ghl-webhooks";
+import { upsertRealtor, getRealtorByEmail } from "@/lib/realtor-store";
+import type { RealtorRecord } from "@/lib/realtor-store";
 
 function slugify(str: string): string {
   return str.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
@@ -39,10 +41,36 @@ export async function POST(req: NextRequest) {
       : slugify(`${firstName}-${lastName}`);
     const slug = rawSlug || slugify(`${firstName}-${lastName}-${Date.now()}`);
 
-    // Verify TREC license (non-blocking — defaults to pending on timeout)
+    // CRIT-8: Verify TREC license (non-blocking — defaults to pending on timeout)
+    // Bogus numbers (e.g. 0000000) return "pending" → verified=false
+    // verified=false gates the free welcome report behind manual approval
     const verificationStatus = licenseType === "TREC" || licenseType === "Both"
       ? await verifyTREC(licenseNumber)
       : "pending";
+    const verified = verificationStatus === "verified";
+
+    // CRIT-7: Persist to realtor store so /r/[slug] resolves immediately
+    const existing = getRealtorByEmail(email);
+    const record: RealtorRecord = {
+      slug,
+      firstName,
+      lastName,
+      name: `${firstName} ${lastName}`,
+      email,
+      phone: phone || "",
+      brokerage: brokerage || "",
+      title: title || "",
+      tagline: tagline || "",
+      accentColor: accentColor || "#1a56db",
+      headshot: null,
+      licenseNumber,
+      licenseType: licenseType || "",
+      verified,
+      verificationStatus,
+      createdAt: existing?.createdAt ?? new Date().toISOString(),
+      freeReportUsed: existing?.freeReportUsed ?? false,
+    };
+    upsertRealtor(record);
 
     // WF1: POST to GHL NFM Realtor Partner Signup workflow (fire-and-forget)
     fireWF1RealtorSignup({
@@ -60,11 +88,13 @@ export async function POST(req: NextRequest) {
       ok: true,
       slug,
       shareLink: `https://intel.nofluffmarketing.io/r/${slug}`,
+      /** CRIT-8: surface verified flag so UI can show approval-pending notice */
+      verified,
       verificationStatus,
       // Surface extra fields for dashboard / confirmation page
       title: title || "",
       tagline: tagline || "",
-      accentColor: accentColor || "",
+      accentColor: accentColor || "#1a56db",
     });
   } catch {
     return NextResponse.json({ error: "Internal server error" }, { status: 500 });

@@ -1,16 +1,29 @@
 import { NextRequest, NextResponse } from "next/server";
+import { getRealtorBySlug } from "@/lib/realtor-store";
 
-// In production: query your database or GHL custom fields by slug
-// This stub returns a demo response for the slug; replace with real DB lookup
-
+/**
+ * GET /api/realtor-lookup?slug=<slug>
+ *
+ * CRIT-7 fix: reads from realtor-store (in-process Map + /tmp/realtors.json).
+ * Previously a stub that always returned 404, causing /r/[slug] to show
+ * "Partner Link Not Found" for every newly signed-up realtor.
+ */
 export async function GET(req: NextRequest) {
   const { searchParams } = new URL(req.url);
   const slug = searchParams.get("slug");
 
-  if (!slug) return NextResponse.json(null, { status: 400 });
+  if (!slug) return NextResponse.json({ error: "slug is required" }, { status: 400 });
 
-  // Production: query database/GHL for realtor by slug
-  // Stub: return null (partner not found) — real data comes from GHL/DB
-  // Replace this with actual DB query once backend is wired
-  return NextResponse.json(null, { status: 404 });
+  const realtor = getRealtorBySlug(slug);
+  if (!realtor) return NextResponse.json(null, { status: 404 });
+
+  return NextResponse.json({
+    name: realtor.name,
+    brokerage: realtor.brokerage,
+    headshot: realtor.headshot,
+    accentColor: realtor.accentColor,
+    tagline: realtor.tagline,
+    title: realtor.title,
+    verified: realtor.verified,
+  });
 }
