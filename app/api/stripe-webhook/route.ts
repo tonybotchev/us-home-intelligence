@@ -256,6 +256,36 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "Invalid signature" }, { status: 400 });
   }
 
+  // payment_intent.succeeded: update GHL contact tag USHI-Buyer-Started → USHI-Buyer-Paid
+  // This fires after payment confirmation — captures buyers who completed checkout
+  if (event.type === "payment_intent.succeeded") {
+    const paymentIntent = event.data.object as Stripe.PaymentIntent;
+    const inboundWebhookUrl = process.env.GHL_NFM_INBOUND_WEBHOOK_URL;
+    if (inboundWebhookUrl) {
+      const piMeta = paymentIntent.metadata || {};
+      // Retrieve customer email from payment intent charges if available
+      const buyerEmail = piMeta.buyer_email ||
+        (paymentIntent.receipt_email) || "";
+      fetch(inboundWebhookUrl, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "User-Agent": "NoFluff-USHI/1.0" },
+        body: JSON.stringify({
+          email: buyerEmail,
+          tag: "USHI-Buyer-Paid",
+          remove_tag: "USHI-Buyer-Started",
+          order_id: paymentIntent.id,
+          amount_paid: paymentIntent.amount ? paymentIntent.amount / 100 : 0,
+          report_tier: piMeta.layout === "cobranded" ? "address-specific" : (piMeta.tier || "zip-level"),
+          source: "stripe_webhook",
+          location_id: process.env.GHL_NFM_LOCATION_ID || "tRk2nBMoIkO6EhFzr7jp",
+        }),
+      }).catch((err) => console.error("[stripe-webhook] GHL payment_intent.succeeded POST failed:", err));
+      console.log(`[stripe-webhook] GHL USHI-Buyer-Paid tag fired for payment_intent ${paymentIntent.id}`);
+    } else {
+      console.warn("[stripe-webhook] GHL_NFM_INBOUND_WEBHOOK_URL not set — skipping USHI-Buyer-Paid tag update");
+    }
+  }
+
   if (event.type === "checkout.session.completed") {
     const session = event.data.object as Stripe.Checkout.Session;
     const meta = session.metadata || {};

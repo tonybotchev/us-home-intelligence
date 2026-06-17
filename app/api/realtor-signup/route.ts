@@ -80,6 +80,32 @@ export async function POST(req: NextRequest) {
     };
     upsertRealtor(record);
 
+    // Lead capture: POST to GHL NFM inbound webhook BEFORE WF1 (fire-and-forget)
+    // Uses GHL_NFM_INBOUND_WEBHOOK_URL env var; gracefully skips if not set
+    const inboundWebhookUrl = process.env.GHL_NFM_INBOUND_WEBHOOK_URL;
+    if (inboundWebhookUrl) {
+      fetch(inboundWebhookUrl, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "User-Agent": "NoFluff-USHI/1.0" },
+        body: JSON.stringify({
+          first_name: firstName,
+          last_name: lastName,
+          email,
+          phone: phone || "",
+          brokerage: brokerage || "",
+          license_state: "TX",
+          license_number: licenseNumber,
+          trec_verified: verified,
+          tag: "USHI-Realtor-Partner",
+          source: "intel.nofluffmarketing.io/realtor",
+          submitted_at: new Date().toISOString(),
+          location_id: process.env.GHL_NFM_LOCATION_ID || "tRk2nBMoIkO6EhFzr7jp",
+        }),
+      }).catch((err) => console.error("[realtor-signup] GHL inbound webhook failed:", err));
+    } else {
+      console.warn("[realtor-signup] GHL_NFM_INBOUND_WEBHOOK_URL not set — skipping inbound webhook");
+    }
+
     // WF1: POST to GHL NFM Realtor Partner Signup workflow (fire-and-forget)
     fireWF1RealtorSignup({
       first_name: firstName,
