@@ -105,8 +105,8 @@ export const howToSchema = {
     {
       "@type": "HowToStep",
       position: 3,
-      name: "Complete Checkout via Stripe",
-      text: "Enter your payment details in the secure Stripe checkout. All major credit cards accepted. Your order is processed immediately upon payment confirmation.",
+      name: "Complete Secure Checkout",
+      text: "Enter your payment details in our secure, PCI-compliant checkout. All major credit cards accepted. Your order is processed immediately upon payment confirmation.",
       url: "https://intel.nofluffmarketing.io/buy",
     },
     {
