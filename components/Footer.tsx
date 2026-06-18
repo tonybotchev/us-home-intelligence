@@ -5,12 +5,9 @@ export default function Footer() {
   return (
     <footer style={{ borderTop: "1px solid #2a2a3a", background: "#0a0a0f", marginTop: "auto" }}>
       <div style={{ maxWidth: "1280px", margin: "0 auto", padding: "40px 24px" }}>
-        <div style={{ display: "flex", flexDirection: "column", gap: "6px", marginBottom: "24px" }}>
+        <div style={{ marginBottom: "24px" }}>
           <p style={{ color: "#6b7280", fontSize: "12px", lineHeight: 1.6 }}>
-            NoFluff Marketing LLC &nbsp;&middot;&nbsp; 3333 Preston Rd Ste 300 #1570 &nbsp;&middot;&nbsp; Frisco, TX 75034 &nbsp;&middot;&nbsp; 940-394-5656
-          </p>
-          <p style={{ color: "#6b7280", fontSize: "12px", lineHeight: 1.6 }}>
-            DFW Homes and Loans LLC &nbsp;&middot;&nbsp; Tony Botchev, NMLS #114198 &nbsp;&middot;&nbsp; Sponsored by Loan Factory, NMLS #320841
+            NoFluff Marketing LLC &nbsp;&middot;&nbsp; 3333 Preston Rd Ste 300 #1570, Frisco TX 75034 &nbsp;&middot;&nbsp; 940-394-5656
           </p>
         </div>
 
@@ -26,7 +23,7 @@ export default function Footer() {
         <p style={{ color: "#4a4a5a", fontSize: "12px", marginTop: "16px" }}>
           &copy; {new Date().getFullYear()} NoFluff Marketing LLC. All rights reserved.
           US Home Intelligence reports are for informational purposes only and do not constitute financial, legal, or investment advice.
-          Fair Housing compliant. NMLS #114198.
+          Fair Housing compliant.
         </p>
       </div>
     </footer>
