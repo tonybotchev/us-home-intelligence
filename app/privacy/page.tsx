@@ -20,7 +20,6 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    site: "@nofluffmkt",
     title: "Privacy Policy | US Home Intelligence",
     description: "Privacy Policy for US Home Intelligence, produced by NoFluff Marketing LLC, Frisco TX.",
     images: [`${SITE_URL}/og-image.jpg`],

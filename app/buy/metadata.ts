@@ -16,8 +16,6 @@ export const metadata: Metadata = {
     images: [{ url: `${SITE_URL}/og-image.jpg`, width: 1200, height: 630, alt: "Order US Home Intelligence Report" }],
   },
   twitter: {
-    site: "@nofluffmkt",
-    creator: "@nofluffmkt",
     card: "summary_large_image",
     title: "Buy a Neighborhood Intelligence Report | Any US Zip, From $97",
     description: "Zip-level ($97) or address-specific ($147). Delivered in under an hour.",

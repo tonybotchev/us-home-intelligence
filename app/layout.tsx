@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   description:
     "Investment-grade neighborhood intelligence for any US zip code or address. 11 chapters, 40+ data sources, delivered in under one hour. Zip-Tier $97 · Address-Tier $147.",
   alternates: {
-    canonical: "https://intel.nofluffmarketing.io",
+    canonical: "https://intel.nofluffmarketing.io/",
   },
   openGraph: {
     title: "US Home Intelligence | Neighborhood Reports for Any US Zip Code",
@@ -31,8 +31,6 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    site: "@nofluffmkt",
-    creator: "@nofluffmkt",
     title: "US Home Intelligence | Neighborhood Reports for Any US Zip Code",
     description:
       "Investment-grade neighborhood intelligence for any US zip code or address. 11 chapters, 40+ data sources, delivered in under one hour.",

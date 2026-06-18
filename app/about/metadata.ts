@@ -25,8 +25,6 @@ export const metadata: Metadata = {
     ],
   },
   twitter: {
-    site: "@nofluffmkt",
-    creator: "@nofluffmkt",
     card: "summary_large_image",
     title: "How US Home Intelligence Reports Work | 11 Chapters, 40+ Sources",
     description:

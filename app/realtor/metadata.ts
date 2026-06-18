@@ -16,8 +16,6 @@ export const metadata: Metadata = {
     images: [{ url: `${SITE_URL}/og-image.jpg`, width: 1200, height: 630, alt: "US Home Intelligence Realtor Partner Program" }],
   },
   twitter: {
-    site: "@nofluffmkt",
-    creator: "@nofluffmkt",
     card: "summary_large_image",
     title: "Realtor Partner Program — Cobranded Reports",
     description: "Cobranded neighborhood reports at 20% off. Free welcome report. No subscription.",

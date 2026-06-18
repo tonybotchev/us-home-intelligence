@@ -252,12 +252,6 @@ export default function HomePage() {
               See Sample Report
             </Link>
           </div>
-          <p style={{ color: "#4a4a5a", fontSize: "12px", marginTop: "20px" }}>
-            Real estate professional?{" "}
-            <a href="mailto:info@nofluffmarketing.io" style={{ color: "#9ca3af", textDecoration: "underline" }}>
-              Contact us to use reports with your clients.
-            </a>
-          </p>
         </div>
       </section>
 
