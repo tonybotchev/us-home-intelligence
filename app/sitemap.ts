@@ -2,8 +2,9 @@ import type { MetadataRoute } from "next"
 
 /**
  * Sitemap for US Home Intelligence
+ * CONSUMER-ONLY routes. Realtor partner program is deprecated — excluded from sitemap.
  * All URLs use HTTPS, no trailing slash — matching canonical tags.
- * Updated: 2026-06-18
+ * Updated: 2026-06-18 (consumer-only scope lock)
  */
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = "https://intel.nofluffmarketing.io"
@@ -27,18 +28,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: lastMod,
       changeFrequency: "monthly",
       priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/realtor`,
-      lastModified: lastMod,
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/realtor/dashboard`,
-      lastModified: lastMod,
-      changeFrequency: "monthly",
-      priority: 0.5,
     },
     {
       url: `${baseUrl}/privacy`,

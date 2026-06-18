@@ -21,7 +21,6 @@ export async function POST() {
     `https://${host}/`,
     `https://${host}/buy`,
     `https://${host}/about`,
-    `https://${host}/realtor`,
     `https://${host}/privacy`,
     `https://${host}/terms`,
   ]

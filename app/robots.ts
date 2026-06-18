@@ -2,8 +2,9 @@ import type { MetadataRoute } from "next"
 
 /**
  * Robots.txt for US Home Intelligence
- * Allows all crawlers. Disallows only internal API routes.
- * Public report share pages (/r/[slug]) are allowed for indexing.
+ * USHI is a NATIONAL, CONSUMER-ONLY product.
+ * Realtor partner program is deprecated — block from indexing.
+ * Updated: 2026-06-18 (consumer-only scope lock)
  */
 export default function robots(): MetadataRoute.Robots {
   return {
@@ -11,7 +12,7 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: "*",
         allow: "/",
-        disallow: ["/api/"],
+        disallow: ["/api/", "/realtor", "/r/"],
       },
     ],
     sitemap: "https://intel.nofluffmarketing.io/sitemap.xml",
