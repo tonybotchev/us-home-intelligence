@@ -18,7 +18,7 @@ const SISTER_SITES = [
     label: "DFW Home & Loans",
     domain: "dfwhome.loans",
     href: "https://dfwhome.loans",
-    desc: "Pre-qualify with Tony, NMLS #114198",
+    desc: "Pre-qualify with Tony · dfwhome.loans",
     descNoNmls: "Mortgage origination for North Texas home buyers",
   },
   {

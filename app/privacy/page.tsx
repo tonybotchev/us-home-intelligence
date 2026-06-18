@@ -38,7 +38,7 @@ export default function PrivacyPage() {
               <h1 className="text-3xl font-bold text-[#f0f0f5] mb-2">Privacy Policy</h1>
               <p className="text-[#6b7280] text-sm">Last updated: June 10, 2026 · US Home Intelligence Platform · NoFluff Marketing LLC</p>
             </div>
-            <p>This Privacy Policy governs the US Home Intelligence platform at intel.nofluffmarketing.io, operated by NoFluff Marketing LLC, 3333 Preston Rd Ste 300 #1570, Frisco, TX 75034. Phone: 940-394-5656. Tony Botchev, NMLS #114198, sponsored by Loan Factory, NMLS #320841.</p>
+            <p>This Privacy Policy governs the US Home Intelligence platform at intel.nofluffmarketing.io, operated by NoFluff Marketing LLC, 3333 Preston Rd Ste 300 #1570, Frisco, TX 75034. Phone: 940-394-5656. </p>
             <div>
               <h2 className="text-xl font-bold text-[#f0f0f5] mb-3">Information We Collect</h2>
               <p>Buyer questionnaire data (name, email, phone, property address, purchase context), payment data processed via industry-standard PCI-compliant payment processing (we do not store card numbers), realtor partner profile data (name, brokerage, license number, headshot, logo), and standard web analytics (IP, browser, pages visited).</p>

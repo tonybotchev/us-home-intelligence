@@ -39,7 +39,7 @@ export default function SuccessPage() {
           <Link href="/" className="inline-flex items-center gap-2 bg-[#1c1c28] hover:bg-[#2a2a3a] border border-[#2a2a3a] text-[#f0f0f5] font-semibold px-8 py-3 rounded-xl transition-colors text-sm">
             Back to Home
           </Link>
-          <p className="text-[#4a4a5a] text-xs mt-6">Produced exclusively by NoFluff Marketing LLC · Frisco, TX · NMLS #114198</p>
+          <p className="text-[#4a4a5a] text-xs mt-6">Produced exclusively by NoFluff Marketing LLC · Frisco, TX</p>
         </div>
 
         {/* DHL Cross-Sell Card — Fix D */}
@@ -55,7 +55,7 @@ export default function SuccessPage() {
             Start your prequal &rarr;
           </a>
           <p className="text-[#4a4a5a] text-xs mt-5 leading-relaxed">
-            Tony Botchev, NMLS #114198 — Sponsored by Loan Factory, NMLS #320841 — Equal Housing Opportunity.
+            NoFluff Marketing LLC · Fair Housing compliant.
           </p>
         </div>
       </main>

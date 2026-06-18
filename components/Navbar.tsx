@@ -14,14 +14,10 @@ export default function Navbar() {
       <nav className="fixed left-0 right-0 z-50 bg-[#0a0a0f]/90 backdrop-blur-md border-b border-[#2a2a3a]" style={{ top: "40px" }}>
         <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
           <Link href="/" className="flex items-center gap-2" style={{ textDecoration: "none" }}>
-            {/* Logo rendered as inline SVG-style text lockup — no image border issues */}
             <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-              {/* House outline */}
               <path d="M16 4L4 14v14h8v-8h8v8h8V14L16 4z" stroke="#00c9a7" strokeWidth="2" fill="none"/>
-              {/* Location pin */}
               <circle cx="16" cy="17" r="3" fill="#00c9a7"/>
               <path d="M16 20v4" stroke="#00c9a7" strokeWidth="1.5" strokeLinecap="round"/>
-              {/* Radar arcs */}
               <path d="M9 22 Q16 28 23 22" stroke="#1a56db" strokeWidth="1.5" fill="none" strokeLinecap="round"/>
               <path d="M6 25 Q16 33 26 25" stroke="#1a56db" strokeWidth="1" fill="none" strokeLinecap="round" opacity="0.5"/>
             </svg>
@@ -31,6 +27,7 @@ export default function Navbar() {
             </span>
           </Link>
           <div className="hidden md:flex items-center gap-6">
+            <Link href="/about" className="text-[#9ca3af] hover:text-[#f0f0f5] text-sm transition-colors">About</Link>
             <Link href="/buy" className="text-[#9ca3af] hover:text-[#f0f0f5] text-sm transition-colors">Order Reports</Link>
             <Link href="/buy" className="bg-[#1a56db] hover:bg-[#1040b0] text-white text-sm px-4 py-2 rounded-lg transition-colors font-medium">
               Order Now
@@ -42,6 +39,7 @@ export default function Navbar() {
         </div>
         {open && (
           <div className="md:hidden bg-[#12121a] border-b border-[#2a2a3a] px-6 py-4 flex flex-col gap-4">
+            <Link href="/about" className="text-[#9ca3af] text-sm" onClick={() => setOpen(false)}>About</Link>
             <Link href="/buy" className="text-[#9ca3af] text-sm" onClick={() => setOpen(false)}>Order Reports</Link>
             <Link href="/buy" className="bg-[#1a56db] text-white text-sm px-4 py-2 rounded-lg text-center" onClick={() => setOpen(false)}>Order Now</Link>
           </div>
