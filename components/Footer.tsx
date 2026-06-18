@@ -1,4 +1,5 @@
 import Link from "next/link";
+import NFGSisterSitesFooter from "@/components/NFGSisterSitesFooter";
 
 export default function Footer() {
   return (
@@ -16,6 +17,9 @@ export default function Footer() {
             <span>Equal Housing Opportunity</span>
           </div>
         </div>
+        {/* NFG Sister Sites cross-links */}
+        <NFGSisterSitesFooter siteKey="ushi" />
+
         <div className="flex flex-wrap gap-4 text-xs text-[#6b7280] border-t border-[#2a2a3a] pt-6">
           <Link href="/privacy" className="hover:text-[#00c2ff] transition-colors">Privacy Policy</Link>
           <Link href="/terms" className="hover:text-[#00c2ff] transition-colors">Terms of Service</Link>
