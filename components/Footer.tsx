@@ -20,10 +20,8 @@ export default function Footer() {
           <a href="https://nofluffmarketing.io" style={{ color: "#6b7280", fontSize: "12px", textDecoration: "none" }}>NoFluff Marketing LLC</a>
         </div>
 
-        <p style={{ color: "#4a4a5a", fontSize: "12px", marginTop: "16px" }}>
-          &copy; {new Date().getFullYear()} NoFluff Marketing LLC. All rights reserved.
-          US Home Intelligence reports are for informational purposes only and do not constitute financial, legal, or investment advice.
-          Fair Housing compliant.
+        <p style={{ color: "#4a4a5a", fontSize: "12px", marginTop: "16px", lineHeight: 1.6 }}>
+          &copy; {new Date().getFullYear()} NoFluff Marketing LLC. All rights reserved. US Home Intelligence reports are for informational purposes only and do not constitute financial, legal, or investment advice. Fair Housing compliant.
         </p>
       </div>
     </footer>
