@@ -38,13 +38,7 @@ export const metadata: Metadata = {
       "Investment-grade neighborhood intelligence. Any US address. Delivered in under an hour.",
     images: ["https://intel.nofluffmarketing.io/og-image.jpg"],
   },
-  other: {
-    // Geo meta — Frisco, TX headquarters (NoFluff Marketing LLC)
-    "geo.region": "US-TX",
-    "geo.placename": "Frisco, Texas",
-    "ICBM": "33.1507, -96.8236",
-    "geo.position": "33.1507;-96.8236",
-  },
+  // No geo meta — USHI is a national product, Texas targeting suppresses national surface
 };
 
 import { organizationSchema, websiteSchema, productSchema, faqSchema, howToSchema } from "@/lib/schema";
