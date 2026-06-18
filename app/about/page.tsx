@@ -1,6 +1,7 @@
 "use client";
 import Link from "next/link";
 import { useState } from "react";
+import { aboutBreadcrumb } from "@/lib/schema";
 
 const DATA_CATEGORIES = [
   {
@@ -67,6 +68,7 @@ export default function AboutPage() {
 
   return (
     <main style={{ background: "#0a0a0f", color: "#f0f0f5", minHeight: "100vh", paddingTop: "112px", paddingBottom: "80px" }}>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(aboutBreadcrumb()) }} />
 
       {/* Hero */}
       <section style={{ maxWidth: "860px", margin: "0 auto", padding: "0 24px 64px" }}>

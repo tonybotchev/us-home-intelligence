@@ -4,7 +4,7 @@ import "./globals.css";
 export const metadata: Metadata = {
   metadataBase: new URL("https://intel.nofluffmarketing.io"),
   title: {
-    default: "US Home Intelligence | Investment-Grade Neighborhood Reports",
+    default: "US Home Intelligence | Neighborhood Reports for Any US Zip Code",
     template: "%s | US Home Intelligence",
   },
   description:
@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     canonical: "https://intel.nofluffmarketing.io",
   },
   openGraph: {
-    title: "US Home Intelligence | Investment-Grade Neighborhood Reports",
+    title: "US Home Intelligence | Neighborhood Reports for Any US Zip Code",
     description:
       "Investment-grade neighborhood intelligence. Any US address. Delivered in under an hour.",
     url: "https://intel.nofluffmarketing.io",
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     site: "@nofluffmkt",
     creator: "@nofluffmkt",
-    title: "US Home Intelligence | Investment-Grade Neighborhood Reports",
+    title: "US Home Intelligence | Neighborhood Reports for Any US Zip Code",
     description:
       "Investment-grade neighborhood intelligence. Any US address. Delivered in under an hour.",
     images: ["https://intel.nofluffmarketing.io/og-image.jpg"],

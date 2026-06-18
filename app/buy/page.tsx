@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import { buyBreadcrumb } from "@/lib/schema";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { ArrowRight, CheckCircle, MapPin, Home } from "lucide-react";
@@ -84,6 +85,7 @@ export function BuyForm({referralSlug, realtorName, realtorBrokerage, realtorHea
     <div className="min-h-screen flex flex-col bg-[#0a0a0f]">
       <Navbar />
       <main className="flex-1 pt-24">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(buyBreadcrumb()) }} />
         <section className="py-12 px-6">
           <div className="max-w-2xl mx-auto">
             {realtorName && (
@@ -300,7 +302,7 @@ export function BuyForm({referralSlug, realtorName, realtorBrokerage, realtorHea
                     </div>
                     {form.hasLender === "No" && (
                       <div className="mt-3 bg-[#1a56db]/10 border border-[#1a56db]/30 rounded-lg p-3 text-xs text-[#9ca3af]">
-                        If you need a lender, you are welcome to mention us. Tony Botchev, NMLS #114198, sponsored by Loan Factory, NMLS #320841. Buyer decides who to use — no fees flow between us and your realtor for referrals. RESPA-clean.
+                        If you need a lender, you are welcome to mention us. If you need a recommendation for a local lender, we can connect you with one of our trusted partners.
                       </div>
                     )}
                   </div>
