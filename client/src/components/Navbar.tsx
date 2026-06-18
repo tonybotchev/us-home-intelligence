@@ -6,6 +6,7 @@ import { useState, useEffect } from "react";
 import { Menu, X, Phone } from "lucide-react";
 import { Link, useLocation } from "wouter";
 import NMLSDisclosure from "@/components/NMLSDisclosure";
+import NFGFederationHeader from "@/components/NFGFederationHeader";
 import { trackPhoneClick } from "@/lib/analytics";
 
 export default function Navbar() {
@@ -48,12 +49,17 @@ export default function Navbar() {
 
   return (
     <>
+      {/* NFG Federation Header — cross-site navigation strip, topmost layer */}
+      <div className="fixed top-0 left-0 right-0" style={{ zIndex: 70 }}>
+        <NFGFederationHeader siteKey="dhl" />
+      </div>
       {/* NMLS Compliance Bar — SAFE Act required on all advertising */}
-      <div className="fixed top-0 left-0 right-0 z-50">
+      <div className="fixed left-0 right-0" style={{ top: "40px", zIndex: 60 }}>
         <NMLSDisclosure variant="bar" />
       </div>
       <nav
-        className={`fixed top-8 left-0 right-0 z-50 transition-all duration-300 ${
+        style={{ top: "72px" }}
+        className={`fixed left-0 right-0 z-50 transition-all duration-300 ${
           scrolled
             ? "bg-[oklch(0.26_0.065_155/0.97)] backdrop-blur-md shadow-xl"
             : "bg-transparent"

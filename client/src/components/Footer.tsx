@@ -4,6 +4,7 @@
 import { Phone, Mail, MessageCircle } from "lucide-react";
 import { Link } from "wouter";
 import NMLSDisclosure from "@/components/NMLSDisclosure";
+import NFGSisterSitesFooter from "@/components/NFGSisterSitesFooter";
 import { trackPhoneClick, trackWhatsAppClick } from "@/lib/analytics";
 
 const loanLinks = [
@@ -187,6 +188,10 @@ export default function Footer() {
         </div>
       </div>
 
+      {/* NFG Sister Sites cross-links */}
+      <div className="container pb-6">
+        <NFGSisterSitesFooter siteKey="dhl" />
+      </div>
       {/* Full legal disclosure block */}
       <div className="container pb-8">
         <NMLSDisclosure variant="footer" dark={true} />
