@@ -66,7 +66,7 @@ export default function TermsPage() {
               <h2 className="text-xl font-bold text-[#f0f0f5] mb-3">Contact</h2>
               <div className="bg-[#12121a] border border-[#2a2a3a] rounded-xl p-4">
                 <p className="text-[#f0f0f5]">NoFluff Marketing LLC · 3333 Preston Rd Ste 300 #1570 · Frisco, TX 75034</p>
-                <p>940-394-5656 · tony@nofluffmarketing.io</p>
+                <p>940-394-5656 · info@nofluffmarketing.io</p>
               </div>
             </div>
           </div>
