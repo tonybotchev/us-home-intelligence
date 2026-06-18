@@ -1,3 +1,4 @@
+"use client";
 /* NFGSisterSitesFooter — Sister Sites cross-links section
    Spec: 3-col desktop, single-col mobile. Current site dimmed, no hover.
    NMLS disclosure ONLY on "Home Loans" link when shown on NFM + USHI footers.
