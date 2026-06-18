@@ -8,14 +8,14 @@ export const metadata: Metadata = {
     template: "%s | US Home Intelligence",
   },
   description:
-    "Investment-grade neighborhood intelligence. Any US address. Delivered in under an hour. Produced exclusively by NoFluff Marketing LLC.",
+    "Investment-grade neighborhood intelligence for any US zip code or address. 11 chapters, 40+ data sources, delivered in under one hour. Zip-Tier $97 · Address-Tier $147.",
   alternates: {
     canonical: "https://intel.nofluffmarketing.io",
   },
   openGraph: {
     title: "US Home Intelligence | Neighborhood Reports for Any US Zip Code",
     description:
-      "Investment-grade neighborhood intelligence. Any US address. Delivered in under an hour.",
+      "Investment-grade neighborhood intelligence for any US zip code or address. 11 chapters, 40+ data sources, delivered in under one hour.",
     url: "https://intel.nofluffmarketing.io",
     siteName: "US Home Intelligence",
     type: "website",
@@ -25,7 +25,7 @@ export const metadata: Metadata = {
         url: "https://intel.nofluffmarketing.io/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "US Home Intelligence — Investment-Grade Neighborhood Reports",
+        alt: "US Home Intelligence — Neighborhood Reports for Any US Zip Code",
       },
     ],
   },
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     creator: "@nofluffmkt",
     title: "US Home Intelligence | Neighborhood Reports for Any US Zip Code",
     description:
-      "Investment-grade neighborhood intelligence. Any US address. Delivered in under an hour.",
+      "Investment-grade neighborhood intelligence for any US zip code or address. 11 chapters, 40+ data sources, delivered in under one hour.",
     images: ["https://intel.nofluffmarketing.io/og-image.jpg"],
   },
   // No geo meta — USHI is a national product, Texas targeting suppresses national surface
