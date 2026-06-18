@@ -1,7 +1,8 @@
 "use client";
 /* NFGSisterSitesFooter — Sister Sites cross-links section
-   Spec: 3-col desktop, single-col mobile. Current site dimmed, no hover.
-   NMLS disclosure ONLY on "Home Loans" link when shown on NFM + USHI footers.
+   Spec: 3-col desktop, single-col mobile.
+   Current site shown as active/highlighted (not grayed out).
+   NMLS disclosure ONLY on DHL link when shown on NFM + USHI footers.
    siteKey: "dhl" | "ushi" | "nfm"
 */
 
@@ -14,20 +15,23 @@ interface Props {
 const SISTER_SITES = [
   {
     key: "dhl",
-    label: "Home Loans",
+    label: "DFW Home & Loans",
+    domain: "dfwhome.loans",
     href: "https://dfwhome.loans",
     desc: "Pre-qualify with Tony, NMLS #114198",
     descNoNmls: "Mortgage origination for North Texas home buyers",
   },
   {
     key: "nfm",
-    label: "Business Stack",
+    label: "NoFluff Marketing",
+    domain: "nofluffmarketing.io",
     href: "https://nofluffmarketing.io",
-    desc: "Fix what's breaking your business",
+    desc: "AI phone, websites, CRM, SEO, ads — built to close",
   },
   {
     key: "ushi",
-    label: "Neighborhood Reports",
+    label: "US Home Intelligence",
+    domain: "intel.nofluffmarketing.io",
     href: "https://intel.nofluffmarketing.io",
     desc: "Investment-grade neighborhood intel for any US address",
   },
@@ -50,17 +54,17 @@ export default function NFGSisterSitesFooter({ siteKey }: Props) {
           fontWeight: 600,
           letterSpacing: "0.1em",
           textTransform: "uppercase",
-          marginBottom: "12px",
+          marginBottom: "16px",
           fontFamily: "Inter, system-ui, -apple-system, sans-serif",
         }}
       >
-        Sister Sites
+        NoFluff Group — Sister Sites
       </p>
       <div
         style={{
           display: "grid",
           gridTemplateColumns: "repeat(3, 1fr)",
-          gap: "16px",
+          gap: "20px",
         }}
         className="nfg-sister-grid"
       >
@@ -70,13 +74,21 @@ export default function NFGSisterSitesFooter({ siteKey }: Props) {
           const descriptor = showNmls ? site.desc : (site.key === "dhl" ? site.descNoNmls : site.desc);
 
           return (
-            <div key={site.key}>
+            <div
+              key={site.key}
+              style={{
+                padding: "12px 14px",
+                borderRadius: "8px",
+                background: isCurrent ? "rgba(255,107,53,0.08)" : "transparent",
+                border: isCurrent ? "1px solid rgba(255,107,53,0.2)" : "1px solid transparent",
+              }}
+            >
               {isCurrent ? (
                 <span
                   style={{
-                    color: "#4a4a5a",
+                    color: "#FF6B35",
                     fontSize: "13px",
-                    fontWeight: 600,
+                    fontWeight: 700,
                     display: "block",
                     fontFamily: "Inter, system-ui, -apple-system, sans-serif",
                   }}
@@ -92,10 +104,11 @@ export default function NFGSisterSitesFooter({ siteKey }: Props) {
                   style={{
                     color: "#f0f0f5",
                     fontSize: "13px",
-                    fontWeight: 600,
+                    fontWeight: 700,
                     textDecoration: "none",
                     display: "block",
                     fontFamily: "Inter, system-ui, -apple-system, sans-serif",
+                    transition: "color 0.15s",
                   }}
                   onMouseEnter={(e) => {
                     (e.currentTarget as HTMLElement).style.color = "#FF6B35";
@@ -109,9 +122,22 @@ export default function NFGSisterSitesFooter({ siteKey }: Props) {
               )}
               <p
                 style={{
-                  color: isCurrent ? "#3a3a4a" : "#6b7280",
-                  fontSize: "12px",
+                  color: isCurrent ? "#FF6B35" : "#9ca3af",
+                  fontSize: "11px",
+                  fontWeight: 500,
                   marginTop: "2px",
+                  marginBottom: "4px",
+                  fontFamily: "Inter, system-ui, -apple-system, sans-serif",
+                  opacity: isCurrent ? 0.7 : 0.8,
+                }}
+              >
+                {site.domain}
+              </p>
+              <p
+                style={{
+                  color: isCurrent ? "#9ca3af" : "#6b7280",
+                  fontSize: "12px",
+                  marginTop: "0",
                   fontFamily: "Inter, system-ui, -apple-system, sans-serif",
                   lineHeight: "1.4",
                 }}
