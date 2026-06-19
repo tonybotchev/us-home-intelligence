@@ -23,6 +23,123 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
+    id: "dfw-housing-market-outlook-2026",
+    slug: "dfw-housing-market-outlook-2026",
+    title: "DFW Housing Market Outlook 2026: What Buyers and Sellers Need to Know",
+    date: "2026-06-19",
+    category: "Market Trends",
+    excerpt: "Get the latest DFW housing market outlook for 2026 — inventory trends, median home prices, buyer vs. seller dynamics, and what it all means for your next move in the Dallas-Fort Worth area.",
+    readTime: "7 min read",
+    content: `If you've been watching the Dallas-Fort Worth real estate market, you already know one thing: this region doesn't sit still. From the booming northern suburbs to the revitalized urban cores of Dallas and Fort Worth, DFW continues to be one of the most dynamic housing markets in the entire country. But 2026 brings a unique set of challenges and opportunities — and whether you're buying your first home or selling your fifth, understanding what's happening right now could save you tens of thousands of dollars.
+
+Let's break it all down.
+
+---
+
+## Where the DFW Market Stands Heading Into 2026
+
+After a few years of whiplash — a pandemic-era frenzy, a rate-shock correction, and a slow rebalancing — the DFW housing market has settled into something that feels more like a *normalized* market than either the wild seller's market of 2021 or the frozen standoff of late 2023.
+
+Inventory has improved meaningfully across most DFW submarkets. Buyers are seeing more choices than they've had in years, and homes are sitting on the market a bit longer before going under contract. The days of waiving every contingency and bidding $80,000 over asking are largely behind us — though well-priced homes in desirable neighborhoods still move quickly.
+
+Median home prices across the broader DFW metro have held relatively steady, with modest appreciation continuing in most areas. The market hasn't collapsed, and it hasn't exploded. It's found a kind of equilibrium — which, frankly, is healthy.
+
+### What This Means for Days on Market
+
+Across DFW, average days on market have climbed compared to the 2021–2022 peak. Depending on the submarket and price range, you're now seeing many homes sit for 30 to 60 days before receiving offers. That's not a red flag — it's a return to pre-pandemic norms. For buyers, it means more time to think. For sellers, it means pricing strategy matters more than ever.
+
+---
+
+## A Submarket-by-Submarket Look
+
+Not all of DFW moves in lockstep. Location, price point, and local inventory conditions vary significantly from one city to the next.
+
+### Frisco, Prosper, and Celina
+
+The northern Collin County corridor remains one of the most in-demand areas in all of North Texas. **Frisco** has matured into a full-fledged city with strong resale values, excellent schools, and continued corporate investment. **Prosper** continues to attract buyers looking for newer construction with more square footage per dollar. And **Celina** — once a sleepy small town — has become one of the fastest-growing cities in the country, with master-planned communities popping up across its wide-open landscape.
+
+New construction is a major factor in these markets. Builders have ramped up inventory, which is actually giving buyers some leverage, particularly when it comes to negotiating incentives like rate buydowns and closing cost assistance.
+
+### McKinney and Allen
+
+**McKinney** offers a compelling blend of historic charm, newer subdivisions, and relatively competitive pricing compared to Frisco. It continues to draw families and remote workers alike. **Allen** is a more established submarket with strong school districts and a tighter resale inventory — homes here tend to move a bit faster than the broader market average.
+
+### Plano
+
+**Plano** remains a cornerstone of the DFW market. Its proximity to major employment hubs like Legacy West, the Telecom Corridor, and Toyota's North American headquarters keeps demand steady. Inventory in Plano leans toward resale, and buyers should expect well-maintained homes at prices that reflect the area's long-standing desirability.
+
+### Dallas and Fort Worth
+
+Inside the urban core, **Dallas** is seeing continued interest in neighborhoods like Oak Cliff, East Dallas, and the Design District, where buyers are drawn to walkability and character. **Fort Worth** has quietly become one of the most attractive cities in Texas for value-conscious buyers — offering more home per dollar than many DFW suburbs, combined with a vibrant downtown, cultural scene, and strong job market.
+
+---
+
+## The North DFW Growth Corridors: Collin and Denton Counties
+
+If there's a theme to DFW's long-term growth story, it's northward expansion.
+
+**Collin County** has been one of the fastest-growing counties in the United States for years running. The combination of top-tier school districts, corporate relocations, and a steady pipeline of new residential development has made cities like McKinney, Frisco, Allen, and Prosper household names beyond Texas.
+
+**Denton County** is following close behind. Cities like **Little Elm**, **Aubrey**, **Northlake**, and **Argyle** are drawing buyers who want newer construction at more accessible price points, with easy access to the Dallas North Tollway and Highway 380 corridors. Denton County offers some of the best opportunities for first-time buyers and move-up buyers who've been priced out of more established submarkets.
+
+Infrastructure investment is keeping pace with growth — though traffic and school capacity are real conversations to have before choosing a neighborhood. The good news is that both counties continue to attract employers, which supports long-term property values.
+
+---
+
+## How the Mortgage Rate Environment Affects Your Buying Power
+
+Let's be honest: mortgage rates are on everyone's mind. The rate environment of the past few years has reshaped how buyers think about affordability, and that's not going away in 2026.
+
+Here's what we know: rates have moderated from their recent peaks, but they remain elevated compared to the historic lows buyers got used to in 2020 and 2021. That shift in rates has a real impact on monthly payments and how much home you can comfortably afford.
+
+But here's what a lot of buyers miss — **buying power isn't just about the rate on a 30-year fixed mortgage.** It's about the full picture: your income, your debt load, your down payment, the loan program you qualify for, and whether there are seller concessions or builder incentives on the table that could be used to buy down your rate.
+
+We don't quote rates in a blog post because rates change daily and your rate depends on *your* specific scenario. What we'd rather do is **run the numbers together** — look at your situation, explore your options, and find a strategy that makes homeownership work for you right now, not just when rates hit some magic number.
+
+---
+
+## Advice for Buyers: How to Win in Today's Market
+
+The good news for buyers is that 2026 offers more options and less pressure than the frenzied markets of recent years. But that doesn't mean you can be casual about your approach.
+
+**Get pre-approved before you do anything else.** This isn't just a formality — it's your foundation. A strong pre-approval letter tells sellers you're serious, helps you move quickly when you find the right home, and gives you a realistic picture of your budget before you fall in love with something out of reach.
+
+**Know your submarkets.** As we covered above, DFW is not one market — it's dozens. Understanding where inventory is tightest, where builders are offering incentives, and where your dollar goes furthest can make a significant difference in what you end up with.
+
+**Don't wait for the "perfect" rate.** Buyers who've been sitting on the sidelines waiting for rates to drop to 2021 levels may be waiting a very long time. The better strategy is to buy a home that works for your life *now* and refinance when rates improve. As the saying goes: marry the house, date the rate.
+
+**Negotiate strategically.** With more inventory and longer days on market, you have room to ask for things — closing cost assistance, repairs, or rate buydowns. A good mortgage advisor and a skilled real estate agent working together can help you structure an offer that gets accepted and saves you money.
+
+---
+
+## Advice for Sellers: Pricing and Timing in 2026
+
+The days of listing a home at any price and watching it sell in a weekend are mostly over in most DFW submarkets. That's not doom and gloom — it's just reality, and the sellers who understand it will do far better than those who don't.
+
+**Price it right from day one.** Overpriced homes sit. And homes that sit start to carry a stigma — buyers wonder what's wrong with them. A sharp pricing strategy, grounded in current comparable sales (not 2022 comps), is your best tool for a successful sale.
+
+**Timing still matters.** Spring remains the strongest season for DFW home sales, but 2026's market is less seasonal than in years past. If your home is well-prepared and well-priced, any time of year can work.
+
+**Make it move-in ready.** With more options available, buyers are less willing to take on projects. Fresh paint, clean landscaping, and addressing deferred maintenance will pay dividends.
+
+---
+
+## Let's Talk About Your Next Move
+
+Whether you're buying your first home in Celina, upsizing in McKinney, downsizing in Plano, or selling a property in Fort Worth, the DFW market in 2026 rewards preparation and smart strategy.
+
+At **DFW Home & Loans**, we help buyers and sellers across the entire Dallas-Fort Worth metro navigate the mortgage side of the equation with clarity and confidence. From first-time buyer programs to jumbo loans to new construction financing, we've seen it all — and we're here to make sure your transaction goes smoothly.
+
+**Ready to get started?** Contact us today for a free consultation and pre-approval. Let's run the numbers together and build a plan that puts you in the best possible position — whatever the market is doing.
+
+👉 Visit us at [dfwhome.loans](https://dfwhome.loans) or reach out directly to get your free pre-approval started today.
+
+---
+
+*Tony Botchev, NMLS #114198 · Sponsored by Loan Factory, NMLS #320841. Equal Housing Opportunity.*`,
+  },
+
+  {
     id: "down-payment-assistance-texas-2026",
     slug: "down-payment-assistance-texas-2026",
     title: "Down Payment Assistance Programs in Texas: What DFW Buyers Need to Know in 2026",
