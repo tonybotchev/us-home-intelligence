@@ -1,14 +1,6 @@
 {
   "crons": [
     {
-      "path": "/api/check-manus-tasks",
-      "schedule": "0 9 * * *"
-    },
-    {
-      "path": "/api/realtor-upsell-check",
-      "schedule": "0 10 * * *"
-    },
-    {
       "path": "/api/indexnow",
       "schedule": "0 11 * * *"
     }

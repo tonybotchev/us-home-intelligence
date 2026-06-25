@@ -9,12 +9,6 @@ const PRICE_BANDS = ["Under $300K","$300K–$500K","$500K–$1M","$1M–$2M","Ov
 const USE_CASES = ["Primary Residence","Investment","Vacation","Luxury"];
 
 export default function BuyPage() {
-  return <BuyForm referralSlug={null} realtorName={null} realtorBrokerage={null} realtorHeadshot={null} accentColor={null} />;
-}
-
-export function BuyForm({referralSlug, realtorName, realtorBrokerage, realtorHeadshot, accentColor}: {
-  referralSlug: string|null; realtorName: string|null; realtorBrokerage: string|null; realtorHeadshot: string|null; accentColor: string|null;
-}) {
   // Explicit tier selection — default to zip-level (lower friction)
   const [selectedTier, setSelectedTier] = useState<"zip-level" | "address-specific">("zip-level");
 
@@ -70,7 +64,7 @@ export function BuyForm({referralSlug, realtorName, realtorBrokerage, realtorHea
       // Step 2: Create Stripe Checkout session
       const res = await fetch("/api/stripe-checkout", {
         method:"POST", headers:{"Content-Type":"application/json"},
-        body: JSON.stringify({...form, referralSlug, tier, price}),
+        body: JSON.stringify({...form, tier, price}),
       });
       const data = await res.json();
       if (data.url) window.location.href = data.url;
@@ -79,8 +73,6 @@ export function BuyForm({referralSlug, realtorName, realtorBrokerage, realtorHea
     finally { setSubmitting(false); }
   }
 
-  const accent = accentColor || "#1a56db";
-
   return (
     <div className="min-h-screen flex flex-col bg-[#0a0a0f]">
       <Navbar />
@@ -88,16 +80,6 @@ export function BuyForm({referralSlug, realtorName, realtorBrokerage, realtorHea
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(buyBreadcrumb()) }} />
         <section className="py-12 px-6">
           <div className="max-w-2xl mx-auto">
-            {realtorName && (
-              <div className="bg-[#12121a] border rounded-2xl p-6 mb-8 flex items-center gap-4" style={{borderColor: accent + "40"}}>
-                {realtorHeadshot && <img src={realtorHeadshot} alt={realtorName} className="w-14 h-14 rounded-full object-cover" />}
-                <div>
-                  <p className="text-[#6b7280] text-xs mb-1">Prepared in partnership with</p>
-                  <p className="text-[#f0f0f5] font-semibold">{realtorName}</p>
-                  {realtorBrokerage && <p className="text-[#9ca3af] text-sm">{realtorBrokerage}</p>}
-                </div>
-              </div>
-            )}
 
             <div className="mb-4">
               <span className="text-xs font-semibold text-[#00c2ff] uppercase tracking-wider bg-[#00c2ff]/10 px-3 py-1 rounded-full">Order Your Report</span>
@@ -228,7 +210,7 @@ export function BuyForm({referralSlug, realtorName, realtorBrokerage, realtorHea
                   <div>
                     <label className="block text-[#9ca3af] text-xs mb-1">Phone</label>
                     <input type="tel" value={form.phone} onChange={set("phone")} className="w-full bg-[#0a0a0f] border border-[#2a2a3a] rounded-lg px-4 py-3 text-[#f0f0f5] text-sm focus:outline-none focus:border-[#1a56db]" placeholder="(214) 555-0100" />
-                    <p className="text-[#4a4a5a] text-xs mt-1">This phone is used for report delivery and follow-up about your report only — not for marketing SMS.</p>
+                    <p className="text-[#4a4a5a] text-xs mt-1">Used for report delivery only — not for marketing SMS.</p>
                   </div>
                 </div>
               </div>
@@ -313,7 +295,7 @@ export function BuyForm({referralSlug, realtorName, realtorBrokerage, realtorHea
                 </div>
               </div>
 
-              {/* Price summary card — reflects explicit tier selection */}
+              {/* Price summary card */}
               <div className={`bg-[#12121a] rounded-2xl p-6 border-2 ${
                 selectedTier === "address-specific" ? "border-[#00c2ff]/40" : "border-[#1a56db]/40"
               }`}>
@@ -324,8 +306,8 @@ export function BuyForm({referralSlug, realtorName, realtorBrokerage, realtorHea
                     </div>
                     <div className="text-[#6b7280] text-sm">
                       {selectedTier === "address-specific"
-                        ? "Full 11-chapter deep-dive with property-specific data, parcel-level AVM, comparable sales, FEMA flood zone, school attendance zone"
-                        : "Zip code market overview"}
+                        ? "Full 13-chapter deep-dive with property-specific data, parcel-level AVM, comparable sales, FEMA flood zone, school attendance zone"
+                        : "Zip code market overview — schools, crime, market trends, lifestyle data"}
                     </div>
                   </div>
                   <div className={`text-3xl font-bold ${selectedTier === "address-specific" ? "text-[#00c2ff]" : "text-[#f0f0f5]"}`}>

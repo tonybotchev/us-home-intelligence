@@ -3,7 +3,7 @@ import { NextRequest, NextResponse } from "next/server";
 /**
  * /api/lead-capture
  *
- * Receives form data from /buy or /realtor BEFORE Stripe redirect.
+ * Receives form data from /buy BEFORE Stripe redirect.
  * POSTs to GHL NFM inbound webhook (env: GHL_NFM_INBOUND_WEBHOOK_URL).
  * If the env var is missing, logs a warning and returns success — never blocks the user.
  *

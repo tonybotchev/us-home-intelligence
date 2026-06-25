@@ -25,11 +25,8 @@ const DHL_BIO_DIRECT   =
   "Ready to get pre-qualified? Visit dfwhome.loans/apply or call (945) 300-4002.";
 
 // ─── Report prompt builder ────────────────────────────────────────────────────
-// v3 Locked 2026-06-12 — TWO layouts gated by cobranded flag + referralSlug:
-//   • cobranded=true AND referralSlug present → LAYOUT 1: Realtor-Sponsored cobranded
-//       Realtor brand (lead) + DHL co-publisher. 20% off: $77.60 zip / $117.60 address.
-//   • cobranded=false OR no referralSlug → LAYOUT 2: DHL-Only direct buyer
-//       DHL sole publisher. Full price: $97 zip / $147 address.
+// Consumer-direct only. Full price always: $97 zip / $147 address.
+// DHL-Only layout — Tony Botchev / DFW Homes & Loans sole publisher.
 // ─────────────────────────────────────────────────────────────────────────────
 async function dispatchManusReportTask(metadata: Stripe.Metadata) {
   const apiKey = process.env.MANUS_API_KEY;
@@ -40,104 +37,13 @@ async function dispatchManusReportTask(metadata: Stripe.Metadata) {
 
   const {
     firstName, lastName, email, address, city, state, zip,
-    priceBand, useCase, concerns, referralSlug, tier,
-    realtorName, realtorBrokerage, realtorLicense, realtorPhone, realtorEmail,
-    cobranded: cobrandedFlag,
+    priceBand, useCase, concerns, tier,
   } = metadata;
 
-  // v3: cobranded = explicit flag from checkout (true/false) AND referralSlug must be present
-  // If realtor chose Option B (normal, full price) cobrandedFlag will be 'false' even with a slug
-  const isCobranded = cobrandedFlag !== "false" && Boolean(referralSlug && referralSlug !== "direct" && referralSlug !== "");
   const buyerFullName = `${firstName} ${lastName}`;
   const propertyLine = address ? `${address}, ${city}, ${state} ${zip}` : `${city}, ${state} ${zip}`;
 
-  // ── LAYOUT 1: Realtor-Sponsored Cobranded ──────────────────────────────────
-  const cobrandedPrompt = `Produce a US Home Intelligence (USHI) v5 report — REALTOR-SPONSORED COBRANDED LAYOUT.
-
-BUYER: ${buyerFullName} <${email}>
-PROPERTY: ${propertyLine}
-TIER: ${tier} (${tier === "address-specific" ? "$117.60 realtor-partner cobranded address-specific (20% off $147)" : "$77.60 realtor-partner cobranded zip-level (20% off $97)"})
-PRICE BAND: ${priceBand}
-USE CASE: ${useCase}
-SPECIFIC CONCERNS: ${concerns || "None provided"}
-REFERRING REALTOR SLUG: ${referralSlug}
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-REPORT LAYOUT: COBRANDED (Realtor lead + DHL co-publisher)
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-COVER PAGE LAYOUT:
-  ┌─────────────────────────────────────────────────────┐
-  │  [REALTOR PHOTO PLACEHOLDER]                        │
-  │  ${realtorName || "[Realtor Name]"}                 │
-  │  ${realtorBrokerage || "[Brokerage]"}               │
-  │  License: ${realtorLicense || "[License #]"}        │
-  │  ${realtorPhone || ""}  ${realtorEmail || ""}       │
-  │                                                     │
-  │  ─────────── Prepared with ───────────              │
-  │                                                     │
-  │  [TONY BOTCHEV PHOTO PLACEHOLDER]                   │
-  │  ${DHL_TONY_NAME} · ${DHL_TONY_NMLS}               │
-  │  ${DHL_COMPANY}                                     │
-  │  Sponsored by ${DHL_SPONSOR}                        │
-  │  ${DHL_WEBSITE} · ${DHL_PHONE}                      │
-  └─────────────────────────────────────────────────────┘
-  Report title: US Home Intelligence Report
-  Property: ${propertyLine}
-  Prepared for: ${buyerFullName}
-  Date: [CURRENT DATE]
-
-RUNNING HEADER (every page, small but visible):
-  Left: ${realtorName || "[Realtor Name]"} | ${DHL_COMPANY}
-  Right: intel.nofluffmarketing.io
-
-RUNNING FOOTER (every page):
-  Left: ${realtorName || "[Realtor Name]"} | ${DHL_COMPANY}
-  Center: Page [N] of [TOTAL]
-  Right: Produced exclusively by NoFluff Marketing LLC
-
-REPORT CONTENT REQUIREMENTS:
-- 9,000+ words, 11 chapters
-- Chapters in order:
-  1. Executive Summary
-  2. School District Analysis
-  3. Crime Trend Analysis
-  4. Flood & Environmental Risk
-  5. Market Velocity & Pricing
-  6. Demographic Composition (Fair Housing compliant language required)
-  7. Walkability & Amenities
-  8. HOA Landscape
-  9. Comparable Sales
-  10. Investment Thesis
-  11. Fair Housing Disclosure
-  12. YOUR MORTGAGE PARTNER (new section — see below)
-  13. References & Glossary
-
-CHAPTER 12 — YOUR MORTGAGE PARTNER (insert after Chapter 11, before References):
-  Section heading: "Your Mortgage Partner"
-  Layout:
-    [TONY BOTCHEV PHOTO PLACEHOLDER]
-    ${DHL_TONY_NAME}
-    ${DHL_TONY_NMLS} · Sponsored by ${DHL_SPONSOR}
-    ${DHL_COMPANY} · ${DHL_WEBSITE} · ${DHL_PHONE}
-
-  Bio paragraph (use this exact text, substituting realtor name):
-  "${DHL_TONY_NAME} specializes in DFW mortgages — conventional, FHA, VA, jumbo, DSCR — with 20+ years in the market and a sponsor-backed 24-hour pre-qualification turnaround. He works with ${realtorName || "[Realtor Name]"} to give your buyers the smoothest path from offer to keys."
-
-  CTA box:
-    "Ready to get pre-qualified? Visit ${DHL_APPLY} or call ${DHL_PHONE}."
-    "RESPA-clean: no fees flow between ${DHL_COMPANY} and your realtor for mortgage referrals. You always decide who to use."
-
-ADDITIONAL REQUIREMENTS:
-- Fair Housing compliant language on all demographic and schools chapters
-- NO references to "Manus" anywhere in the report
-- Output as structured PDF-ready markdown
-
-Deliver the completed report to: ${email}
-CC the referring realtor partner (slug: ${referralSlug})`;
-
-  // ── LAYOUT 2: DHL-Only Direct Buyer ───────────────────────────────────────
-  const dhlOnlyPrompt = `Produce a US Home Intelligence (USHI) v5 report — DHL-ONLY DIRECT BUYER LAYOUT.
+  const prompt = `Produce a US Home Intelligence (USHI) v5 report — DHL-ONLY DIRECT BUYER LAYOUT.
 
 BUYER: ${buyerFullName} <${email}>
 PROPERTY: ${propertyLine}
@@ -145,7 +51,7 @@ TIER: ${tier} (${tier === "address-specific" ? "$147 address-specific" : "$97 zi
 PRICE BAND: ${priceBand}
 USE CASE: ${useCase}
 SPECIFIC CONCERNS: ${concerns || "None provided"}
-CHANNEL: direct (no referring realtor)
+CHANNEL: direct consumer purchase
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 REPORT LAYOUT: DHL-ONLY (Tony Botchev / DFW Homes & Loans sole publisher)
@@ -175,7 +81,7 @@ RUNNING FOOTER (every page):
   Right: Produced exclusively by NoFluff Marketing LLC
 
 REPORT CONTENT REQUIREMENTS:
-- 9,000+ words, 11 chapters
+- 9,000+ words, 13 chapters
 - Chapters in order:
   1. Executive Summary
   2. School District Analysis
@@ -188,7 +94,7 @@ REPORT CONTENT REQUIREMENTS:
   9. Comparable Sales
   10. Investment Thesis
   11. Fair Housing Disclosure
-  12. YOUR MORTGAGE PARTNER (new section — see below)
+  12. YOUR MORTGAGE PARTNER (see below)
   13. References & Glossary
 
 CHAPTER 12 — YOUR MORTGAGE PARTNER (insert after Chapter 11, before References):
@@ -215,8 +121,6 @@ ADDITIONAL REQUIREMENTS:
 - Output as structured PDF-ready markdown
 
 Deliver the completed report to: ${email}`;
-
-  const prompt = isCobranded ? cobrandedPrompt : dhlOnlyPrompt;
 
   const res = await fetch(`${MANUS_API_BASE}/v2/task/create`, {
     method: "POST",
@@ -257,15 +161,12 @@ export async function POST(req: NextRequest) {
   }
 
   // payment_intent.succeeded: update GHL contact tag USHI-Buyer-Started → USHI-Buyer-Paid
-  // This fires after payment confirmation — captures buyers who completed checkout
   if (event.type === "payment_intent.succeeded") {
     const paymentIntent = event.data.object as Stripe.PaymentIntent;
     const inboundWebhookUrl = process.env.GHL_NFM_INBOUND_WEBHOOK_URL;
     if (inboundWebhookUrl) {
       const piMeta = paymentIntent.metadata || {};
-      // Retrieve customer email from payment intent charges if available
-      const buyerEmail = piMeta.buyer_email ||
-        (paymentIntent.receipt_email) || "";
+      const buyerEmail = piMeta.buyer_email || paymentIntent.receipt_email || "";
       fetch(inboundWebhookUrl, {
         method: "POST",
         headers: { "Content-Type": "application/json", "User-Agent": "NoFluff-USHI/1.0" },
@@ -275,7 +176,7 @@ export async function POST(req: NextRequest) {
           remove_tag: "USHI-Buyer-Started",
           order_id: paymentIntent.id,
           amount_paid: paymentIntent.amount ? paymentIntent.amount / 100 : 0,
-          report_tier: piMeta.layout === "cobranded" ? "address-specific" : (piMeta.tier || "zip-level"),
+          report_tier: piMeta.tier || "zip-level",
           source: "stripe_webhook",
           location_id: process.env.GHL_NFM_LOCATION_ID || "tRk2nBMoIkO6EhFzr7jp",
         }),
@@ -296,7 +197,7 @@ export async function POST(req: NextRequest) {
       .filter(Boolean)
       .join(", ");
 
-    // WF2: POST to GHL NFM Buyer Report Purchase workflow (fire-and-forget)
+    // WF2: POST to GHL NFM Buyer Report Purchase workflow
     fireWF2BuyerReportPurchase({
       stripe_session_id: session.id,
       buyer_first_name: meta.firstName || "",
@@ -310,12 +211,11 @@ export async function POST(req: NextRequest) {
       purchase_price_band: meta.priceBand || "",
       use_case: meta.useCase || "",
       has_lender_already: hasLenderAlready,
-      referring_realtor_slug: meta.referralSlug || "",
       amount_paid_usd: amountPaidUsd,
       tier: meta.tier || "",
     });
 
-    // WF4: If buyer has no lender, POST to DHL Warm Lead Touch workflow (fire-and-forget)
+    // WF4: If buyer has no lender, POST to DHL Warm Lead Touch workflow
     if (!hasLenderAlready) {
       fireWF4DhlWarmLead({
         buyer_email: meta.email || "",
@@ -324,17 +224,12 @@ export async function POST(req: NextRequest) {
       });
     }
 
-    // Dispatch Manus API task — conditional template based on referralSlug
+    // Dispatch Manus API task to generate the report
     const manusTask = await dispatchManusReportTask(meta);
     if (manusTask?.task_id) {
-      const layout = (meta.referralSlug && meta.referralSlug !== "direct" && meta.referralSlug !== "")
-        ? "COBRANDED"
-        : "DHL-ONLY";
-      console.log(`Manus task dispatched: ${manusTask.task_id} [${layout}] for buyer ${meta.email}`);
+      console.log(`Manus task dispatched: ${manusTask.task_id} for buyer ${meta.email}`);
     }
   }
 
   return NextResponse.json({ received: true });
 }
-
-// Note: raw body parsing is handled by Next.js App Router automatically for webhook routes

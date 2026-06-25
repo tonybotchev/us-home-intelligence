@@ -40,11 +40,11 @@ export default function PrivacyPage() {
             <p>This Privacy Policy governs the US Home Intelligence platform at intel.nofluffmarketing.io, operated by NoFluff Marketing LLC, 3333 Preston Rd Ste 300 #1570, Frisco, TX 75034. Phone: 940-394-5656. </p>
             <div>
               <h2 className="text-xl font-bold text-[#f0f0f5] mb-3">Information We Collect</h2>
-              <p>Buyer questionnaire data (name, email, phone, property address, purchase context), payment data processed via industry-standard PCI-compliant payment processing (we do not store card numbers), realtor partner profile data (name, brokerage, license number, headshot, logo), and standard web analytics (IP, browser, pages visited).</p>
+              <p>Buyer questionnaire data (name, email, phone, property address, purchase context), payment data processed via industry-standard PCI-compliant payment processing (we do not store card numbers), and standard web analytics (IP, browser, pages visited).</p>
             </div>
             <div>
               <h2 className="text-xl font-bold text-[#f0f0f5] mb-3">How We Use Your Information</h2>
-              <p>To produce and deliver USHI reports; to process payments via our secure payment processor; to verify real estate licenses (TREC/NMLS); to generate cobrand partner share links; to send transactional emails about your order; and to comply with applicable law.</p>
+              <p>To produce and deliver USHI reports; to process payments via our secure payment processor; to send transactional emails about your order; and to comply with applicable law.</p>
               <p className="mt-3"><strong className="text-[#f0f0f5]">Phone numbers</strong> collected on this platform are used exclusively for report delivery and follow-up about your specific report order. They are not used for marketing SMS campaigns on this platform.</p>
               <p className="mt-3">Mobile information will not be shared with third parties or affiliates for marketing or promotional purposes.</p>
             </div>
