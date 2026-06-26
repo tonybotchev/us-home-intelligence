@@ -23,6 +23,123 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
+    id: "mortgage-pre-approval-checklist-dfw",
+    slug: "mortgage-pre-approval-checklist-dfw",
+    title: "The DFW Mortgage Pre-Approval Checklist: 10 Steps to Get Ready to Buy",
+    date: "2026-06-26",
+    category: "Home Buying",
+    excerpt: "Ready to buy a home in DFW? Follow this 10-step mortgage pre-approval checklist to get your finances in order, understand what lenders look for, and walk into the market with confidence.",
+    readTime: "7 min read",
+    content: `If you've been watching the DFW housing market lately, you already know how fast things move. Homes in Frisco, McKinney, Arlington, and even the more affordable pockets of Fort Worth can go under contract within days — sometimes hours — of hitting the market. In a competitive environment like this, showing up to a home tour without a mortgage pre-approval letter is a little like showing up to a job interview without a resume. You might be perfectly qualified, but no one's going to take you seriously.
+
+That's why getting pre-approved before you start seriously shopping is one of the smartest moves you can make as a homebuyer in North Texas. This checklist walks you through every step of the process so you can walk into any showing — and any offer situation — with confidence.
+
+---
+
+## Why Pre-Approval Matters So Much in the DFW Market
+
+DFW has consistently ranked among the fastest-growing metro areas in the country. That growth means demand for housing stays high, inventory stays competitive, and sellers have options. When a seller receives multiple offers, a pre-approval letter signals that you're a serious, financially vetted buyer — not someone who's just browsing. Many listing agents in DFW won't even schedule a showing without one.
+
+Pre-approval also gives *you* a clearer picture of what you can actually afford, which saves time and prevents heartbreak down the road. So let's get you ready.
+
+---
+
+## The 10-Step DFW Mortgage Pre-Approval Checklist
+
+### 1. Check Your Credit Score
+
+Your credit score is one of the first things a lender looks at, and it plays a major role in determining what loan programs you qualify for and what your interest rate will look like. Before you apply for anything, pull your credit reports from all three bureaus — Equifax, Experian, and TransUnion — at AnnualCreditReport.com.
+
+Look for errors, outdated accounts, or anything that looks unfamiliar. Disputing inaccuracies before you apply can meaningfully improve your score. As a general benchmark, conventional loans typically want to see a score of 620 or higher, while FHA loans may allow scores as low as 580 with the right down payment. The higher your score, the better your options.
+
+### 2. Gather Your Income Documents
+
+Lenders need to verify that you have a stable, reliable income to support a mortgage payment. For most W-2 employees, this means collecting your two most recent pay stubs, your W-2 forms from the past two years, and your federal tax returns from the past two years.
+
+If you're self-employed, a freelancer, or a 1099 contractor — which covers a lot of people in the DFW entrepreneurial economy — expect to provide two years of personal and business tax returns, a year-to-date profit and loss statement, and potentially additional documentation depending on your situation.
+
+### 3. Pull Together Your Asset Statements
+
+Lenders want to see that you have enough money saved for your down payment, closing costs, and ideally a few months of reserves afterward. Gather your two most recent bank statements for all checking and savings accounts, investment or retirement account statements, and any other asset accounts you plan to use.
+
+One important note: every dollar that goes toward your down payment needs to be "sourced and seasoned," meaning the lender will want to know where it came from and that it's been in your account for a reasonable period of time. Large, unexplained deposits can raise flags during underwriting — more on that in a moment.
+
+### 4. Calculate Your Debt-to-Income Ratio
+
+Your debt-to-income ratio (DTI) is a simple but powerful number: it's your total monthly debt payments divided by your gross monthly income. Most conventional loan programs prefer a DTI at or below 45%, though some programs allow higher with compensating factors.
+
+Add up your monthly obligations — car payments, student loans, credit card minimums, personal loans — and compare that to what you earn each month before taxes. This will give you a rough idea of how much mortgage payment fits within your financial picture. If your DTI is running high, paying down a debt or two before applying can make a real difference. Let's run the numbers together when you're ready.
+
+### 5. Determine Your Realistic Budget
+
+Pre-approval isn't just about what a lender will give you — it's about what makes sense for your life. Think about your monthly comfort level, your other financial goals, and what homeownership costs beyond the mortgage payment itself (taxes, insurance, HOA fees, maintenance).
+
+In DFW, property taxes can be notably higher than the national average depending on the city and county. A home in Collin County, Denton County, or Tarrant County will each carry different tax implications, so factor that into your monthly payment estimate early in the process.
+
+### 6. Choose the Right Loan Type
+
+There's no one-size-fits-all mortgage, and the DFW market has buyers who qualify for a wide range of programs.
+
+- **Conventional loans** are popular for buyers with solid credit and at least 3–5% down
+- **FHA loans** offer more flexibility on credit and down payment (as low as 3.5%) and are common among first-time buyers
+- **VA loans** are an outstanding benefit for eligible veterans and active-duty service members — and the DFW area has a large military community near bases like NAS Fort Worth JRB
+- **USDA loans** may apply for buyers looking at rural or semi-rural areas on the outer edges of the Metroplex
+- **Jumbo loans** come into play for higher-priced properties in areas like Highland Park, Southlake, or Westlake
+
+A good mortgage advisor will help you compare these options based on your specific situation rather than just defaulting to whatever is most common.
+
+### 7. Shop Multiple Lenders
+
+Pre-approval shopping is not the same as applying for a mortgage. When you're rate shopping with multiple lenders within a short window (typically 14–45 days depending on the scoring model), the credit bureaus generally treat those inquiries as a single event. So don't be afraid to compare.
+
+Look beyond just the rate — evaluate lender responsiveness, local market knowledge, and the ability to close on time. In DFW, a delayed closing can cost you a deal. Working with a local mortgage advisor who knows the market and has relationships with local real estate agents can make a real difference.
+
+### 8. Submit Your Pre-Approval Application
+
+Once you've chosen a lender, it's time to formally apply. You'll complete a Uniform Residential Loan Application (also called a 1003) and authorize the lender to pull your credit. Be thorough and honest — inconsistencies between what you report and what documents show can slow things down or create problems later.
+
+A full pre-approval involves the lender actually reviewing your income, assets, and credit — not just running a quick estimate. This is more thorough than a pre-qualification, and it carries much more weight with sellers.
+
+### 9. Understand Pre-Approval vs. Pre-Qualification
+
+This distinction matters more than most buyers realize. A **pre-qualification** is typically based on self-reported information and a soft credit pull. It's a quick estimate, not a commitment. A **pre-approval** means a lender has actually verified your financial information and issued a conditional commitment to lend up to a certain amount.
+
+In the DFW market, savvy sellers and their agents know the difference. A pre-approval letter from a reputable lender carries significantly more weight than a pre-qualification and can be the deciding factor when a seller is comparing multiple offers.
+
+### 10. Use Your Pre-Approval Letter Strategically
+
+Once you have your letter, keep it handy but use it wisely. Pre-approval letters are typically valid for 60–90 days. If your home search extends beyond that, you may need to refresh your documentation. Also, your letter doesn't have to show your full approval amount — in competitive situations, some buyers choose to tailor the letter to match their offer price rather than revealing their maximum budget.
+
+---
+
+## Common Mistakes to Avoid During the Pre-Approval Process
+
+Even well-prepared buyers can stumble. Here are the most common pitfalls to steer clear of:
+
+- **Opening new credit accounts** — A new car loan or credit card right before or during the process can shift your DTI and drop your score
+- **Changing jobs** — Lenders love stability; switching employers (especially industries) mid-process can complicate income verification
+- **Making large, undocumented deposits** — Random large deposits raise underwriting red flags; if you're receiving gift funds, there's a proper way to document them
+- **Making large purchases** — New furniture, appliances, or a vehicle can increase your debt load and jeopardize your approval
+- **Co-signing for someone else** — Even if you're not making the payments, co-signed debt counts against your DTI
+
+The safest rule: once you've started the pre-approval process, keep your financial life as stable and predictable as possible until after closing.
+
+---
+
+## Ready to Get Pre-Approved? Let's Talk.
+
+Navigating the DFW market is a lot easier when you have the right team in your corner. At **DFW Home & Loans**, we work with first-time buyers, repeat buyers, veterans, and self-employed borrowers across the entire Metroplex — from Dallas and Fort Worth to the suburbs of Frisco, Plano, Mansfield, and beyond.
+
+We'll walk through your financial picture, help you identify the right loan program, and get you a pre-approval letter you can actually use to compete. No pressure, no obligation — just a straightforward conversation about your goals.
+
+**[Schedule your free pre-approval consultation at dfwhome.loans today.]**
+
+---
+
+*Tony Botchev, NMLS #114198 · Sponsored by Loan Factory, NMLS #320841. Equal Housing Opportunity.*`,
+  },
+
+  {
     id: "va-loan-benefits-dfw-veterans-2026",
     slug: "va-loan-benefits-dfw-veterans-2026",
     title: "VA Loan Benefits for DFW Veterans in 2026: Zero Down, No PMI, and More",
